@@ -22,38 +22,49 @@ for item in data:
 labels = np.array(labels)
 
 # Split data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(
-    queries, labels, test_size=0.2, random_state=42
+X, X_test, y, y_test = train_test_split(
+    queries, labels, test_size=0.2, random_state=42, stratify=labels
+)
+
+# Further split training data into training and validation sets
+X_train, X_val, y_train, y_val = train_test_split(
+    X, y, test_size=0.25, random_state=42, stratify=y
 )
 
 # Vectorize the text data
 vectorizer = CountVectorizer()
 X_train_vec = vectorizer.fit_transform(X_train).toarray()
+X_val_vec = vectorizer.transform(X_val).toarray()
 X_test_vec = vectorizer.transform(X_test).toarray()
 
 # Convert to PyTorch tensors
 X_train_tensor = torch.tensor(X_train_vec, dtype=torch.float32)
+X_val_tensor = torch.tensor(X_val_vec, dtype=torch.float32)
 X_test_tensor = torch.tensor(X_test_vec, dtype=torch.float32)
 y_train_tensor = torch.tensor(y_train, dtype=torch.float32)
+y_val_tensor = torch.tensor(y_val, dtype=torch.float32)
 y_test_tensor = torch.tensor(y_test, dtype=torch.float32)
 
 
-# Define custom dataset
+# Define the TextDataset class
 class TextDataset(Dataset):
-    def __init__(self, X, y):
-        self.X = X
-        self.y = y
+    def __init__(self, x_tensor, y_tensor):
+        self.x = x_tensor
+        self.y = y_tensor
+
+    def __getitem__(self, index):
+        return (self.x[index], self.y[index])
 
     def __len__(self):
-        return len(self.X)
-
-    def __getitem__(self, idx):
-        return self.X[idx], self.y[idx]
+        return len(self.y)
 
 
-# Create DataLoader for training and testing data
+# Create DataLoader for training, validation, and testing data
 train_dataset = TextDataset(X_train_tensor, y_train_tensor)
 train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
+
+val_dataset = TextDataset(X_val_tensor, y_val_tensor)
+val_loader = DataLoader(val_dataset, batch_size=32)
 
 test_dataset = TextDataset(X_test_tensor, y_test_tensor)
 test_loader = DataLoader(test_dataset, batch_size=32)
@@ -85,10 +96,9 @@ criterion = nn.BCELoss()
 optimizer = optim.Adam(model.parameters(), lr=0.001)
 
 # Training loop
-# Training loop
 num_epochs = 10
-loss = None
 for epoch in range(num_epochs):
+    model.train()
     for inputs, labels in train_loader:
         optimizer.zero_grad()
         outputs = model(inputs)
@@ -96,23 +106,31 @@ for epoch in range(num_epochs):
         loss.backward()
         optimizer.step()
 
-    if loss is not None:
-        print(f"Epoch [{epoch+1}/{num_epochs}], Loss: {loss.item():.4f}")
-    else:
-        print(f"Epoch [{epoch+1}/{num_epochs}], No data processed")
+    # Validation loop
+    model.eval()
+    total_val_loss = 0
+    with torch.no_grad():
+        for inputs, labels in val_loader:
+            outputs = model(inputs)
+            loss = criterion(outputs.squeeze(), labels)
+            total_val_loss += loss.item()
 
-# Evaluation
+    print(
+        f"Epoch [{epoch+1}/{num_epochs}], Training Loss: {loss.item():.4f}, Validation Loss: {total_val_loss/len(val_loader):.4f}"
+    )
+
+# Evaluation on test set
 model.eval()
+correct = 0
+total = 0
 with torch.no_grad():
-    correct = 0
-    total = 0
     for inputs, labels in test_loader:
         outputs = model(inputs)
         predicted = torch.round(outputs.squeeze())
         total += labels.size(0)
         correct += (predicted == labels).sum().item()
 
-    print(f"Accuracy: {100 * correct / total:.2f}%")
+print(f"Accuracy on test set: {100 * correct / total:.2f}%")
 
 # Save the model and the vectorizer
 torch.save(model, "./label_model.pth")
