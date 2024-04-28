@@ -1,0 +1,924 @@
+[
+  {
+    "question": "What would my friend do in this situation?",
+    "label": 1
+  },
+  {
+    "question": "What did Ethan do yesterday?",
+    "label": 0
+  },
+  {
+    "question": "Is my wife cheating on me?",
+    "label": 0
+  },
+  {
+    "question": "What would Daniel want to eat today?",
+    "label": 1
+  },
+  {
+    "question": "Based on my girlfriend's personality, would she think this is a good choice?",
+    "label": 1
+  },
+  {
+    "question": "What gift can I give my mom?",
+    "label": 1
+  },
+  {
+    "question": "What restaurant would John pick in this situation?",
+    "label": 1
+  },
+  {
+    "question": "Where did she go on Saturday?",
+    "label": 0
+  },
+  {
+    "question": "What did Belle say about me to you?",
+    "label": 0
+  },
+  {
+    "question": "What book would Sarah recommend for me to read?",
+    "label": 1
+  },
+  {
+    "question": "What would Mark choose between these two cars?",
+    "label": 1
+  },
+  {
+    "question": "Did Emily go to the party last night?",
+    "label": 0
+  },
+  {
+    "question": "What kind of music does David like?",
+    "label": 1
+  },
+  {
+    "question": "What movie would Anna watch on a rainy day?",
+    "label": 1
+  },
+  {
+    "question": "What would Tom prefer for breakfast, pancakes or waffles?",
+    "label": 1
+  },
+  {
+    "question": "What would be the ideal vacation destination for Michael?",
+    "label": 1
+  },
+  {
+    "question": "What time did Susan leave work yesterday?",
+    "label": 0
+  },
+  {
+    "question": "What does Alex usually do on weekends?",
+    "label": 1
+  },
+  {
+    "question": "What would James order at a coffee shop?",
+    "label": 1
+  },
+  {
+    "question": "What would be a suitable birthday present for Rachel?",
+    "label": 1
+  },
+  {
+    "question": "What would my friend do in this situation?",
+    "label": 1
+  },
+  {
+    "question": "What did Ethan do yesterday?",
+    "label": 0
+  },
+  {
+    "question": "Is my wife cheating on me?",
+    "label": 0
+  },
+  {
+    "question": "What would Daniel want to eat today?",
+    "label": 1
+  },
+  {
+    "question": "Based on my girlfriend's personality, would she think this is a good choice?",
+    "label": 1
+  },
+  {
+    "question": "What gift can I give my mom?",
+    "label": 1
+  },
+  {
+    "question": "What restaurant would John pick in this situation?",
+    "label": 1
+  },
+  {
+    "question": "Where did she go on Saturday?",
+    "label": 0
+  },
+  {
+    "question": "What did Belle say about me to you?",
+    "label": 0
+  },
+  {
+    "question": "What book would Sarah recommend for me to read?",
+    "label": 1
+  },
+  {
+    "question": "What would Mark choose between these two cars?",
+    "label": 1
+  },
+  {
+    "question": "Did Emily go to the party last night?",
+    "label": 0
+  },
+  {
+    "question": "What kind of music does David like?",
+    "label": 1
+  },
+  {
+    "question": "What movie would Anna watch on a rainy day?",
+    "label": 1
+  },
+  {
+    "question": "What would Tom prefer for breakfast, pancakes or waffles?",
+    "label": 1
+  },
+  {
+    "question": "What would be the ideal vacation destination for Michael?",
+    "label": 1
+  },
+  {
+    "question": "What time did Susan leave work yesterday?",
+    "label": 0
+  },
+  {
+    "question": "What does Alex usually do on weekends?",
+    "label": 1
+  },
+  {
+    "question": "What would James order at a coffee shop?",
+    "label": 1
+  },
+  {
+    "question": "What would be a suitable birthday present for Rachel?",
+    "label": 1
+  },
+  {
+    "question": "What outfit would Angela wear to a formal event?",
+    "label": 1
+  },
+  {
+    "question": "What color would Tim choose for his new car?",
+    "label": 1
+  },
+  {
+    "question": "What activity would Lucy prefer for her birthday party?",
+    "label": 1
+  },
+  {
+    "question": "What pet would Ben consider adopting?",
+    "label": 1
+  },
+  {
+    "question": "What hairstyle would Emma like to try next?",
+    "label": 1
+  },
+  {
+    "question": "What hobby would Peter enjoy learning?",
+    "label": 1
+  },
+  {
+    "question": "What movie genre does Olivia prefer?",
+    "label": 1
+  },
+  {
+    "question": "What subject would Alice like to study in college?",
+    "label": 1
+  },
+  {
+    "question": "What flavor of ice cream would Jack choose?",
+    "label": 1
+  },
+  {
+    "question": "What type of art would Sofia appreciate?",
+    "label": 1
+  },
+  {
+    "question": "What type of phone would Kevin upgrade to?",
+    "label": 1
+  },
+  {
+    "question": "What would my friend do if they won the lottery?",
+    "label": 1
+  },
+  {
+    "question": "What would be Emily's reaction if I told her I'm moving away?",
+    "label": 1
+  },
+  {
+    "question": "What would my friend's dream job be?",
+    "label": 1
+  },
+  {
+    "question": "What would be Sarah's reaction if I confessed my feelings to her?",
+    "label": 1
+  },
+  {
+    "question": "What would my friend do if they found a lost wallet?",
+    "label": 1
+  },
+  {
+    "question": "What would John do if he discovered his partner was cheating?",
+    "label": 1
+  },
+  {
+    "question": "What would my friend do if they encountered a bear while hiking?",
+    "label": 1
+  },
+  {
+    "question": "What would be Tom's response if I asked him to lend me a large sum of money?",
+    "label": 1
+  },
+  {
+    "question": "What would my friend's reaction be if I told them I'm dropping out of college?",
+    "label": 1
+  },
+  {
+    "question": "What would Daniel choose as his last meal if he were on death row?",
+    "label": 1
+  },
+  {
+    "question": "What would my friend do if they were offered a chance to travel to space?",
+    "label": 1
+  },
+  {
+    "question": "What would Lily do if she found out her best friend spread a rumor about her?",
+    "label": 1
+  },
+  {
+    "question": "What would be Mike's reaction if I revealed I know his biggest secret?",
+    "label": 1
+  },
+  {
+    "question": "What would my friend do if they had the ability to time travel?",
+    "label": 1
+  },
+  {
+    "question": "What would Grace choose as her superhero power?",
+    "label": 1
+  },
+  {
+    "question": "What would be Alex's response if I challenged him to a duel?",
+    "label": 1
+  },
+  {
+    "question": "What would my friend do if they won an all-expenses-paid trip around the world?",
+    "label": 1
+  },
+  {
+    "question": "What would Chloe do if she found out her significant other was a spy?",
+    "label": 1
+  },
+  {
+    "question": "What would be Jason's reaction if I told him I'm dropping out of our business partnership?",
+    "label": 1
+  },
+  {
+    "question": "What would my friend do if they discovered they had a long-lost twin?",
+    "label": 1
+  },
+  {
+    "question": "What would Sarah choose as her profession if she could be anything?",
+    "label": 1
+  },
+  {
+    "question": "What would be David's reaction if I told him I won the lottery and want to split it with him?",
+    "label": 1
+  },
+  {
+    "question": "What would my friend do if they woke up one morning and everyone else had disappeared?",
+    "label": 1
+  },
+  {
+    "question": "What would Mia choose as her ultimate vacation destination?",
+    "label": 1
+  },
+  {
+    "question": "What would be Ryan's response if I told him I'm leaving the country indefinitely?",
+    "label": 1
+  },
+  {
+    "question": "What would my friend do if they found out they were a character in a simulation?",
+    "label": 1
+  },
+  {
+    "question": "What would Ava choose as her final meal if she were on death row?",
+    "label": 1
+  },
+  {
+    "question": "What would be Ethan's reaction if I confessed my love for him?",
+    "label": 1
+  },
+  {
+    "question": "What would my friend do if they discovered they could talk to animals?",
+    "label": 1
+  },
+  {
+    "question": "What would Lily choose as her preferred method of time travel?",
+    "label": 1
+  },
+  {
+    "question": "What would be Mike's response if I challenged him to a game of wits?",
+    "label": 1
+  },
+  {
+    "question": "What would my friend do if they woke up with the ability to fly?",
+    "label": 1
+  },
+  {
+    "question": "What would Nathan choose as his weapon of choice in a zombie apocalypse?",
+    "label": 1
+  },
+  {
+    "question": "What would be Emily's reaction if I told her I know her deepest secret?",
+    "label": 1
+  },
+  {
+    "question": "What would my friend do if they were suddenly transported to the medieval era?",
+    "label": 1
+  },
+  {
+    "question": "What would Zachary do if he found out he was a long-lost prince?",
+    "label": 1
+  },
+  {
+    "question": "What would be Sophia's response if I asked her to join me on a spontaneous road trip?",
+    "label": 1
+  },
+  {
+    "question": "What would my friend do if they could transform into any animal at will?",
+    "label": 1
+  },
+  {
+    "question": "What would Jessica choose as her superpower if she could have one?",
+    "label": 1
+  },
+  {
+    "question": "What would be Lucas's reaction if I told him I discovered his secret talent?",
+    "label": 1
+  },
+  {
+    "question": "What would my friend do if they were stranded on a deserted island?",
+    "label": 1
+  },
+  {
+    "question": "What would Mia choose as her first action if she became president for a day?",
+    "label": 1
+  },
+  {
+    "question": "What would be Noah's response if I asked him to help me with a risky scheme?",
+    "label": 1
+  },
+  {
+    "question": "What would my friend do if they discovered they had a doppelgänger?",
+    "label": 1
+  },
+  {
+    "question": "What would Lily choose as her preferred method of time travel?",
+    "label": 1
+  },
+  {
+    "question": "What would be Mike's response if I challenged him to a game of wits?",
+    "label": 1
+  },
+  {
+    "question": "What would Nathan do if he found a mysterious old book with strange symbols?",
+    "label": 1
+  },
+  {
+    "question": "What would be Emily's reaction if I told her I know her deepest secret?",
+    "label": 1
+  },
+  {
+    "question": "What would my friend do if they were suddenly transported to the medieval era?",
+    "label": 1
+  },
+  {
+    "question": "What would Zachary do if he found out he was a long-lost prince?",
+    "label": 1
+  },
+  {
+    "question": "What would be Sophia's response if I asked her to join me on a spontaneous road trip?",
+    "label": 1
+  },
+  {
+    "question": "What would my friend do if they could transform into any animal at will?",
+    "label": 1
+  },
+  {
+    "question": "What would Jessica choose as her superpower if she could have one?",
+    "label": 1
+  },
+  {
+    "question": "What would be Lucas's reaction if I told him I discovered his secret talent?",
+    "label": 1
+  },
+  {
+    "question": "What would my friend do if they were stranded on a deserted island?",
+    "label": 1
+  },
+  {
+    "question": "What would Mia choose as her first action if she became president for a day?",
+    "label": 1
+  },
+  {
+    "question": "What would be Noah's response if I asked him to help me with a risky scheme?",
+    "label": 1
+  },
+  {
+    "question": "What would my friend do if they discovered they had a doppelgänger?",
+    "label": 1
+  },
+  {
+    "question": "What would Liam do if he found a wallet on the street?",
+    "label": 1
+  },
+  {
+    "question": "What did Emily eat for breakfast yesterday?",
+    "label": 0
+  },
+  {
+    "question": "What would Sarah choose as her favorite movie genre?",
+    "label": 1
+  },
+  {
+    "question": "What time did Michael go to bed last night?",
+    "label": 0
+  },
+  {
+    "question": "What would Daniel do if he won a free vacation?",
+    "label": 1
+  },
+  {
+    "question": "What did Olivia say about the weather today?",
+    "label": 0
+  },
+  {
+    "question": "What would Lily choose as her favorite dessert?",
+    "label": 1
+  },
+  {
+    "question": "What did Ethan wear to the party last weekend?",
+    "label": 0
+  },
+  {
+    "question": "What would Mia do if she won a Nobel Prize?",
+    "label": 1
+  },
+  {
+    "question": "What did Nathan do on his last vacation?",
+    "label": 0
+  },
+  {
+    "question": "What would Ava choose as her ideal pet?",
+    "label": 1
+  },
+  {
+    "question": "What did Benjamin talk about during lunch yesterday?",
+    "label": 0
+  },
+  {
+    "question": "What would Sophia do if she had a day off work?",
+    "label": 1
+  },
+  {
+    "question": "What did William buy at the grocery store yesterday?",
+    "label": 0
+  },
+  {
+    "question": "What would Lucas choose as his dream job?",
+    "label": 1
+  },
+  {
+    "question": "What did Isabella say about her plans for the weekend?",
+    "label": 0
+  },
+  {
+    "question": "What would Noah do if he won a million dollars?",
+    "label": 1
+  },
+  {
+    "question": "What did Emma watch on TV last night?",
+    "label": 0
+  },
+  {
+    "question": "What would Chloe choose as her favorite hobby?",
+    "label": 1
+  },
+  {
+    "question": "What did Oliver eat for lunch yesterday?",
+    "label": 0
+  },
+  {
+    "question": "What would Emily do if she found a lost puppy?",
+    "label": 1
+  },
+  {
+    "question": "What did Nathan say about his favorite book?",
+    "label": 0
+  },
+  {
+    "question": "What would Benjamin choose as his favorite season?",
+    "label": 1
+  },
+  {
+    "question": "What did Mia do for fun last weekend?",
+    "label": 0
+  },
+  {
+    "question": "What would Sophia do if she had a surprise day off?",
+    "label": 1
+  },
+  {
+    "question": "What did William talk about during dinner last night?",
+    "label": 0
+  },
+  {
+    "question": "What would Lucas choose as his preferred mode of transportation?",
+    "label": 1
+  },
+  {
+    "question": "What did Isabella buy at the mall yesterday?",
+    "label": 0
+  },
+  {
+    "question": "What would Noah do if he found a treasure map?",
+    "label": 1
+  },
+  {
+    "question": "What did Emma do after school yesterday?",
+    "label": 0
+  },
+  {
+    "question": "What would Chloe choose as her favorite holiday?",
+    "label": 1
+  },
+  {
+    "question": "What did Oliver talk about during the meeting this morning?",
+    "label": 0
+  },
+  {
+    "question": "What would Emily do if she had a free weekend?",
+    "label": 1
+  },
+  {
+    "question": "What did Nathan say about his dream vacation?",
+    "label": 0
+  },
+  {
+    "question": "What would Benjamin choose as his favorite outdoor activity?",
+    "label": 1
+  },
+  {
+    "question": "What did Mia do on her last vacation?",
+    "label": 0
+  },
+  {
+    "question": "What would Sophia do if she had a spontaneous day off?",
+    "label": 1
+  },
+  {
+    "question": "What did William say about his favorite food?",
+    "label": 0
+  },
+  {
+    "question": "What would Lucas choose as his favorite color?",
+    "label": 1
+  },
+  {
+    "question": "What did Isabella do for fun last weekend?",
+    "label": 0
+  },
+  {
+    "question": "What would Noah do if he had a day off work?",
+    "label": 1
+  },
+  {
+    "question": "What did Emma say about her favorite movie?",
+    "label": 0
+  },
+  {
+    "question": "What would Chloe choose as her favorite type of music?",
+    "label": 1
+  },
+  {
+    "question": "What did Oliver do during his last vacation?",
+    "label": 0
+  },
+  {
+    "question": "What would Emily do if she had a weekend to herself?",
+    "label": 1
+  },
+  {
+    "question": "What did Nathan say about his favorite hobby?",
+    "label": 0
+  },
+  {
+    "question": "What would Benjamin choose as his favorite board game?",
+    "label": 1
+  },
+  {
+    "question": "What did Mia do on her last day off?",
+    "label": 0
+  },
+  {
+    "question": "What would Sophia do if she had an unexpected day off?",
+    "label": 1
+  },
+  {
+    "question": "What did William say about his favorite sport?",
+    "label": 0
+  },
+  {
+    "question": "What would Lucas choose as his favorite animal?",
+    "label": 1
+  },
+  {
+    "question": "What did Isabella do last weekend?",
+    "label": 0
+  },
+  {
+    "question": "What would Noah do if he had a free day?",
+    "label": 1
+  },
+  {
+    "question": "What did Emma say about her favorite TV show?",
+    "label": 0
+  },
+  {
+    "question": "What would Chloe choose as her favorite dessert?",
+    "label": 1
+  },
+  {
+    "question": "What did Oliver do last Saturday?",
+    "label": 0
+  },
+  {
+    "question": "What would Emily do if she had a day to herself?",
+    "label": 1
+  },
+  {
+    "question": "What did Nathan say about his favorite book?",
+    "label": 0
+  },
+  {
+    "question": "What would Benjamin choose as his favorite season?",
+    "label": 1
+  },
+  {
+    "question": "What did Mia do last weekend?",
+    "label": 0
+  },
+  {
+    "question": "What would Sophia do if she were stranded on a deserted island?",
+    "label": 1
+  },
+  {
+    "question": "What did William say about his favorite childhood memory?",
+    "label": 0
+  },
+  {
+    "question": "What would Lucas choose as his favorite fictional character?",
+    "label": 1
+  },
+  {
+    "question": "What did Isabella do on her last adventure?",
+    "label": 0
+  },
+  {
+    "question": "What would Noah do if he were given the power to time travel?",
+    "label": 1
+  },
+  {
+    "question": "What did Emma say about her dream job?",
+    "label": 0
+  },
+  {
+    "question": "What would Chloe choose as her favorite holiday destination?",
+    "label": 1
+  },
+  {
+    "question": "What did Oliver do during his last road trip?",
+    "label": 0
+  },
+  {
+    "question": "What would Emily do if she found a magic lamp with a genie inside?",
+    "label": 1
+  },
+  {
+    "question": "What did Nathan say about his favorite childhood toy?",
+    "label": 0
+  },
+  {
+    "question": "What would Benjamin choose as his preferred time period to live in?",
+    "label": 1
+  },
+  {
+    "question": "What did Mia do on her last spontaneous adventure?",
+    "label": 0
+  },
+  {
+    "question": "What would Sophia do if she discovered she had superpowers?",
+    "label": 1
+  },
+  {
+    "question": "What did William say about his dream vacation?",
+    "label": 0
+  },
+  {
+    "question": "What would Lucas choose as his favorite mythical creature?",
+    "label": 1
+  },
+  {
+    "question": "What did Isabella do during her last vacation?",
+    "label": 0
+  },
+  {
+    "question": "What would Noah do if he encountered an alien?",
+    "label": 1
+  },
+  {
+    "question": "What did Emma say about her favorite childhood book?",
+    "label": 0
+  },
+  {
+    "question": "What would Chloe choose as her dream adventure?",
+    "label": 1
+  },
+  {
+    "question": "What did Oliver do during his last outdoor expedition?",
+    "label": 0
+  },
+  {
+    "question": "What would Emily do if she could spend a day with her favorite celebrity?",
+    "label": 1
+  },
+  {
+    "question": "What did Nathan say about his dream car?",
+    "label": 0
+  },
+  {
+    "question": "What would Benjamin choose as his favorite video game?",
+    "label": 1
+  },
+  {
+    "question": "What did Mia do during her last visit to the beach?",
+    "label": 0
+  },
+  {
+    "question": "What would Sophia do if she could explore any historical era?",
+    "label": 1
+  },
+  {
+    "question": "What did William say about his favorite childhood game?",
+    "label": 0
+  },
+  {
+    "question": "What would Lucas choose as his favorite sci-fi movie?",
+    "label": 1
+  },
+  {
+    "question": "What did Isabella do during her last camping trip?",
+    "label": 0
+  },
+  {
+    "question": "What would Noah do if he could meet his favorite fictional character?",
+    "label": 1
+  },
+  {
+    "question": "What did Emma say about her dream pet?",
+    "label": 0
+  },
+  {
+    "question": "What would Chloe choose as her favorite travel destination?",
+    "label": 1
+  },
+  {
+    "question": "What did Oliver do during his last visit to a museum?",
+    "label": 0
+  },
+  {
+    "question": "What would Emily do if she could attend any concert?",
+    "label": 1
+  },
+  {
+    "question": "What did Nathan say about his favorite childhood cartoon?",
+    "label": 0
+  },
+  {
+    "question": "What would Benjamin choose as his favorite fantasy book?",
+    "label": 1
+  },
+  {
+    "question": "What did Mia do during her last trip to the mountains?",
+    "label": 0
+  },
+  {
+    "question": "What would Sophia do if she could visit any famous landmark?",
+    "label": 1
+  },
+  {
+    "question": "What did William say about his dream adventure?",
+    "label": 0
+  },
+  {
+    "question": "What would Lucas choose as his favorite space exploration documentary?",
+    "label": 1
+  },
+  {
+    "question": "What did Isabella do during her last hiking trip?",
+    "label": 0
+  },
+  {
+    "question": "What would Noah do if he could attend a comic book convention?",
+    "label": 1
+  },
+  {
+    "question": "What did Emma say about her dream career?",
+    "label": 0
+  },
+  {
+    "question": "What would Chloe choose as her favorite cultural festival?",
+    "label": 1
+  },
+  {
+    "question": "What did Oliver do during his last visit to an amusement park?",
+    "label": 0
+  },
+  {
+    "question": "What would Emily do if she could witness a historical event?",
+    "label": 1
+  },
+  {
+    "question": "What did Nathan say about his dream motorcycle?",
+    "label": 0
+  },
+  {
+    "question": "What would Benjamin choose as his favorite science experiment?",
+    "label": 1
+  },
+  {
+    "question": "What did Mia do during her last trip to a botanical garden?",
+    "label": 0
+  },
+  {
+    "question": "What would Sophia do if she could attend a film festival?",
+    "label": 1
+  },
+  {
+    "question": "What did William say about his dream hiking trail?",
+    "label": 0
+  },
+  {
+    "question": "What would Lucas choose as his favorite space mission?",
+    "label": 1
+  },
+  {
+    "question": "What did Isabella do during her last visit to an art gallery?",
+    "label": 0
+  },
+  {
+    "question": "What would Noah do if he could participate in a cosplay competition?",
+    "label": 1
+  },
+  {
+    "question": "What did Emma say about her dream vacation destination?",
+    "label": 0
+  },
+  {
+    "question": "What would Chloe choose as her favorite cultural celebration?",
+    "label": 1
+  },
+  {
+    "question": "What did Oliver do during his last trip to a historical landmark?",
+    "label": 0
+  },
+  {
+    "question": "What would Emily do if she could experience zero gravity?",
+    "label": 1
+  },
+  {
+    "question": "What did Nathan say about his dream road trip?",
+    "label": 0
+  },
+  {
+    "question": "What would Benjamin choose as his favorite scientific discovery?",
+    "label": 1
+  },
+  {
+    "question": "What did Mia do during her last visit to an aquarium?",
+    "label": 0
+  }
+]
+
+
+
+
+
+
