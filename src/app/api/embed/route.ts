@@ -5,7 +5,9 @@ export const runtime = "edge";
 
 const openai = new OpenAI();
 
-export async function getEmbedding(text: string) {
+export async function embed(
+  text: string
+): Promise<OpenAI.Embeddings.CreateEmbeddingResponse> {
   const embedding = await openai.embeddings.create({
     model: "text-embedding-3-small",
     input: text,
@@ -16,7 +18,7 @@ export async function getEmbedding(text: string) {
 }
 
 export async function POST(req: NextRequest) {
-  const embedding = await getEmbedding(
+  const embedding = await embed(
     "Hello, world! My name is Fausto and I absolutely love Virigina, Lemon Tea, and Chocolate Ice Cream."
   );
 
