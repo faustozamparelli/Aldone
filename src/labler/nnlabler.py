@@ -27,7 +27,7 @@ model = torch.load("./label_model.pth")
 vectorizer = joblib.load("./label_vectorizer.joblib")
 
 
-def predict_query(query):
+def predict_query(query, threshold=0.7):
     # Vectorize the query
     query_vec = vectorizer.transform([query]).toarray()
 
@@ -38,9 +38,12 @@ def predict_query(query):
     model.eval()
     with torch.no_grad():
         output = model(query_tensor)
-        prediction = torch.round(output.squeeze()).item()
+        prediction_prob = output.squeeze().item()
 
-    return prediction
+    # Apply threshold
+    prediction = 1 if prediction_prob > threshold else 0
+
+    return prediction, prediction_prob
 
 
 if __name__ == "__main__":
@@ -49,4 +52,5 @@ if __name__ == "__main__":
         sys.exit(1)
 
     query = sys.argv[1]
-    print(predict_query(query))
+    prediction, confidence = predict_query(query)
+    print(f"Prediction: {prediction}, Confidence: {confidence}")

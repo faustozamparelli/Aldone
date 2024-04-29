@@ -1,4 +1,5 @@
 import json
+import re
 
 import joblib
 import numpy as np
@@ -20,6 +21,23 @@ for item in data:
     labels.append(item["label"])
 
 labels = np.array(labels)
+
+
+def anonymize_names(text):
+    # Split the text into words
+    words = text.split()
+    # Apply the name pattern to all words except the first one
+    name_pattern = re.compile(r"\b[A-Z][a-z]*\b")
+    words[1:] = [name_pattern.sub("<NAME>", word) for word in words[1:]]
+    # Join the words back into a single string
+    return " ".join(words)
+
+
+# Anonymize names in the queries
+queries = [anonymize_names(query) for query in queries]
+# Print the first 10 anonymized queries
+for query in queries[:10]:
+    print(query)
 
 # Split data into training and testing sets
 X, X_test, y, y_test = train_test_split(
@@ -99,6 +117,7 @@ optimizer = optim.Adam(model.parameters(), lr=0.001)
 num_epochs = 10
 for epoch in range(num_epochs):
     model.train()
+    loss = None  # Initialize loss to None
     for inputs, labels in train_loader:
         optimizer.zero_grad()
         outputs = model(inputs)
@@ -112,23 +131,27 @@ for epoch in range(num_epochs):
     with torch.no_grad():
         for inputs, labels in val_loader:
             outputs = model(inputs)
-            loss = criterion(outputs.squeeze(), labels)
-            total_val_loss += loss.item()
+            val_loss = criterion(outputs.squeeze(), labels)
+            total_val_loss += val_loss.item()
 
-    print(
-        f"Epoch [{epoch+1}/{num_epochs}], Training Loss: {loss.item():.4f}, Validation Loss: {total_val_loss/len(val_loader):.4f}"
-    )
+    # Only print the loss values if they are not None
+    if loss is not None:
+        print(
+            f"Epoch [{epoch+1}/{num_epochs}], Training Loss: {loss.item():.4f}, Validation Loss: {total_val_loss/len(val_loader):.4f}"
+        )
 
 # Evaluation on test set
 model.eval()
 correct = 0
 total = 0
+threshold = 0.9  # Set your desired threshold here
 with torch.no_grad():
     for inputs, labels in test_loader:
         outputs = model(inputs)
-        predicted = torch.round(outputs.squeeze())
+        predicted_probs = outputs.squeeze()
+        predicted_labels = (predicted_probs > threshold).float()
         total += labels.size(0)
-        correct += (predicted == labels).sum().item()
+        correct += (predicted_labels == labels).sum().item()
 
 print(f"Accuracy on test set: {100 * correct / total:.2f}%")
 
