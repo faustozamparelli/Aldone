@@ -6,7 +6,10 @@ export default function Page({ params }: { params: { slug: string } }) {
         background: "linear-gradient(to top, #B6CECE, #0099FF)",
       }}
     >
-      <p className="m-auto text-white">{`Welcome back, ${params.slug}`}</p>
+      <p className="m-auto text-white font-light text-3xl">
+        {`Welcome back, `}
+        <span className="text-lime-200">{params.slug}</span>
+      </p>
     </div>
   );
 }
