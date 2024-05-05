@@ -7,7 +7,8 @@ export async function POST(req: NextRequest) {
   const { text, speed } = await req.json();
 
   const mp3 = await openai.audio.speech.create({
-    model: "tts-1-hd",
+    // model: "tts-1-hd",
+    model: "tts-1",
     voice: "shimmer",
     input: text,
     speed: speed ? speed : 1,

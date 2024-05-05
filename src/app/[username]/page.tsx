@@ -1,12 +1,47 @@
 "use client";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+
+declare global {
+  interface Window {
+    webkitSpeechRecognition: any;
+  }
+}
 
 export default function Page({ params }: { params: { username: string } }) {
   const username = params.username.replace(/%20/g, " ");
 
   const [enabled, setEnabled] = useState(false);
   const [audioRef, setAudioRef] = useState<HTMLAudioElement | null>(null);
+  const recognitionRef = useRef<any>(null);
+
+  const startRecording = () => {
+    recognitionRef.current = new window.webkitSpeechRecognition();
+    recognitionRef.current.continuous = true;
+    recognitionRef.current.interimResults = true;
+
+    recognitionRef.current.onresult = (event: any) => {
+      const results = Array.from(
+        { length: event.results.length },
+        (_, i) => i
+      ).map((i) => event.results[i][0].transcript);
+      console.log(results.join(" "));
+    };
+
+    recognitionRef.current.start();
+  };
+
+  const stopRecording = () => {
+    if (recognitionRef.current) {
+      recognitionRef.current.stop();
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      stopRecording();
+    };
+  }, []);
 
   const say = (text: string) => {
     axios
@@ -27,35 +62,45 @@ export default function Page({ params }: { params: { username: string } }) {
 
   const handleMicrophoneClick = () => {
     setEnabled(true);
-    say(`Welcome back, ${username}. Tell me "everything".`);
+    startRecording();
+    setTimeout(() => {
+      say(`Welcome back, ${username}.`);
+      setTimeout(() => {
+        say(`Tell me ""everything""`);
+      }, 2000);
+    }, 2000);
   };
 
+  const [gradient, setGradient] = useState(["#B6CECE", "#0099FF"]);
+
   return (
-    <div
-      className={`flex min-h-screen flex-col items-center justify-between ${
-        enabled ? "cursor-none" : ""
-      }`}
-      style={{
-        background: "linear-gradient(to top, #B6CECE, #0099FF)",
-      }}
-    >
-      <p className="text-white font-light text-xl animate-fadeInUp text-right w-full p-3">
-        {!enabled && <span className="text-lime-200">{username}</span>}
-      </p>
-      <div className="text-white text-transparent">
-        <div>
-          <button
-            onClick={handleMicrophoneClick}
-            className={`animate-fadeInUp  mt-10 m-auto flex items-center justify-center ${
-              enabled ? "cursor-none" : "bg-blue-400 hover:bg-blue-500"
-            } rounded-full w-20 h-20 focus:outline-none`}
-          >
-            {!enabled && <TalkShape />}
-          </button>
+    <>
+      <div
+        className={`flex min-h-screen flex-col items-center justify-between ${
+          enabled ? "cursor-none" : ""
+        }`}
+        style={{
+          background: `linear-gradient(to top, ${gradient[0]}, ${gradient[1]})`,
+        }}
+      >
+        <p className="text-white font-light text-xl animate-fadeInUp text-right w-full p-3">
+          {!enabled && <span className="text-lime-200">{username}</span>}
+        </p>
+        <div className="text-white text-transparent">
+          <div>
+            <button
+              onClick={handleMicrophoneClick}
+              className={`animate-fadeInUp  mt-10 m-auto flex items-center justify-center ${
+                enabled ? "cursor-none" : "bg-blue-400 hover:bg-blue-500"
+              } rounded-full w-20 h-20 focus:outline-none`}
+            >
+              {!enabled && <TalkShape />}
+            </button>
+          </div>
         </div>
+        <footer className="min-h-[10vh]"></footer>
       </div>
-      <footer className="min-h-[10vh]"></footer>
-    </div>
+    </>
   );
 }
 
