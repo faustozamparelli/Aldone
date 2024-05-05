@@ -7,23 +7,25 @@ export default function Page({ params }: { params: { username: string } }) {
   const [audioRef, setAudioRef] = useState<HTMLAudioElement | null>(null);
 
   const say = (text: string) => {
-    axios.post("/api/tts", { text }, { responseType: "blob" }).then((res) => {
-      const blob: Blob = res.data;
-      const url = URL.createObjectURL(blob);
-      if (!audioRef) {
-        const _audioRef = new Audio(url);
-        setAudioRef(_audioRef);
-        _audioRef.play();
-      } else {
-        audioRef.setAttribute("src", url);
-        audioRef.play();
-      }
-    });
+    axios
+      .post("/api/tts", { text, speed: 0.9 }, { responseType: "blob" })
+      .then((res) => {
+        const blob: Blob = res.data;
+        const url = URL.createObjectURL(blob);
+        if (!audioRef) {
+          const _audioRef = new Audio(url);
+          setAudioRef(_audioRef);
+          _audioRef.play();
+        } else {
+          audioRef.setAttribute("src", url);
+          audioRef.play();
+        }
+      });
   };
 
   const handleMicrophoneClick = () => {
     setEnabled(true);
-    say(`Welcome back, ${window.location.pathname.split("/")[1]}`);
+    say(`Welcome back, ${params.username}`);
   };
 
   return (

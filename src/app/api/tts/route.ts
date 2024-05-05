@@ -4,12 +4,13 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 export async function POST(req: NextRequest) {
-  const { text } = await req.json();
+  const { text, speed } = await req.json();
 
   const mp3 = await openai.audio.speech.create({
     model: "tts-1-hd",
     voice: "shimmer",
     input: text,
+    speed: speed ? speed : 1,
   });
 
   return new NextResponse(await mp3.arrayBuffer(), {
