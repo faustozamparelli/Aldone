@@ -50,7 +50,7 @@ export default function Page({ params }: { params: { username: string } }) {
           </button>
         </div>
       </div>
-      <footer></footer>
+      <footer className="min-h-[10vh]"></footer>
     </div>
   );
 }
