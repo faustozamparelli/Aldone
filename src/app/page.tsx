@@ -33,7 +33,9 @@ export default function Home() {
           onChange={(e) => setUsername(e.target.value)}
           onKeyDown={handleKeyDown}
         />
-        <button onClick={handleSubmit}>enter</button>
+        <button className="text-sky-800 hover:italic" onClick={handleSubmit}>
+          enter
+        </button>
       </div>
     </main>
   );

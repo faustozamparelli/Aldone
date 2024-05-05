@@ -15,6 +15,15 @@ const config: Config = {
       backgroundImage: (theme) => ({
         "gradient-calm": "linear-gradient(to top, #B6CECE, #6A8D92)",
       }),
+      animation: {
+        fadeInUp: "fadeInUp 1s ease-out",
+      },
+      keyframes: {
+        fadeInUp: {
+          "0%": { opacity: "0", transform: "translateY(10%)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+      },
     },
   },
   plugins: [],
