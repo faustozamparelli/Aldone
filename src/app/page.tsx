@@ -40,7 +40,7 @@ export default function Home() {
         <button className="text-sky-800 hover:italic" onClick={goToJournal}>
           journal
         </button>
-        <button className="text-sky-800 hover:italic" onClick={goToTodo}>
+        <button className="pl-2 text-sky-800 hover:italic" onClick={goToTodo}>
           todo
         </button>
       </div>
