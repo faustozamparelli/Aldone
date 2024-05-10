@@ -22,8 +22,8 @@ class TextClassifier(nn.Module):
 
 
 def classify_text(text):
-    model = torch.load("src/py/labler/label_model.pth")
-    vectorizer = joblib.load("src/py/labler/label_vectorizer.joblib")
+    model = torch.load("src/py/question_classifier/label_model.pth")
+    vectorizer = joblib.load("src/py/question_classifier/label_vectorizer.joblib")
 
     text_vec = vectorizer.transform([text]).toarray()
     text_tensor = torch.tensor(text_vec, dtype=torch.float32)
