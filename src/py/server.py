@@ -1,5 +1,5 @@
 from flask import Flask, request
-from labler.nnlabler import is_it_a_question, TextClassifier
+from question_classifier.nnlabler import TextClassifier, is_it_a_question
 
 app = Flask(__name__)
 
@@ -11,6 +11,13 @@ def hello():
 
 @app.route("/question_classifier", methods=["POST"])
 def question_classifier():
+    j = request.json
+    text = j["text"]
+    return {"is_it_a_question": is_it_a_question(text)}
+
+
+@app.route("/extract_todo", methods=["POST"])
+def extract_todo():
     j = request.json
     text = j["text"]
     return {"is_it_a_question": is_it_a_question(text)}
