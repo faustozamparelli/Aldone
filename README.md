@@ -7,7 +7,16 @@ This is a [Next.js](https://nextjs.org/) project
 To run the development server:
 
 ```bash
+npm install
 npm run dev
+```
+
+To run the python server:
+
+```bash
+./setup_py_venv
+source .venv/bin/activate
+python -m flask --app src/py_server/server run -p 3001
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

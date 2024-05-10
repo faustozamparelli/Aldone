@@ -2,3 +2,5 @@ joblib
 torch
 numpy
 scikit-learn
+flask
+python-dotenv
