@@ -37,24 +37,22 @@ export default function Page({ params }: { params: { username: string } }) {
       const last = event.results[event.results.length - 1];
 
       if (last.isFinal) {
-        if (listening) {
-          const reqBody: ProcessVoiceRequest = { input: results };
-          axios.post("/api/processVoice", reqBody).then((res) => {
-            const { action, agentReply }: ProcessVoiceResponse = res.data;
+        // if (listening) {
+        const reqBody: ProcessVoiceRequest = { input: last[0].transcript };
+        axios.post("/api/processVoice", reqBody).then((res) => {
+          const { action, agentReply }: ProcessVoiceResponse = res.data;
 
-            say(agentReply);
+          say(agentReply);
 
-            if (action.addingTodo) {
-              setTodos([...todos, action.addingTodo]);
-            } else if (action.retriveTodos) {
-              // list todos
-            }
-          });
-        } else {
-          // stop talking if user asking so
-        }
-
-        setTodos(results);
+          if (action.addingTodo) {
+            setTodos([...todos, action.addingTodo]);
+          } else if (action.retriveTodos) {
+            // list todos
+          }
+        });
+        // } else {
+        //   // stop talking if user asking so
+        // }
       }
     };
 
