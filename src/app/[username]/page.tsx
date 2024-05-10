@@ -50,6 +50,8 @@ export default function Page({ params }: { params: { username: string } }) {
     };
   }, []);
 
+  const handleFinishedSpeaking = () => {};
+
   const say = (text: string) => {
     axios
       .post("/api/tts", { text, speed: 0.9 }, { responseType: "blob" })
@@ -59,6 +61,11 @@ export default function Page({ params }: { params: { username: string } }) {
         if (!audioRef) {
           const _audioRef = new Audio(url);
           setAudioRef(_audioRef);
+
+          _audioRef.addEventListener("ended", () => {
+            handleFinishedSpeaking();
+          });
+
           _audioRef.play();
         } else {
           audioRef.setAttribute("src", url);
