@@ -21,11 +21,10 @@ class TextClassifier(nn.Module):
         return x
 
 
-model = torch.load("./label_model.pth")
-vectorizer = joblib.load("./label_vectorizer.joblib")
-
-
 def classify_text(text):
+    model = torch.load("src/py/labler/label_model.pth")
+    vectorizer = joblib.load("src/py/labler/label_vectorizer.joblib")
+
     text_vec = vectorizer.transform([text]).toarray()
     text_tensor = torch.tensor(text_vec, dtype=torch.float32)
 
@@ -37,6 +36,11 @@ def classify_text(text):
     prediction = round(prediction_prob)
 
     return prediction, prediction_prob
+
+
+def is_it_a_question(text):
+    prediction, _ = classify_text(text)
+    return prediction == 1
 
 
 if __name__ == "__main__":
