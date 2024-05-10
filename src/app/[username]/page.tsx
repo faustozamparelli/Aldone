@@ -15,6 +15,8 @@ export default function Page({ params }: { params: { username: string } }) {
   const [audioRef, setAudioRef] = useState<HTMLAudioElement | null>(null);
   const recognitionRef = useRef<any>(null);
 
+  const [todos, setTodos] = useState<string[]>([]);
+
   const startRecording = () => {
     recognitionRef.current = new window.webkitSpeechRecognition();
     recognitionRef.current.continuous = true;
@@ -25,7 +27,12 @@ export default function Page({ params }: { params: { username: string } }) {
         { length: event.results.length },
         (_, i) => i
       ).map((i) => event.results[i][0].transcript);
-      console.log(results.join(" "));
+
+      const last = event.results[event.results.length - 1];
+
+      if (last.isFinal) {
+        setTodos(results);
+      }
     };
 
     recognitionRef.current.start();
@@ -63,12 +70,12 @@ export default function Page({ params }: { params: { username: string } }) {
   const handleMicrophoneClick = () => {
     setEnabled(true);
     startRecording();
-    setTimeout(() => {
-      say(`Welcome back, ${username}.`);
-      setTimeout(() => {
-        say(`Tell me ""everything""`);
-      }, 2000);
-    }, 2000);
+    // setTimeout(() => {
+    //   say(`Welcome back, ${username}.`);
+    //   setTimeout(() => {
+    //     say(`Tell me ""everything""`);
+    //   }, 2000);
+    // }, 2000);
   };
 
   const [gradient, setGradient] = useState(["#B6CECE", "#0099FF"]);
@@ -95,6 +102,16 @@ export default function Page({ params }: { params: { username: string } }) {
               } rounded-full w-20 h-20 focus:outline-none`}
             >
               {!enabled && <TalkShape />}
+              {enabled && (
+                <>
+                  <div className="border-blue-600 p-8 rounded-xl border-8 min-h-[30vh] min-w-[30vw] text-left">
+                    <h3 className="font-bold text-xl">To-do:</h3>
+                    {todos.map((todo, i) => (
+                      <p key={i}> [ ] {todo}</p>
+                    ))}
+                  </div>
+                </>
+              )}
             </button>
           </div>
         </div>
