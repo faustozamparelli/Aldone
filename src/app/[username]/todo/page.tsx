@@ -41,6 +41,14 @@ export default function Page({ params }: { params: { username: string } }) {
           const reqBody: ProcessVoiceRequest = { input: results };
           axios.post("/api/processVoice", reqBody).then((res) => {
             const { action, agentReply }: ProcessVoiceResponse = res.data;
+
+            say(agentReply);
+
+            if (action.addingTodo) {
+              setTodos([...todos, action.addingTodo]);
+            } else if (action.retriveTodos) {
+              // list todos
+            }
           });
         } else {
           // stop talking if user asking so
@@ -96,12 +104,12 @@ export default function Page({ params }: { params: { username: string } }) {
   const handleMicrophoneClick = () => {
     setEnabled(true);
     startRecording();
-    // setTimeout(() => {
-    //   say(`Welcome back, ${username}.`);
-    //   setTimeout(() => {
-    //     say(`Tell me ""everything""`);
-    //   }, 2000);
-    // }, 2000);
+    setTimeout(() => {
+      say(`Welcome back, ${username}.`);
+      // setTimeout(() => {
+      //   say(`Tell me ""everything""`);
+      // }, 2000);
+    }, 2000);
   };
 
   const [gradient, setGradient] = useState(["#B6CECE", "#0099FF"]);
