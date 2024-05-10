@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import {
   ProcessVoiceRequest,
   ProcessVoiceResponse,
-} from "../api/processVoice/route";
+} from "../../api/processVoice/route";
 
 declare global {
   interface Window {
