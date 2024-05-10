@@ -19,8 +19,6 @@ export default function Page({ params }: { params: { username: string } }) {
   const [audioRef, setAudioRef] = useState<HTMLAudioElement | null>(null);
   const recognitionRef = useRef<any>(null);
 
-  const [listening, setListening] = useState(false);
-
   const [todos, setTodos] = useState<string[]>([]);
 
   const startRecording = () => {
@@ -37,7 +35,6 @@ export default function Page({ params }: { params: { username: string } }) {
       const last = event.results[event.results.length - 1];
 
       if (last.isFinal) {
-        // if (listening) {
         const reqBody: ProcessVoiceRequest = { input: last[0].transcript };
         axios.post("/api/processVoice", reqBody).then((res) => {
           const { action, agentReply }: ProcessVoiceResponse = res.data;
@@ -50,9 +47,7 @@ export default function Page({ params }: { params: { username: string } }) {
             // list todos
           }
         });
-        // } else {
-        //   // stop talking if user asking so
-        // }
+        // TODO: stop talking if user asking so
       }
     };
 
@@ -71,13 +66,9 @@ export default function Page({ params }: { params: { username: string } }) {
     };
   }, []);
 
-  const handleFinishedSpeaking = () => {
-    setListening(true);
-  };
+  const handleFinishedSpeaking = () => {};
 
   const say = (text: string) => {
-    setListening(false);
-
     axios
       .post("/api/tts", { text, speed: 0.9 }, { responseType: "blob" })
       .then((res) => {
@@ -104,9 +95,6 @@ export default function Page({ params }: { params: { username: string } }) {
     startRecording();
     setTimeout(() => {
       say(`Welcome back, ${username}.`);
-      // setTimeout(() => {
-      //   say(`Tell me ""everything""`);
-      // }, 2000);
     }, 2000);
   };
 
