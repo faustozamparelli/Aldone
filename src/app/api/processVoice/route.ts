@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
   )["is_it_a_question"];
 
   const result: ProcessVoiceResponse = {
-    action: isItARequest ? { addingTodo: `${input}` } : { retriveTodos: true },
+    action: isItARequest ? { retriveTodos: true } : { addingTodo: `${input}` },
     agentReply: isItARequest ? "Let me see." : "Ok.",
     payload: { isItARequest },
   };
