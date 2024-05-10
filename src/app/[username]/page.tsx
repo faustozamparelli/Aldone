@@ -1,6 +1,10 @@
 "use client";
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
+import {
+  ProcessVoiceRequest,
+  ProcessVoiceResponse,
+} from "../api/processVoice/route";
 
 declare global {
   interface Window {
@@ -14,6 +18,8 @@ export default function Page({ params }: { params: { username: string } }) {
   const [enabled, setEnabled] = useState(false);
   const [audioRef, setAudioRef] = useState<HTMLAudioElement | null>(null);
   const recognitionRef = useRef<any>(null);
+
+  const [listening, setListening] = useState(false);
 
   const [todos, setTodos] = useState<string[]>([]);
 
@@ -31,6 +37,15 @@ export default function Page({ params }: { params: { username: string } }) {
       const last = event.results[event.results.length - 1];
 
       if (last.isFinal) {
+        if (listening) {
+          const reqBody: ProcessVoiceRequest = { input: results };
+          axios.post("/api/processVoice", reqBody).then((res) => {
+            const { action, agentReply }: ProcessVoiceResponse = res.data;
+          });
+        } else {
+          // stop talking if user asking so
+        }
+
         setTodos(results);
       }
     };
@@ -50,9 +65,13 @@ export default function Page({ params }: { params: { username: string } }) {
     };
   }, []);
 
-  const handleFinishedSpeaking = () => {};
+  const handleFinishedSpeaking = () => {
+    setListening(true);
+  };
 
   const say = (text: string) => {
+    setListening(false);
+
     axios
       .post("/api/tts", { text, speed: 0.9 }, { responseType: "blob" })
       .then((res) => {
