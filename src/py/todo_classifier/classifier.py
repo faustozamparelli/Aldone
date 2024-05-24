@@ -9,9 +9,6 @@ import matplotlib.pyplot as plt
 dataset = load_dataset("clinc_oos", "imbalanced")
 train, test, validation = dataset["train"], dataset["test"], dataset["validation"]
 
-print(dataset)
-
-
 model = make_pipeline(TfidfVectorizer(), MultinomialNB())
 
 train_data, train_target = train["text"], train["intent"]
