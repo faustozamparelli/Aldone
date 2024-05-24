@@ -4,3 +4,4 @@ numpy
 scikit-learn
 flask
 python-dotenv
+transformers
