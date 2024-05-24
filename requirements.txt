@@ -8,3 +8,4 @@ transformers
 matplotlib
 seaborn
 datasets
+opencv-python
