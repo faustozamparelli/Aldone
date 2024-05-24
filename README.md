@@ -18,7 +18,7 @@ To run the python server:
 ```bash
 ./setup_py_venv
 source .venv/bin/activate
-python -m flask --app src/py/server run -p 3001
+python src/py/server.py
 ```
 
 Open [http://localhost:3001](http://localhost:3001) with your browser to see the result.
