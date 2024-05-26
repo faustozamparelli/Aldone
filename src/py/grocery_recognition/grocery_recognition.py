@@ -6,7 +6,9 @@ cap = cv2.VideoCapture(1)
 cap.set(3, 640)
 cap.set(4, 480)
 
-model = YOLO("yolo-Weights/yolov8n.pt")
+# model = YOLO("yolov8n.pt")
+model = YOLO("yolov9e.pt")
+# model = YOLO("yolov9c.pt")
 
 
 foods = {
