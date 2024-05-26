@@ -30,3 +30,5 @@ next-env.d.ts
 *.pyo
 *.pyd
 __pycache__/
+
+yolo8n.pt
