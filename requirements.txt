@@ -9,3 +9,4 @@ matplotlib
 seaborn
 datasets
 opencv-python
+ultralytics
