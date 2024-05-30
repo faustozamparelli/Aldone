@@ -12,6 +12,11 @@ declare global {
   }
 }
 
+export interface TodoItem {
+  text: string;
+  completed: boolean;
+}
+
 export default function Page({ params }: { params: { username: string } }) {
   const username = params.username.replace(/%20/g, " ");
 
@@ -19,7 +24,8 @@ export default function Page({ params }: { params: { username: string } }) {
   const [audioRef, setAudioRef] = useState<HTMLAudioElement | null>(null);
   const recognitionRef = useRef<any>(null);
 
-  const [todos, setTodos] = useState<string[]>([]);
+  const [todos, setTodos] = useState<TodoItem[]>([]);
+  const [groceries, setGroceries] = useState<TodoItem[]>([]);
 
   const startRecording = () => {
     recognitionRef.current = new window.webkitSpeechRecognition();
@@ -42,7 +48,7 @@ export default function Page({ params }: { params: { username: string } }) {
           say(agentReply);
 
           if (action.addingTodo) {
-            setTodos([...todos, action.addingTodo]);
+            setTodos([...todos, { text: action.addingTodo, completed: false }]);
           } else if (action.retriveTodos) {
             // list todos
           }
@@ -127,7 +133,9 @@ export default function Page({ params }: { params: { username: string } }) {
                   <div className="border-blue-600 p-8 rounded-xl border-8 min-h-[30vh] min-w-[30vw] text-left">
                     <h3 className="font-bold text-xl">To-do:</h3>
                     {todos.map((todo, i) => (
-                      <p key={i}> [ ] {todo}</p>
+                      <p key={i}>
+                        [{todo.completed ? "x" : " "}] {todo.text}
+                      </p>
                     ))}
                   </div>
                 </>
