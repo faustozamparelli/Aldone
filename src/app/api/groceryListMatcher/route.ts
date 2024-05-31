@@ -30,7 +30,7 @@ export async function updateGroceryListBasedOnProductsSeenOnTheTable(
   });
 
   const indicesObject: { indices: number[] } = JSON.parse(
-    result.choices[0].message.content || "[]"
+    result.choices[0].message.content || "{}"
   );
 
   const indices = indicesObject["indices"];
