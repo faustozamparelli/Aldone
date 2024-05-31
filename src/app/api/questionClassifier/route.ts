@@ -27,7 +27,10 @@ export async function POST(req: NextRequest) {
     agentReply: isQuery ? "Let me see." : "Ok, done.",
   };
 
-  console.log({ questionClassifierRequest: { input } });
+  console.log({
+    questionClassifierRequest: { input },
+    questionClassifierResponse: result,
+  });
 
   return NextResponse.json(result);
 }

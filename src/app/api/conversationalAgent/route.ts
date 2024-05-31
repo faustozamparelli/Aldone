@@ -11,12 +11,12 @@ interface ExplodingTodo {
   subtasks: TodoItem[];
 }
 
-interface ConversationalAgentResponse {
+export interface ConversationalAgentResponse {
   narration: string;
   explodingTodo?: ExplodingTodo;
 }
 
-interface ConversationalAgentRequest {
+export interface ConversationalAgentRequest {
   text: string;
   groceryList: TodoItem[];
   todoList: TodoItem[];
@@ -34,19 +34,23 @@ export async function askConversationalAgent(
         role: "system",
         content: "The following is the user's todo list:",
       },
-      { role: "user", content: todoList.join(", ") },
+      { role: "user", content: JSON.stringify(todoList) },
 
       {
         role: "system",
         content: "The following is the user's grocery list:",
       },
-      { role: "user", content: groceryList.join(", ") },
+      { role: "user", content: JSON.stringify(groceryList) },
 
       {
         role: "system",
         content: `Finally, the following is the user's request.
 
         If the user asks for more details about a certain task that's already in one of the two lists, return a json object with the task's category ("todo" or "grocery"), index, and subtasks. The result should be formatted exactly like {narration: string, explodingTodo: {category: "todo"|"grocery", index: number, subtasks: {text: string, completed: false}[]}}.  For example "{ narration: "Ok, I'll divide the task into smaller and easier pieces", explodingTodo: {index: 0, subtasks: [{text: 'subtask 1', completed: false}; {text: 'subtask 2'; completed: false}]}}". If it's about a grocery item, the subtasks should be the foods for the recipe.
+
+        Please check very carefully whether there's something similar in one of the two lists. If there's a task that's very similar to the one the user is asking about, return the subtasks of the similar task. For example, if the user asks about "buying apples", and there's a task in the todo list that's "buying fruits", return the subtasks of "buying fruits". If there's a task in the grocery list that's "buying apples", return the subtasks of "buying apples".
+
+        Indices start at 0, make sure to return the correct index. todolist: [{index 0 item}, {index 1 item}, {index 2 item}], grocerylist: [{index 0 item}, {index 1 item}, {index 2 item}].
 
         If the user asks something that's not about splitting or making an existing task simpler, return a json object with the narration and no explodingTodo. For example "{narration: "While California is the best place in the world where to launch a startup, you'll probably miss the beautiful italian girls."}
 
@@ -66,6 +70,11 @@ export async function askConversationalAgent(
   const responseObject: ConversationalAgentResponse = JSON.parse(
     result.choices[0].message.content || "{}"
   );
+
+  console.log({
+    conversationalAgentRequest: body,
+    conversationalAgentResponse: responseObject,
+  });
 
   return responseObject;
 }

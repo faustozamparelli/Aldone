@@ -3,7 +3,7 @@ import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import {
   QuestionClassifierRequest,
-  ProcessVoiceResponse,
+  QuestionClassifierResponse,
 } from "../../api/questionClassifier/route";
 
 declare global {
@@ -38,10 +38,8 @@ export default function Page({ params }: { params: { username: string } }) {
 
       if (last.isFinal) {
         if (listening) {
-          const reqBody: QuestionClassifierRequest = { input: results };
-          axios.post("/api/processVoice", reqBody).then((res) => {
-            const { action, agentReply }: ProcessVoiceResponse = res.data;
-          });
+          // const reqBody: QuestionClassifierRequest = { input: results };
+          // axios.post("/api/questionClassifier", reqBody).then((res) => {});
         } else {
           // stop talking if user asking so
         }

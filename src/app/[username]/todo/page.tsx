@@ -5,6 +5,10 @@ import {
   QuestionClassifierRequest,
   QuestionClassifierResponse,
 } from "../../api/questionClassifier/route";
+import {
+  ConversationalAgentRequest,
+  ConversationalAgentResponse,
+} from "@/app/api/conversationalAgent/route";
 
 declare global {
   interface Window {
@@ -41,6 +45,7 @@ export default function Page({ params }: { params: { username: string } }) {
   ]);
   const [groceries, setGroceries] = useState<TodoItem[]>([
     { text: "Tiramisu", completed: false },
+    { text: "Yogurt Bowl", completed: false },
     { text: "Bananas", completed: true },
     {
       text: "Apple Pie",
@@ -63,23 +68,43 @@ export default function Page({ params }: { params: { username: string } }) {
     recognitionRef.current.onresult = (event: any) => {
       const last = event.results[event.results.length - 1];
       if (last.isFinal) {
-        const input = last[0].transcript;
+        const voiceInput = last[0].transcript;
         // Process Voice Input Begin ================
-        const reqBody: QuestionClassifierRequest = { input };
+        const reqBody: QuestionClassifierRequest = { input: voiceInput };
 
-        axios.post("/api/processVoice", reqBody).then((res) => {
-          const {
-            isQuery: isQuestion,
-            agentReply,
-          }: QuestionClassifierResponse = res.data;
+        axios.post("/api/questionClassifier", reqBody).then((res) => {
+          const { isQuery, agentReply }: QuestionClassifierResponse = res.data;
 
           say(agentReply);
 
-          if (isQuestion) {
+          if (isQuery) {
+            const conversationalAgentRequest: ConversationalAgentRequest = {
+              text: voiceInput,
+              groceryList: groceries,
+              todoList: todos,
+            };
+            axios
+              .post("/api/conversationalAgent", conversationalAgentRequest)
+              .then((res) => {
+                const {
+                  narration,
+                  explodingTodo,
+                }: ConversationalAgentResponse = res.data;
+                say(narration);
+
+                if (explodingTodo) {
+                  const { category, index, subtasks } = explodingTodo;
+                  const setBucket =
+                    category === "grocery" ? setGroceries : setTodos;
+                  setBucket((prev) => {
+                    prev[index].subtasks = subtasks;
+                    return prev;
+                  });
+                }
+              });
           } else {
           }
         });
-
         // Process Voice Input End ================
       }
     };
