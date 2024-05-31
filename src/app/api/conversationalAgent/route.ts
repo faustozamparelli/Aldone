@@ -8,7 +8,7 @@ export const runtime = "edge";
 interface ExplodingTodo {
   category: "todo" | "grocery";
   index: number;
-  subtasks: string[];
+  subtasks: TodoItem[];
 }
 
 interface ConversationalAgentResponse {
@@ -46,7 +46,7 @@ export async function askConversationalAgent(
         role: "system",
         content: `Finally, the following is the user's request.
 
-        If the user asks for more details about a certain task that's already in one of the two lists, return a json object with the task's category ("todo" or "grocery"), index, and subtasks. The result should be formatted exactly like {narration: string, explodingTodo: {category: "todo"|"grocery", index: number, subtasks: string[]}}.  For example "{ narration: "Ok, I'll divide the task into smaller and easier pieces", explodingTodo: {index: 0, subtasks: ['subtask 1', 'subtask 2']}}". If it's about a grocery item, the subtasks should be the foods for the recipe.
+        If the user asks for more details about a certain task that's already in one of the two lists, return a json object with the task's category ("todo" or "grocery"), index, and subtasks. The result should be formatted exactly like {narration: string, explodingTodo: {category: "todo"|"grocery", index: number, subtasks: {text: string, completed: false}[]}}.  For example "{ narration: "Ok, I'll divide the task into smaller and easier pieces", explodingTodo: {index: 0, subtasks: [{text: 'subtask 1', completed: false}; {text: 'subtask 2'; completed: false}]}}". If it's about a grocery item, the subtasks should be the foods for the recipe.
 
         If the user asks something that's not about splitting or making an existing task simpler, return a json object with the narration and no explodingTodo. For example "{narration: "While California is the best place in the world where to launch a startup, you'll probably miss the beautiful italian girls."}
 `,

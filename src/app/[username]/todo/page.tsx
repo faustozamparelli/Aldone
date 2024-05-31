@@ -15,6 +15,7 @@ declare global {
 export interface TodoItem {
   text: string;
   completed: boolean;
+  subtasks?: TodoItem[];
 }
 
 export default function Page({ params }: { params: { username: string } }) {
@@ -24,8 +25,35 @@ export default function Page({ params }: { params: { username: string } }) {
   const [audioRef, setAudioRef] = useState<HTMLAudioElement | null>(null);
   const recognitionRef = useRef<any>(null);
 
-  const [todos, setTodos] = useState<TodoItem[]>([]);
-  const [groceries, setGroceries] = useState<TodoItem[]>([]);
+  const [todos, setTodos] = useState<TodoItem[]>([
+    { text: "AI Lab Project", completed: true },
+    { text: "Collect Raspberri Pi at delivery center", completed: false },
+    {
+      text: "Pack for the trip to Rome",
+      completed: false,
+      subtasks: [
+        { text: "Passport", completed: true },
+        { text: "Clothes", completed: false },
+        { text: "Toothbrush", completed: false },
+        { text: "Shoes", completed: false },
+      ],
+    },
+  ]);
+  const [groceries, setGroceries] = useState<TodoItem[]>([
+    { text: "Tiramisu", completed: false },
+    { text: "Bananas", completed: true },
+    {
+      text: "Apple Pie",
+      completed: false,
+      subtasks: [
+        { text: "Apples", completed: true },
+        { text: "Pie Crust", completed: false },
+        { text: "Cinnamon", completed: false },
+        { text: "Butter", completed: false },
+      ],
+    },
+    { text: "200g Avocado", completed: false },
+  ]);
 
   const startRecording = () => {
     recognitionRef.current = new window.webkitSpeechRecognition();
@@ -109,9 +137,7 @@ export default function Page({ params }: { params: { username: string } }) {
   return (
     <>
       <div
-        className={`flex min-h-screen flex-col items-center justify-between ${
-          enabled ? "cursor-none" : ""
-        }`}
+        className={`flex min-h-screen flex-col items-center justify-between`}
         style={{
           background: `linear-gradient(to top, ${gradient[0]}, ${gradient[1]})`,
         }}
@@ -122,20 +148,55 @@ export default function Page({ params }: { params: { username: string } }) {
         <div className="text-white text-transparent">
           <div>
             <button
-              onClick={handleMicrophoneClick}
               className={`animate-fadeInUp  mt-10 m-auto flex items-center justify-center ${
-                enabled ? "cursor-none" : "bg-blue-400 hover:bg-blue-500"
+                enabled ? "" : "bg-blue-400 hover:bg-blue-500"
               } rounded-full w-20 h-20 focus:outline-none`}
             >
-              {!enabled && <TalkShape />}
+              {!enabled && (
+                <div onClick={handleMicrophoneClick}>
+                  <TalkShape />
+                </div>
+              )}
               {enabled && (
                 <>
-                  <div className="border-blue-600 p-8 rounded-xl border-8 min-h-[30vh] min-w-[30vw] text-left">
+                  <div className="border-orange-400 p-4 rounded-xl border-4 min-h-[30vh] min-w-[30vw] text-left bg-amber-600">
                     <h3 className="font-bold text-xl">To-do:</h3>
                     {todos.map((todo, i) => (
-                      <p key={i}>
-                        [{todo.completed ? "x" : " "}] {todo.text}
-                      </p>
+                      <div key={i}>
+                        <p>
+                          [{todo.completed ? "x" : " "}] {todo.text}
+                        </p>
+                        {todo.subtasks &&
+                          todo.subtasks.map((subtask, j) => (
+                            <pre key={j}>
+                              {"    " +
+                                "[" +
+                                (subtask.completed ? "x" : " ") +
+                                "] " +
+                                subtask.text}
+                            </pre>
+                          ))}
+                      </div>
+                    ))}
+                  </div>
+                  <div className="border-green-400 ml-4 p-4 rounded-xl border-4 min-h-[30vh] min-w-[30vw] text-left bg-teal-600">
+                    <h3 className="font-bold text-xl">Groceries:</h3>
+                    {groceries.map((item, i) => (
+                      <div key={i}>
+                        <p>
+                          [{item.completed ? "x" : " "}] {item.text}
+                        </p>
+                        {item.subtasks &&
+                          item.subtasks.map((subitem, j) => (
+                            <pre key={j}>
+                              {"    " +
+                                "[" +
+                                (subitem.completed ? "x" : " ") +
+                                "] " +
+                                subitem.text}
+                            </pre>
+                          ))}
+                      </div>
                     ))}
                   </div>
                 </>
