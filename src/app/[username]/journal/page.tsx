@@ -2,9 +2,9 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import {
-  ProcessVoiceRequest,
+  QuestionClassifierRequest,
   ProcessVoiceResponse,
-} from "../../api/processVoice/route";
+} from "../../api/questionClassifier/route";
 
 declare global {
   interface Window {
@@ -38,7 +38,7 @@ export default function Page({ params }: { params: { username: string } }) {
 
       if (last.isFinal) {
         if (listening) {
-          const reqBody: ProcessVoiceRequest = { input: results };
+          const reqBody: QuestionClassifierRequest = { input: results };
           axios.post("/api/processVoice", reqBody).then((res) => {
             const { action, agentReply }: ProcessVoiceResponse = res.data;
           });

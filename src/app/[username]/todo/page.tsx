@@ -2,9 +2,9 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import {
-  ProcessVoiceRequest,
-  ProcessVoiceResponse,
-} from "../../api/processVoice/route";
+  QuestionClassifierRequest,
+  QuestionClassifierResponse,
+} from "../../api/questionClassifier/route";
 
 declare global {
   interface Window {
@@ -61,27 +61,26 @@ export default function Page({ params }: { params: { username: string } }) {
     recognitionRef.current.interimResults = true;
 
     recognitionRef.current.onresult = (event: any) => {
-      const results = Array.from(
-        { length: event.results.length },
-        (_, i) => i
-      ).map((i) => event.results[i][0].transcript);
-
       const last = event.results[event.results.length - 1];
-
       if (last.isFinal) {
-        const reqBody: ProcessVoiceRequest = { input: last[0].transcript };
+        const input = last[0].transcript;
+        // Process Voice Input Begin ================
+        const reqBody: QuestionClassifierRequest = { input };
+
         axios.post("/api/processVoice", reqBody).then((res) => {
-          const { action, agentReply }: ProcessVoiceResponse = res.data;
+          const {
+            isQuery: isQuestion,
+            agentReply,
+          }: QuestionClassifierResponse = res.data;
 
           say(agentReply);
 
-          if (action.addingTodo) {
-            setTodos([...todos, { text: action.addingTodo, completed: false }]);
-          } else if (action.retriveTodos) {
-            // list todos
+          if (isQuestion) {
+          } else {
           }
         });
-        // TODO: stop talking if user asking so
+
+        // Process Voice Input End ================
       }
     };
 

@@ -38,7 +38,7 @@ def classify_text(text):
     return prediction, prediction_prob
 
 
-def is_it_a_question(text):
+def is_it_a_query(text):
     prediction, _ = classify_text(text)
     return prediction == 1
 
