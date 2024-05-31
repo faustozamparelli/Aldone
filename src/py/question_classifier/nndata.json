@@ -458,5 +458,45 @@
   {
     "text": "i need to make more money",
     "label": 0
+  },
+  {
+    "text": "tell me how can i make money",
+    "label": 1
+  },
+  {
+    "text": "tell me the weather",
+    "label": 1
+  },
+  {
+    "text": "tell me which task it the hardest",
+    "label": 1
+  },
+  {
+    "text": "tell me where i parked the car",
+    "label": 1
+  },
+  {
+    "text": "tell how to make my todo list shorter",
+    "label": 1
+  },
+  {
+    "text": "split this task into subtasks",
+    "label": 1
+  },
+  {
+    "text": "please can you divide my grocery list into subcategories",
+    "label": 1
+  },
+  {
+    "text": "remind me to call my coworker",
+    "label": 0
+  },
+  {
+    "text": "can you split the doing the laundry task into 5 tasks",
+    "label": 1
+  },
+  {
+    "text": "split the way of doing it",
+    "label": 1
   }
 ]
