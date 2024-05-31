@@ -284,6 +284,10 @@
     "label": 1
   },
   {
+    "text": "split the tiramisu into its ingredients",
+    "label": 1
+  },
+  {
     "text": "the deadline for the assignment is next week",
     "label": 0
   },
@@ -388,6 +392,10 @@
     "label": 1
   },
   {
+      "text": "remind me to call jonny",
+      "label": 0
+  },
+  {
     "text": "remember to water the plants in the office",
     "label": 0
   },
@@ -480,6 +488,10 @@
     "label": 1
   },
   {
+    "text": "remind me to make a cream pie",
+    "label": 0
+  },
+  {
     "text": "split this task into subtasks",
     "label": 1
   },
@@ -498,5 +510,9 @@
   {
     "text": "split the way of doing it",
     "label": 1
+  },
+  {
+    "text": "remind me to make some pasta for my nephew",
+    "label": 0
   }
 ]
