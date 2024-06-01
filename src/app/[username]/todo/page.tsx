@@ -9,12 +9,19 @@ import {
   ConversationalAgentRequest,
   ConversationalAgentResponse,
 } from "@/app/api/conversationalAgent/route";
+import {
+  TodoClassifierRequest,
+  TodoClassifierResponse,
+} from "@/app/api/todoClassifier/route";
+import { TodoExtractorRequest } from "@/app/api/todoExtractor/route";
 
 declare global {
   interface Window {
     webkitSpeechRecognition: any;
   }
 }
+
+const DEBUGGING = true;
 
 export interface TodoItem {
   text: string;
@@ -103,6 +110,30 @@ export default function Page({ params }: { params: { username: string } }) {
             }
           });
       } else {
+        const todoClassifierRequest: TodoClassifierRequest = {
+          input: voiceInput,
+        };
+
+        axios.post("/api/todoClassifier", todoClassifierRequest).then((res) => {
+          const { category }: TodoClassifierResponse = res.data;
+
+          const listCategory =
+            category === "shopping_list" || category === "shopping_list_update"
+              ? "grocery"
+              : "todo";
+
+          const setBucket =
+            listCategory === "grocery" ? setGroceries : setTodos;
+
+          const todoExtractorRequest: TodoExtractorRequest = {
+            text: voiceInput,
+          };
+
+          axios.post("/api/todoExtractor", todoExtractorRequest).then((res) => {
+            const { text, id } = res.data;
+            setBucket((prev) => [...prev, { text, completed: false, id }]);
+          });
+        });
       }
     });
   };
@@ -194,9 +225,7 @@ export default function Page({ params }: { params: { username: string } }) {
               </div>
             )}
           </button>
-          {(enabled ||
-            // debugging
-            true) && (
+          {(enabled || DEBUGGING) && (
             <div className="flex">
               <div className="border-orange-400 p-4 rounded-xl border-4 min-h-[30vh] min-w-[30vw] text-left bg-amber-600">
                 <h3 className="font-bold text-xl">To-do:</h3>
@@ -219,7 +248,7 @@ export default function Page({ params }: { params: { username: string } }) {
                 ))}
               </div>
               <div className="border-green-400 ml-4 p-4 rounded-xl border-4 min-h-[30vh] min-w-[30vw] text-left bg-teal-600">
-                <h3 className="font-bold text-xl">Groceries:</h3>
+                <h3 className="font-bold text-xl">Shopping List:</h3>
                 {groceries.map((item, i) => (
                   <div key={i}>
                     <p>
@@ -241,29 +270,26 @@ export default function Page({ params }: { params: { username: string } }) {
             </div>
           )}
 
-          {
-            // debugging
-            true && (
-              <div className="p-4 m-auto flex justify-center items-center">
-                <textarea
-                  value={chatTextInput}
-                  onChange={(e) => setChatTextInput(e.target.value)}
-                  className="border-2 border-gray-400 p-1 rounded-lg focus:outline-none m-2 w-60 min-w-96 text-black"
-                />
-                <div>
-                  <button
-                    onClick={() => {
-                      processVoiceInputText(chatTextInput);
-                      setChatTextInput("");
-                    }}
-                    className="bg-blue-400 hover:bg-blue-500 p-1 rounded-lg text-white focus:outline-none m-2"
-                  >
-                    submit
-                  </button>
-                </div>
+          {DEBUGGING && (
+            <div className="p-4 m-auto flex justify-center items-center">
+              <textarea
+                value={chatTextInput}
+                onChange={(e) => setChatTextInput(e.target.value)}
+                className="border-2 border-gray-400 p-1 rounded-lg focus:outline-none m-2 w-60 min-w-96 text-black"
+              />
+              <div>
+                <button
+                  onClick={() => {
+                    processVoiceInputText(chatTextInput);
+                    setChatTextInput("");
+                  }}
+                  className="bg-blue-400 hover:bg-blue-500 p-1 rounded-lg text-white focus:outline-none m-2"
+                >
+                  submit
+                </button>
               </div>
-            )
-          }
+            </div>
+          )}
         </div>
         <footer className="min-h-[10vh]"></footer>
       </div>
