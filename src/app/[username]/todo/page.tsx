@@ -16,8 +16,6 @@ declare global {
   }
 }
 
-const NO_VOICE_DEBUGGING = process.env.NODE_ENV === "development" && true;
-
 export interface TodoItem {
   text: string;
   completed: boolean;
@@ -36,9 +34,9 @@ export default function Page({ params }: { params: { username: string } }) {
     { text: "AI Lab Project", completed: true, id: "ai_lab_project" },
     { text: "Big Data Project", completed: false, id: "big_data_project" },
     {
-      text: "Collect Raspberri Pi at delivery center",
+      text: "Collect Raspberri Pi at delivery point",
       completed: false,
-      id: "raspberri",
+      id: "raspi",
     },
     {
       text: "Pack for the trip to Rome",
@@ -196,7 +194,9 @@ export default function Page({ params }: { params: { username: string } }) {
               </div>
             )}
           </button>
-          {(enabled || NO_VOICE_DEBUGGING) && (
+          {(enabled ||
+            // debugging
+            true) && (
             <div className="flex">
               <div className="border-orange-400 p-4 rounded-xl border-4 min-h-[30vh] min-w-[30vw] text-left bg-amber-600">
                 <h3 className="font-bold text-xl">To-do:</h3>
@@ -241,26 +241,29 @@ export default function Page({ params }: { params: { username: string } }) {
             </div>
           )}
 
-          {NO_VOICE_DEBUGGING && (
-            <div className="p-4 m-auto flex justify-center items-center">
-              <textarea
-                value={chatTextInput}
-                onChange={(e) => setChatTextInput(e.target.value)}
-                className="border-2 border-gray-400 p-1 rounded-lg focus:outline-none m-2 w-60 min-w-96 text-black"
-              />
-              <div>
-                <button
-                  onClick={() => {
-                    processVoiceInputText(chatTextInput);
-                    setChatTextInput("");
-                  }}
-                  className="bg-blue-400 hover:bg-blue-500 p-1 rounded-lg text-white focus:outline-none m-2"
-                >
-                  submit
-                </button>
+          {
+            // debugging
+            true && (
+              <div className="p-4 m-auto flex justify-center items-center">
+                <textarea
+                  value={chatTextInput}
+                  onChange={(e) => setChatTextInput(e.target.value)}
+                  className="border-2 border-gray-400 p-1 rounded-lg focus:outline-none m-2 w-60 min-w-96 text-black"
+                />
+                <div>
+                  <button
+                    onClick={() => {
+                      processVoiceInputText(chatTextInput);
+                      setChatTextInput("");
+                    }}
+                    className="bg-blue-400 hover:bg-blue-500 p-1 rounded-lg text-white focus:outline-none m-2"
+                  >
+                    submit
+                  </button>
+                </div>
               </div>
-            </div>
-          )}
+            )
+          }
         </div>
         <footer className="min-h-[10vh]"></footer>
       </div>

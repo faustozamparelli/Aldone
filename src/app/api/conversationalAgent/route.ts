@@ -30,23 +30,17 @@ export async function askConversationalAgent(
   const result = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
     messages: [
-      {
-        role: "system",
-        content: "The following is the user's todo list:",
-      },
+      { role: "system", content: "The following is the user's todo list:" },
       { role: "user", content: JSON.stringify(todoList) },
 
-      {
-        role: "system",
-        content: "The following is the user's grocery list:",
-      },
+      { role: "system", content: "The following is the user's grocery list:" },
       { role: "user", content: JSON.stringify(groceryList) },
 
       {
         role: "system",
         content: `Finally, the following is the user's request.
 
-        If the user asks for more details about a certain task that's already in one of the two lists, return a json object with the task's category ("todo" or "grocery"), id, and subtasks. The result should be formatted exactly like {narration: string, explodingTodo: {category: "todo"|"grocery", id: string, subtasks: {text: string, completed: false, id: "nice_and_readable_id"}[]}}. For example "{ narration: "Ok, I'll divide the task into smaller and easier pieces", explodingTodo: {id: "this_beautiful_task", subtasks: [{text: 'subtask 1', completed: false, id: "substask_1_beautiful_id"}; {text: 'subtask 2'; completed: false, id: "another_subtask_another_id"}]}}". If it's about a grocery item, the subtasks should be the foods for the recipe. If you don't have enough informations to explode the task, ask for the details you need.
+        If the user asks for more details about a certain task that's already in one of the two lists, return a json object with the task's category ("todo" or "grocery"), id, and subtasks. The result should be formatted exactly like {narration: string, explodingTodo: {category: "todo"|"grocery", id: string, subtasks: {text: string, completed: false, id: "nice_and_readable_id"}[]}}. For example "{ narration: "Ok, I'll divide the task into smaller and easier pieces", explodingTodo: {id: "this_beautiful_task", subtasks: [{text: 'subtask 1', completed: false, id: "substask_1_beautiful_id"}; {text: 'subtask 2'; completed: false, id: "another_subtask_another_id"}]}}". If it's about a grocery item, the subtasks should be the foods for the recipe.
 
         Please check very carefully whether there's something similar in one of the two lists. If there's a task that's very similar to the one the user is asking about, return the subtasks of the similar task. For example, if the user asks about "buying apples", and there's a task in the todo list that's "buying fruits", return the subtasks of "buying fruits". If there's a task in the grocery list that's "buying apples", return the subtasks of "buying apples".
 
@@ -57,10 +51,7 @@ export async function askConversationalAgent(
         When asked to list items in a list, if there are subtasks, make sure to mention all of them as well when appropriate. For example, when asked about the items in the grocery list, always read all the subtasks.
 `,
       },
-      {
-        role: "user",
-        content: text,
-      },
+      { role: "user", content: text },
     ],
     response_format: { type: "json_object" },
   });
