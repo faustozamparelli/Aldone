@@ -16,6 +16,8 @@ declare global {
   }
 }
 
+const NO_VOICE_DEBUGGING = process.env.NODE_ENV === "development" && true;
+
 export interface TodoItem {
   text: string;
   completed: boolean;
@@ -60,6 +62,42 @@ export default function Page({ params }: { params: { username: string } }) {
     { text: "200g Avocado", completed: false },
   ]);
 
+  const processVoiceInputText = (voiceInput: string) => {
+    const reqBody: QuestionClassifierRequest = { input: voiceInput };
+
+    axios.post("/api/questionClassifier", reqBody).then((res) => {
+      const { isQuery, agentReply }: QuestionClassifierResponse = res.data;
+
+      say(agentReply);
+
+      if (isQuery) {
+        const conversationalAgentRequest: ConversationalAgentRequest = {
+          text: voiceInput,
+          groceryList: groceries,
+          todoList: todos,
+        };
+        axios
+          .post("/api/conversationalAgent", conversationalAgentRequest)
+          .then((res) => {
+            const { narration, explodingTodo }: ConversationalAgentResponse =
+              res.data;
+            say(narration);
+
+            if (explodingTodo) {
+              const { category, index, subtasks } = explodingTodo;
+              const setBucket =
+                category === "grocery" ? setGroceries : setTodos;
+              setBucket((prev) => {
+                prev[index].subtasks = subtasks;
+                return prev;
+              });
+            }
+          });
+      } else {
+      }
+    });
+  };
+
   const startRecording = () => {
     recognitionRef.current = new window.webkitSpeechRecognition();
     recognitionRef.current.continuous = true;
@@ -69,43 +107,7 @@ export default function Page({ params }: { params: { username: string } }) {
       const last = event.results[event.results.length - 1];
       if (last.isFinal) {
         const voiceInput = last[0].transcript;
-        // Process Voice Input Begin ================
-        const reqBody: QuestionClassifierRequest = { input: voiceInput };
-
-        axios.post("/api/questionClassifier", reqBody).then((res) => {
-          const { isQuery, agentReply }: QuestionClassifierResponse = res.data;
-
-          say(agentReply);
-
-          if (isQuery) {
-            const conversationalAgentRequest: ConversationalAgentRequest = {
-              text: voiceInput,
-              groceryList: groceries,
-              todoList: todos,
-            };
-            axios
-              .post("/api/conversationalAgent", conversationalAgentRequest)
-              .then((res) => {
-                const {
-                  narration,
-                  explodingTodo,
-                }: ConversationalAgentResponse = res.data;
-                say(narration);
-
-                if (explodingTodo) {
-                  const { category, index, subtasks } = explodingTodo;
-                  const setBucket =
-                    category === "grocery" ? setGroceries : setTodos;
-                  setBucket((prev) => {
-                    prev[index].subtasks = subtasks;
-                    return prev;
-                  });
-                }
-              });
-          } else {
-          }
-        });
-        // Process Voice Input End ================
+        processVoiceInputText(voiceInput);
       }
     };
 
@@ -158,6 +160,8 @@ export default function Page({ params }: { params: { username: string } }) {
 
   const [gradient, setGradient] = useState(["#B6CECE", "#0099FF"]);
 
+  const [chatTextInput, setChatTextInput] = useState("");
+
   return (
     <>
       <div
@@ -170,63 +174,82 @@ export default function Page({ params }: { params: { username: string } }) {
           {!enabled && <span className="text-lime-200">{username}</span>}
         </p>
         <div className="text-white text-transparent">
-          <div>
-            <button
-              className={`animate-fadeInUp  mt-10 m-auto flex items-center justify-center ${
-                enabled ? "" : "bg-blue-400 hover:bg-blue-500"
-              } rounded-full w-20 h-20 focus:outline-none`}
-            >
-              {!enabled && (
-                <div onClick={handleMicrophoneClick}>
-                  <TalkShape />
-                </div>
-              )}
-              {enabled && (
-                <>
-                  <div className="border-orange-400 p-4 rounded-xl border-4 min-h-[30vh] min-w-[30vw] text-left bg-amber-600">
-                    <h3 className="font-bold text-xl">To-do:</h3>
-                    {todos.map((todo, i) => (
-                      <div key={i}>
-                        <p>
-                          [{todo.completed ? "x" : " "}] {todo.text}
-                        </p>
-                        {todo.subtasks &&
-                          todo.subtasks.map((subtask, j) => (
-                            <pre key={j}>
-                              {"    " +
-                                "[" +
-                                (subtask.completed ? "x" : " ") +
-                                "] " +
-                                subtask.text}
-                            </pre>
-                          ))}
-                      </div>
-                    ))}
+          <button
+            className={`animate-fadeInUp  mt-10 m-auto flex items-center justify-center ${
+              enabled ? "" : "bg-blue-400 hover:bg-blue-500"
+            } rounded-full w-20 h-20 focus:outline-none`}
+          >
+            {!enabled && (
+              <div onClick={handleMicrophoneClick}>
+                <TalkShape />
+              </div>
+            )}
+          </button>
+          {(enabled || NO_VOICE_DEBUGGING) && (
+            <div className="flex">
+              <div className="border-orange-400 p-4 rounded-xl border-4 min-h-[30vh] min-w-[30vw] text-left bg-amber-600">
+                <h3 className="font-bold text-xl">To-do:</h3>
+                {todos.map((todo, i) => (
+                  <div key={i}>
+                    <p>
+                      [{todo.completed ? "x" : " "}] {todo.text}
+                    </p>
+                    {todo.subtasks &&
+                      todo.subtasks.map((subtask, j) => (
+                        <pre key={j}>
+                          {"    " +
+                            "[" +
+                            (subtask.completed ? "x" : " ") +
+                            "] " +
+                            subtask.text}
+                        </pre>
+                      ))}
                   </div>
-                  <div className="border-green-400 ml-4 p-4 rounded-xl border-4 min-h-[30vh] min-w-[30vw] text-left bg-teal-600">
-                    <h3 className="font-bold text-xl">Groceries:</h3>
-                    {groceries.map((item, i) => (
-                      <div key={i}>
-                        <p>
-                          [{item.completed ? "x" : " "}] {item.text}
-                        </p>
-                        {item.subtasks &&
-                          item.subtasks.map((subitem, j) => (
-                            <pre key={j}>
-                              {"    " +
-                                "[" +
-                                (subitem.completed ? "x" : " ") +
-                                "] " +
-                                subitem.text}
-                            </pre>
-                          ))}
-                      </div>
-                    ))}
+                ))}
+              </div>
+              <div className="border-green-400 ml-4 p-4 rounded-xl border-4 min-h-[30vh] min-w-[30vw] text-left bg-teal-600">
+                <h3 className="font-bold text-xl">Groceries:</h3>
+                {groceries.map((item, i) => (
+                  <div key={i}>
+                    <p>
+                      [{item.completed ? "x" : " "}] {item.text}
+                    </p>
+                    {item.subtasks &&
+                      item.subtasks.map((subitem, j) => (
+                        <pre key={j}>
+                          {"    " +
+                            "[" +
+                            (subitem.completed ? "x" : " ") +
+                            "] " +
+                            subitem.text}
+                        </pre>
+                      ))}
                   </div>
-                </>
-              )}
-            </button>
-          </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {NO_VOICE_DEBUGGING && (
+            <div className="p-4 m-auto flex justify-center items-center">
+              <textarea
+                value={chatTextInput}
+                onChange={(e) => setChatTextInput(e.target.value)}
+                className="border-2 border-gray-400 p-1 rounded-lg focus:outline-none m-2 w-60 min-w-96 text-black"
+              />
+              <div>
+                <button
+                  onClick={() => {
+                    processVoiceInputText(chatTextInput);
+                    setChatTextInput("");
+                  }}
+                  className="bg-blue-400 hover:bg-blue-500 p-1 rounded-lg text-white focus:outline-none m-2"
+                >
+                  submit
+                </button>
+              </div>
+            </div>
+          )}
         </div>
         <footer className="min-h-[10vh]"></footer>
       </div>

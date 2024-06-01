@@ -71,10 +71,16 @@ export async function askConversationalAgent(
     result.choices[0].message.content || "{}"
   );
 
-  console.log({
-    conversationalAgentRequest: body,
-    conversationalAgentResponse: responseObject,
-  });
+  console.log(
+    JSON.stringify(
+      {
+        conversationalAgentRequest: body,
+        conversationalAgentResponse: responseObject,
+      },
+      null,
+      2
+    )
+  );
 
   return responseObject;
 }
