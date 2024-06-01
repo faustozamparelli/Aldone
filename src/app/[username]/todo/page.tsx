@@ -236,13 +236,12 @@ export default function Page({ params }: { params: { username: string } }) {
                     </p>
                     {todo.subtasks &&
                       todo.subtasks.map((subtask, j) => (
-                        <pre key={j}>
-                          {"    " +
-                            "[" +
+                        <p key={j} className="ml-4">
+                          {"[" +
                             (subtask.completed ? "x" : " ") +
                             "] " +
                             subtask.text}
-                        </pre>
+                        </p>
                       ))}
                   </div>
                 ))}
@@ -256,13 +255,12 @@ export default function Page({ params }: { params: { username: string } }) {
                     </p>
                     {item.subtasks &&
                       item.subtasks.map((subitem, j) => (
-                        <pre key={j}>
-                          {"    " +
-                            "[" +
+                        <p key={j} className="ml-4">
+                          {"[" +
                             (subitem.completed ? "x" : " ") +
                             "] " +
                             subitem.text}
-                        </pre>
+                        </p>
                       ))}
                   </div>
                 ))}
