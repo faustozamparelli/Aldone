@@ -32,19 +32,33 @@ def classify_todo():
 @app.route("/webcam")
 def webcam_display():
     def webcam():
-        camera = cv2.VideoCapture(2)
-
+        camera = cv2.VideoCapture(1)
+        i = 0
         while True:
             success, frame = camera.read()
             if success:
+                cv2.putText(
+                    frame,
+                    f"Frame: {i}",
+                    (10, 30),
+                    cv2.FONT_HERSHEY_SIMPLEX,
+                    1,
+                    (255, 255, 255),
+                    2,
+                    cv2.LINE_AA,
+                )
 
                 ret, buffer = cv2.imencode(".jpg", frame)
+                if not ret:
+                    continue
+
                 frame = buffer.tobytes()
                 yield (
                     b"--frame\r\n" b"Content-Type: image/jpeg\r\n\r\n" + frame + b"\r\n"
                 )
             else:
                 camera.release()
+            i += 1
 
     return Response(webcam(), mimetype="multipart/x-mixed-replace; boundary=frame")
 

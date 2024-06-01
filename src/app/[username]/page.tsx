@@ -196,6 +196,10 @@ export default function Page({ params }: { params: { username: string } }) {
     setCameraEnabled(true);
   };
 
+  const handleStopCameraClick = () => {
+    setCameraEnabled(false);
+  };
+
   const handleMicrophoneClick = () => {
     setEnabled(true);
     startRecording();
@@ -276,12 +280,20 @@ export default function Page({ params }: { params: { username: string } }) {
                 </div>
 
                 {cameraEnabled ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={"http://localhost:3001/webcam"}
-                    alt="webcam"
-                    className="max-w-[30vw] rounded-lg shadow-lg m-8"
-                  />
+                  <div className="max-w-[30vw] flex-col flex items-center">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={"http://localhost:3001/webcam"}
+                      alt="webcam"
+                      className="rounded-lg shadow-lg mt-8 mx-8"
+                    />
+                    <button
+                      className="w-12 h-12 rounded-full bg-lime-400 bg-opacity-50 hover:bg-lime-500 focus:outline-none flex items-center justify-center m-8 p-8 border-4 border-lime-400 shadow-lg"
+                      onClick={handleStopCameraClick}
+                    >
+                      <p>⏹</p>
+                    </button>
+                  </div>
                 ) : (
                   <button
                     className="w-12 h-12 rounded-full bg-lime-400 bg-opacity-50 hover:bg-lime-500 focus:outline-none flex items-center justify-center m-8 p-8 border-4 border-lime-400 shadow-lg"
