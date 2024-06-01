@@ -21,7 +21,7 @@ declare global {
   }
 }
 
-const DEBUGGING = true;
+const DEBUGGING_WITH_TEXT = false;
 
 export interface TodoItem {
   text: string;
@@ -190,6 +190,8 @@ export default function Page({ params }: { params: { username: string } }) {
       });
   };
 
+  const handleCameraClick = () => {};
+
   const handleMicrophoneClick = () => {
     setEnabled(true);
     startRecording();
@@ -225,50 +227,61 @@ export default function Page({ params }: { params: { username: string } }) {
               </div>
             )}
           </button>
-          {(enabled || DEBUGGING) && (
+          {(enabled || DEBUGGING_WITH_TEXT) && (
             <div className="flex">
-              <div className="border-orange-400 p-4 rounded-xl border-4 min-h-[30vh] min-w-[30vw] text-left bg-amber-600">
-                <h3 className="font-bold text-xl">To-do:</h3>
-                {todos.map((todo, i) => (
-                  <div key={i}>
-                    <p>
-                      [{todo.completed ? "x" : " "}] {todo.text}
-                    </p>
-                    {todo.subtasks &&
-                      todo.subtasks.map((subtask, j) => (
-                        <p key={j} className="ml-4">
-                          {"[" +
-                            (subtask.completed ? "x" : " ") +
-                            "] " +
-                            subtask.text}
-                        </p>
-                      ))}
-                  </div>
-                ))}
+              <div>
+                <div className="border-orange-400 p-4 rounded-xl border-4 min-h-[30vh] min-w-[30vw] text-left bg-amber-600">
+                  <h3 className="font-bold text-xl">To-do:</h3>
+                  {todos.map((todo, i) => (
+                    <div key={i}>
+                      <p>
+                        [{todo.completed ? "x" : " "}] {todo.text}
+                      </p>
+                      {todo.subtasks &&
+                        todo.subtasks.map((subtask, j) => (
+                          <p key={j} className="ml-4">
+                            {"[" +
+                              (subtask.completed ? "x" : " ") +
+                              "] " +
+                              subtask.text}
+                          </p>
+                        ))}
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className="border-green-400 ml-4 p-4 rounded-xl border-4 min-h-[30vh] min-w-[30vw] text-left bg-teal-600">
-                <h3 className="font-bold text-xl">Shopping List:</h3>
-                {groceries.map((item, i) => (
-                  <div key={i}>
-                    <p>
-                      [{item.completed ? "x" : " "}] {item.text}
-                    </p>
-                    {item.subtasks &&
-                      item.subtasks.map((subitem, j) => (
-                        <p key={j} className="ml-4">
-                          {"[" +
-                            (subitem.completed ? "x" : " ") +
-                            "] " +
-                            subitem.text}
-                        </p>
-                      ))}
-                  </div>
-                ))}
+              <div className="flex flex-col items-center">
+                <div className="border-green-400 ml-4 p-4 rounded-xl border-4 min-h-[30vh] min-w-[30vw] text-left bg-teal-600">
+                  <h3 className="font-bold text-xl">Shopping List:</h3>
+                  {groceries.map((item, i) => (
+                    <div key={i}>
+                      <p>
+                        [{item.completed ? "x" : " "}] {item.text}
+                      </p>
+                      {item.subtasks &&
+                        item.subtasks.map((subitem, j) => (
+                          <p key={j} className="ml-4">
+                            {"[" +
+                              (subitem.completed ? "x" : " ") +
+                              "] " +
+                              subitem.text}
+                          </p>
+                        ))}
+                    </div>
+                  ))}
+                </div>
+
+                <button
+                  className="w-12 h-12 rounded-full bg-lime-400 bg-opacity-50 hover:bg-lime-500 focus:outline-none flex items-center justify-center m-8 p-8 border-4 border-lime-400 shadow-lg"
+                  onClick={handleCameraClick}
+                >
+                  <p>📸</p>
+                </button>
               </div>
             </div>
           )}
 
-          {DEBUGGING && (
+          {DEBUGGING_WITH_TEXT && (
             <div className="p-4 m-auto flex justify-center items-center">
               <textarea
                 value={chatTextInput}
