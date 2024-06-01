@@ -13,12 +13,8 @@ export default function Home() {
     }
   };
 
-  // const goToJournal = () => {
-  //   router.push(`/${username}/journal`);
-  // };
-
   const goToTodo = () => {
-    router.push(`/${username}/todo`);
+    router.push(`/${username}`);
   };
 
   return (
@@ -37,9 +33,6 @@ export default function Home() {
           onChange={(e) => setUsername(e.target.value)}
           onKeyDown={handleKeyDown}
         />
-        {/* <button className="text-sky-800 hover:italic" onClick={goToJournal}>
-          journal
-        </button> */}
         <button className="pl-2 text-sky-800 hover:italic" onClick={goToTodo}>
           enter
         </button>
