@@ -22,6 +22,7 @@ export interface TodoItem {
   text: string;
   completed: boolean;
   subtasks?: TodoItem[];
+  id: string;
 }
 
 export default function Page({ params }: { params: { username: string } }) {
@@ -32,34 +33,40 @@ export default function Page({ params }: { params: { username: string } }) {
   const recognitionRef = useRef<any>(null);
 
   const [todos, setTodos] = useState<TodoItem[]>([
-    { text: "AI Lab Project", completed: true },
-    { text: "Collect Raspberri Pi at delivery center", completed: false },
+    { text: "AI Lab Project", completed: true, id: "ai_lab_project" },
+    {
+      text: "Collect Raspberri Pi at delivery center",
+      completed: false,
+      id: "raspberri",
+    },
     {
       text: "Pack for the trip to Rome",
       completed: false,
+      id: "rome_trip_pack",
       subtasks: [
-        { text: "Passport", completed: true },
-        { text: "Clothes", completed: false },
-        { text: "Toothbrush", completed: false },
-        { text: "Shoes", completed: false },
+        { text: "Passport", completed: true, id: "passport" },
+        { text: "Clothes", completed: false, id: "clothes" },
+        { text: "Toothbrush", completed: false, id: "toothbrush" },
+        { text: "Shoes", completed: false, id: "shoes" },
       ],
     },
   ]);
   const [groceries, setGroceries] = useState<TodoItem[]>([
-    { text: "Tiramisu", completed: false },
-    { text: "Yogurt Bowl", completed: false },
-    { text: "Bananas", completed: true },
+    { text: "Tiramisu", completed: false, id: "tiramisu" },
+    { text: "Yogurt Bowl", completed: false, id: "yogurt_bowl" },
+    { text: "Bananas", completed: true, id: "bananas" },
     {
       text: "Apple Pie",
       completed: false,
+      id: "apple_pie",
       subtasks: [
-        { text: "Apples", completed: true },
-        { text: "Pie Crust", completed: false },
-        { text: "Cinnamon", completed: false },
-        { text: "Butter", completed: false },
+        { text: "Apples", completed: true, id: "apples" },
+        { text: "Pie Crust", completed: false, id: "pie_crust" },
+        { text: "Cinnamon", completed: false, id: "cinnamon" },
+        { text: "Butter", completed: false, id: "butter" },
       ],
     },
-    { text: "200g Avocado", completed: false },
+    { text: "200g Avocado", completed: false, id: "avocado" },
   ]);
 
   const processVoiceInputText = (voiceInput: string) => {
@@ -84,10 +91,13 @@ export default function Page({ params }: { params: { username: string } }) {
             say(narration);
 
             if (explodingTodo) {
-              const { category, index, subtasks } = explodingTodo;
+              const { category, id, subtasks } = explodingTodo;
+
               const setBucket =
                 category === "grocery" ? setGroceries : setTodos;
+
               setBucket((prev) => {
+                const index = prev.findIndex((item) => item.id === id);
                 prev[index].subtasks = subtasks;
                 return prev;
               });
