@@ -21,7 +21,7 @@ declare global {
   }
 }
 
-const DEBUGGING_WITH_TEXT = false;
+const DEBUGGING_WITH_TEXT = true;
 
 export interface TodoItem {
   text: string;
@@ -36,6 +36,8 @@ export default function Page({ params }: { params: { username: string } }) {
   const [enabled, setEnabled] = useState(false);
   const [audioRef, setAudioRef] = useState<HTMLAudioElement | null>(null);
   const recognitionRef = useRef<any>(null);
+
+  const [cameraEnabled, setCameraEnabled] = useState(false);
 
   const [todos, setTodos] = useState<TodoItem[]>([
     { text: "AI Lab Project", completed: true, id: "ai_lab_project" },
@@ -190,7 +192,9 @@ export default function Page({ params }: { params: { username: string } }) {
       });
   };
 
-  const handleCameraClick = () => {};
+  const handleCameraClick = () => {
+    setCameraEnabled(true);
+  };
 
   const handleMicrophoneClick = () => {
     setEnabled(true);
@@ -271,12 +275,21 @@ export default function Page({ params }: { params: { username: string } }) {
                   ))}
                 </div>
 
-                <button
-                  className="w-12 h-12 rounded-full bg-lime-400 bg-opacity-50 hover:bg-lime-500 focus:outline-none flex items-center justify-center m-8 p-8 border-4 border-lime-400 shadow-lg"
-                  onClick={handleCameraClick}
-                >
-                  <p>📸</p>
-                </button>
+                {cameraEnabled ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={"http://localhost:3001/webcam"}
+                    alt="webcam"
+                    className="max-w-[30vw] rounded-lg shadow-lg m-8"
+                  />
+                ) : (
+                  <button
+                    className="w-12 h-12 rounded-full bg-lime-400 bg-opacity-50 hover:bg-lime-500 focus:outline-none flex items-center justify-center m-8 p-8 border-4 border-lime-400 shadow-lg"
+                    onClick={handleCameraClick}
+                  >
+                    <p>📸</p>
+                  </button>
+                )}
               </div>
             </div>
           )}
