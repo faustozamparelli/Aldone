@@ -243,15 +243,22 @@ export default function Page({ params }: { params: { username: string } }) {
                   {todos.map((todo, i) => (
                     <div key={i}>
                       <p>
-                        [{todo.completed ? "x" : " "}] {todo.text}
+                        [{todo.completed ? "x" : " "}]
+                        <span className={todo.completed ? "line-through" : ""}>
+                          {todo.text}
+                        </span>
                       </p>
                       {todo.subtasks &&
                         todo.subtasks.map((subtask, j) => (
                           <p key={j} className="ml-4">
-                            {"[" +
-                              (subtask.completed ? "x" : " ") +
-                              "] " +
-                              subtask.text}
+                            {"[" + (subtask.completed ? "x" : " ") + "] "}
+                            <span
+                              className={
+                                subtask.completed ? "line-through" : ""
+                              }
+                            >
+                              {subtask.text}
+                            </span>
                           </p>
                         ))}
                     </div>
@@ -264,15 +271,22 @@ export default function Page({ params }: { params: { username: string } }) {
                   {groceries.map((item, i) => (
                     <div key={i}>
                       <p>
-                        [{item.completed ? "x" : " "}] {item.text}
+                        [{item.completed ? "x" : " "}]
+                        <span className={item.completed ? "line-through" : ""}>
+                          {item.text}
+                        </span>
                       </p>
                       {item.subtasks &&
                         item.subtasks.map((subitem, j) => (
                           <p key={j} className="ml-4">
-                            {"[" +
-                              (subitem.completed ? "x" : " ") +
-                              "] " +
-                              subitem.text}
+                            {"[" + (subitem.completed ? "x" : " ") + "] "}
+                            <span
+                              className={
+                                subitem.completed ? "line-through" : ""
+                              }
+                            >
+                              {subitem.text}
+                            </span>
                           </p>
                         ))}
                     </div>
