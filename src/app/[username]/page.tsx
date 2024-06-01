@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import {
   QuestionClassifierRequest,
   QuestionClassifierResponse,
-} from "../../api/questionClassifier/route";
+} from "@/app/api/questionClassifier/route";
 import {
   ConversationalAgentRequest,
   ConversationalAgentResponse,
