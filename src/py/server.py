@@ -4,6 +4,7 @@ from todo_classifier.use_classifier import classify_todo
 import json
 import cv2
 from flask import Response
+from ultralytics import YOLO
 
 app = Flask(__name__)
 
@@ -32,33 +33,68 @@ def classify_todo():
 @app.route("/webcam")
 def webcam_display():
     def webcam():
+
+        model = YOLO("yolov8n.pt")
+
         camera = cv2.VideoCapture(1)
-        i = 0
+        camera.set(3, 640)
+        camera.set(4, 480)
+
+        foods = {
+            "banana",
+            "apple",
+            "sandwich",
+            "orange",
+            "broccoli",
+            "carrot",
+            "hot dog",
+            "pizza",
+            "donut",
+            "cake",
+        }
+
+        seen = set()
+
         while True:
             success, frame = camera.read()
-            if success:
+            if not success:
+                camera.release()
+
+            results = model(frame, stream=True)
+            for r in results:
+                boxes = r.boxes
+                for box in boxes:
+                    cls = r.names[int(box.cls[0])]
+                    if cls not in foods:
+                        break
+                    seen.add(cls)
+                    x1, y1, x2, y2 = box.xyxy[0]
+                    x1, y1, x2, y2 = int(x1), int(y1), int(x2), int(y2)
+                    cv2.rectangle(frame, (x1, y1), (x2, y2), (255, 0, 255), 3)
+                    cv2.putText(
+                        frame,
+                        cls,
+                        [x1, y1],
+                        cv2.FONT_HERSHEY_SIMPLEX,
+                        1,
+                        (255, 0, 0),
+                        2,
+                    )
                 cv2.putText(
                     frame,
-                    f"Frame: {i}",
+                    f"Seen: {', '.join(seen)}",
                     (10, 30),
                     cv2.FONT_HERSHEY_SIMPLEX,
                     1,
-                    (255, 255, 255),
+                    (255, 0, 0),
                     2,
-                    cv2.LINE_AA,
                 )
 
-                ret, buffer = cv2.imencode(".jpg", frame)
-                if not ret:
-                    continue
-
-                frame = buffer.tobytes()
-                yield (
-                    b"--frame\r\n" b"Content-Type: image/jpeg\r\n\r\n" + frame + b"\r\n"
-                )
-            else:
-                camera.release()
-            i += 1
+            ret, buffer = cv2.imencode(".jpg", frame)
+            if not ret:
+                continue
+            frame = buffer.tobytes()
+            yield (b"--frame\r\n" b"Content-Type: image/jpeg\r\n\r\n" + frame + b"\r\n")
 
     return Response(webcam(), mimetype="multipart/x-mixed-replace; boundary=frame")
 
