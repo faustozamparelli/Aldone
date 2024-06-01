@@ -34,6 +34,7 @@ export default function Page({ params }: { params: { username: string } }) {
 
   const [todos, setTodos] = useState<TodoItem[]>([
     { text: "AI Lab Project", completed: true, id: "ai_lab_project" },
+    { text: "Big Data Project", completed: false, id: "big_data_project" },
     {
       text: "Collect Raspberri Pi at delivery center",
       completed: false,
