@@ -8,7 +8,7 @@ export const runtime = "edge";
 async function updateGroceryListBasedOnProductsSeenOnTheTable(
   products: string[],
   groceryList: TodoItem[]
-): Promise<TodoItem[]> {
+): Promise<string[]> {
   const result = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
     messages: [
@@ -19,12 +19,16 @@ async function updateGroceryListBasedOnProductsSeenOnTheTable(
       { role: "user", content: products.join(", ") },
       {
         role: "system",
-        content: `The following is a json array of grocery list items. Return me a json array of grocery list items ids of items that were also seen on the table, if any. The result should be formatted like {ids: ["red_apples", "berries"]}. If none of the items were seen on the table, return an empty array "{ids: []}".`,
+        content: `
+The following is a json array of grocery list items structured like [{text: string, completed: bool, id: string}].
+Return me a json array of grocery list items ids of items that were also seen on the table, if any.
+
+Even if the ids don't match exactly, you can still match them if they are similar. For example, if the table has "apple" and the grocery list has "red_apple", you can still match them. Be smart and human about it. Make sure to return the id as seen in the "id" field of the grocery list item, not the products seen on the table.
+
+The result should be formatted like {ids: ["red_apples", "berries"]}. If none of the items were seen on the table, return an empty array "{ids: []}".       
+`,
       },
-      {
-        role: "user",
-        content: groceryList.map((item) => item.text).join(", "),
-      },
+      { role: "user", content: JSON.stringify(groceryList) },
     ],
     response_format: { type: "json_object" },
   });
@@ -34,16 +38,7 @@ async function updateGroceryListBasedOnProductsSeenOnTheTable(
   );
 
   const ids = idsObject["ids"];
-
-  console.log({ ids });
-
-  const newGroceryList = [...groceryList];
-  for (const id of ids) {
-    const index = newGroceryList.findIndex((item) => item.id === id);
-    newGroceryList[index] = { ...newGroceryList[index], completed: true };
-  }
-
-  return newGroceryList;
+  return ids;
 }
 
 export interface GroceryListMatcherRequest {
@@ -52,7 +47,7 @@ export interface GroceryListMatcherRequest {
 }
 
 export interface GroceryListMatcherResponse {
-  updatedGroceryList: TodoItem[];
+  completingIds: string[];
 }
 
 export async function POST(req: NextRequest) {
@@ -60,13 +55,15 @@ export async function POST(req: NextRequest) {
 
   const { products, groceryList } = body;
 
-  const updatedGroceryList: TodoItem[] =
+  const completingIds: string[] =
     await updateGroceryListBasedOnProductsSeenOnTheTable(products, groceryList);
 
   console.log({
     groceryListMatcherRequest: body,
-    groceryListMatcherResponse: { updatedGroceryList },
+    groceryListMatcherResponse: { completingIds },
   });
 
-  return NextResponse.json({ updatedGroceryList });
+  const response: GroceryListMatcherResponse = { completingIds };
+
+  return NextResponse.json(response);
 }

@@ -203,8 +203,15 @@ export default function Page({ params }: { params: { username: string } }) {
       axios
         .post("/api/groceryListMatcher", groceryListMatcherRequest)
         .then((res) => {
-          const { updatedGroceryList }: GroceryListMatcherResponse = res.data;
-          setGroceries(updatedGroceryList);
+          const { completingIds }: GroceryListMatcherResponse = res.data;
+          setGroceries((prev) => {
+            for (const id of completingIds) {
+              const index = prev.findIndex((item) => item.id === id);
+              prev[index].completed = true;
+            }
+            console.log({ newGroceries: prev });
+            return prev;
+          });
         });
     });
   };
