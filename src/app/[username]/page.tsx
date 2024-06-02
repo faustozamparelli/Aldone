@@ -21,7 +21,7 @@ declare global {
   }
 }
 
-const DEBUGGING_WITH_TEXT = true;
+const DEBUGGING = true;
 
 export interface TodoItem {
   text: string;
@@ -240,7 +240,7 @@ export default function Page({ params }: { params: { username: string } }) {
               </div>
             )}
           </button>
-          {(enabled || DEBUGGING_WITH_TEXT) && (
+          {(enabled || DEBUGGING) && (
             <div className="flex">
               <div>
                 <div className="border-orange-400 p-4 rounded-xl border-4 min-h-[30vh] min-w-[30vw] text-left bg-amber-600">
@@ -322,7 +322,9 @@ export default function Page({ params }: { params: { username: string } }) {
                       <p>📸</p>
                     </button>
                     <p className="text-center">
-                      {seenFoods.length > 0 && JSON.stringify(seenFoods)}
+                      {DEBUGGING &&
+                        seenFoods.length > 0 &&
+                        JSON.stringify(seenFoods)}
                     </p>
                   </div>
                 )}
@@ -330,7 +332,7 @@ export default function Page({ params }: { params: { username: string } }) {
             </div>
           )}
 
-          {DEBUGGING_WITH_TEXT && (
+          {DEBUGGING && (
             <div className="p-4 m-auto flex justify-center items-center">
               <textarea
                 value={chatTextInput}
