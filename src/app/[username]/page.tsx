@@ -200,17 +200,18 @@ export default function Page({ params }: { params: { username: string } }) {
         products: foods,
         groceryList: groceries,
       };
+      console.log("updating grocery list after seeing foods", { foods });
       axios
         .post("/api/groceryListMatcher", groceryListMatcherRequest)
         .then((res) => {
           const { completingIds }: GroceryListMatcherResponse = res.data;
           setGroceries((prev) => {
-            for (const id of completingIds) {
-              const index = prev.findIndex((item) => item.id === id);
-              prev[index].completed = true;
-            }
-            console.log({ newGroceries: prev });
-            return prev;
+            return prev.map((item) => {
+              if (completingIds.includes(item.id)) {
+                item.completed = true;
+              }
+              return item;
+            });
           });
         });
     });
@@ -256,8 +257,8 @@ export default function Page({ params }: { params: { username: string } }) {
               <div>
                 <div className="border-orange-400 p-4 rounded-xl border-4 min-h-[30vh] min-w-[30vw] text-left bg-amber-600">
                   <h3 className="font-bold text-xl">To-do:</h3>
-                  {todos.map((todo, i) => (
-                    <div key={i}>
+                  {todos.map((todo) => (
+                    <div key={todo.id}>
                       <p>
                         [{todo.completed ? "x" : " "}]
                         <span className={todo.completed ? "line-through" : ""}>
@@ -265,8 +266,8 @@ export default function Page({ params }: { params: { username: string } }) {
                         </span>
                       </p>
                       {todo.subtasks &&
-                        todo.subtasks.map((subtask, j) => (
-                          <p key={j} className="ml-4">
+                        todo.subtasks.map((subtask) => (
+                          <p key={subtask.id} className="ml-4">
                             {"[" + (subtask.completed ? "x" : " ") + "] "}
                             <span
                               className={
@@ -284,8 +285,8 @@ export default function Page({ params }: { params: { username: string } }) {
               <div className="flex flex-col items-center">
                 <div className="border-green-400 ml-4 p-4 rounded-xl border-4 min-h-[30vh] min-w-[30vw] text-left bg-teal-600">
                   <h3 className="font-bold text-xl">Shopping List:</h3>
-                  {groceries.map((item, i) => (
-                    <div key={i}>
+                  {groceries.map((item) => (
+                    <div key={item.id}>
                       <p>
                         [{item.completed ? "x" : " "}]
                         <span className={item.completed ? "line-through" : ""}>
@@ -293,8 +294,8 @@ export default function Page({ params }: { params: { username: string } }) {
                         </span>
                       </p>
                       {item.subtasks &&
-                        item.subtasks.map((subitem, j) => (
-                          <p key={j} className="ml-4">
+                        item.subtasks.map((subitem) => (
+                          <p key={subitem.id} className="ml-4">
                             {"[" + (subitem.completed ? "x" : " ") + "] "}
                             <span
                               className={
