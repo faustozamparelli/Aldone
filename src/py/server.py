@@ -36,7 +36,7 @@ def webcam_display():
 
         model = YOLO("yolov8n.pt")
 
-        camera = cv2.VideoCapture(1)
+        camera = cv2.VideoCapture(0)
         camera.set(3, 640)
         camera.set(4, 480)
 
@@ -67,7 +67,10 @@ def webcam_display():
                     cls = r.names[int(box.cls[0])]
                     if cls not in foods:
                         break
-                    seen.add(cls)
+                    if cls not in seen:
+                        seen.add(cls)
+                        with open(".seen", "w") as f:
+                            f.write("\n".join(seen))
                     x1, y1, x2, y2 = box.xyxy[0]
                     x1, y1, x2, y2 = int(x1), int(y1), int(x2), int(y2)
                     cv2.rectangle(frame, (x1, y1), (x2, y2), (255, 0, 255), 3)
@@ -77,16 +80,16 @@ def webcam_display():
                         [x1, y1],
                         cv2.FONT_HERSHEY_SIMPLEX,
                         1,
-                        (255, 0, 0),
+                        (0, 255, 0),
                         2,
                     )
                 cv2.putText(
                     frame,
-                    f"Seen: {', '.join(seen)}",
-                    (10, 30),
+                    f"{seen}",
+                    (10, 40),
                     cv2.FONT_HERSHEY_SIMPLEX,
                     1,
-                    (255, 0, 0),
+                    (255, 255, 255),
                     2,
                 )
 

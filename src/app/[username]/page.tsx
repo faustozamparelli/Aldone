@@ -195,9 +195,14 @@ export default function Page({ params }: { params: { username: string } }) {
   const handleCameraClick = () => {
     setCameraEnabled(true);
   };
+  const [seenFoods, setSeenFoods] = useState<string[]>([]);
 
   const handleStopCameraClick = () => {
     setCameraEnabled(false);
+    axios.post("/api/readSeenFoods").then((res) => {
+      const { foods } = res.data;
+      setSeenFoods(foods);
+    });
   };
 
   const handleMicrophoneClick = () => {
@@ -309,12 +314,17 @@ export default function Page({ params }: { params: { username: string } }) {
                     </button>
                   </div>
                 ) : (
-                  <button
-                    className="w-12 h-12 rounded-full bg-lime-400 bg-opacity-50 hover:bg-lime-500 focus:outline-none flex items-center justify-center m-8 p-8 border-4 border-lime-400 shadow-lg"
-                    onClick={handleCameraClick}
-                  >
-                    <p>📸</p>
-                  </button>
+                  <div>
+                    <button
+                      className="w-12 h-12 rounded-full bg-lime-400 bg-opacity-50 hover:bg-lime-500 focus:outline-none flex items-center justify-center m-8 p-8 border-4 border-lime-400 shadow-lg"
+                      onClick={handleCameraClick}
+                    >
+                      <p>📸</p>
+                    </button>
+                    <p className="text-center">
+                      {seenFoods.length > 0 && JSON.stringify(seenFoods)}
+                    </p>
+                  </div>
                 )}
               </div>
             </div>

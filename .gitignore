@@ -33,6 +33,8 @@ __pycache__/
 
 *.pt
 
+.seen
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
