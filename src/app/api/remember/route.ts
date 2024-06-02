@@ -5,7 +5,7 @@ import OpenAI from "openai";
 
 export const runtime = "edge";
 
-export async function remember(text: string) {
+async function remember(text: string) {
   const pc = new Pinecone({ apiKey: process.env.PINECONE_API_KEY });
   const index = pc.index("diairy");
 

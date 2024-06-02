@@ -5,7 +5,7 @@ export const runtime = "edge";
 
 const openai = new OpenAI();
 
-export async function embed(
+async function embed(
   text: string
 ): Promise<OpenAI.Embeddings.CreateEmbeddingResponse> {
   const embedding = await openai.embeddings.create({

@@ -14,6 +14,10 @@ import {
   TodoClassifierResponse,
 } from "@/app/api/todoClassifier/route";
 import { TodoExtractorRequest } from "@/app/api/todoExtractor/route";
+import {
+  GroceryListMatcherRequest,
+  GroceryListMatcherResponse,
+} from "../api/groceryListMatcher/route";
 
 declare global {
   interface Window {
@@ -62,19 +66,9 @@ export default function Page({ params }: { params: { username: string } }) {
   const [groceries, setGroceries] = useState<TodoItem[]>([
     { text: "Tiramisu", completed: false, id: "tiramisu" },
     { text: "Yogurt Bowl", completed: false, id: "yogurt_bowl" },
-    { text: "Bananas", completed: true, id: "bananas" },
-    {
-      text: "Apple Pie",
-      completed: false,
-      id: "apple_pie",
-      subtasks: [
-        { text: "Apples", completed: true, id: "apples" },
-        { text: "Pie Crust", completed: false, id: "pie_crust" },
-        { text: "Cinnamon", completed: false, id: "cinnamon" },
-        { text: "Butter", completed: false, id: "butter" },
-      ],
-    },
-    { text: "200g Avocado", completed: false, id: "avocado" },
+    { text: "Bananas", completed: false, id: "bananas" },
+    { text: "200g Avocado", completed: true, id: "avocad0" },
+    { text: "Apples", completed: false, id: "appl3s" },
   ]);
 
   const processVoiceInputText = (voiceInput: string) => {
@@ -202,6 +196,16 @@ export default function Page({ params }: { params: { username: string } }) {
     axios.post("/api/readSeenFoods").then((res) => {
       const { foods } = res.data;
       setSeenFoods(foods);
+      const groceryListMatcherRequest: GroceryListMatcherRequest = {
+        products: foods,
+        groceryList: groceries,
+      };
+      axios
+        .post("/api/groceryListMatcher", groceryListMatcherRequest)
+        .then((res) => {
+          const { updatedGroceryList }: GroceryListMatcherResponse = res.data;
+          setGroceries(updatedGroceryList);
+        });
     });
   };
 

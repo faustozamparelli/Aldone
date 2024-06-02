@@ -4,9 +4,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 export const runtime = "edge";
 
-export async function extractTodoFrom(
-  text: string
-): Promise<TodoExtractorResponse> {
+async function extractTodoFrom(text: string): Promise<TodoExtractorResponse> {
   const result = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
     messages: [

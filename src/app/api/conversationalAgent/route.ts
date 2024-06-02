@@ -1,4 +1,4 @@
-import { TodoItem } from "@/app/[username]/todo/page";
+import { TodoItem } from "@/app/[username]/page";
 import { NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
 
@@ -22,7 +22,7 @@ export interface ConversationalAgentRequest {
   todoList: TodoItem[];
 }
 
-export async function askConversationalAgent(
+async function askConversationalAgent(
   body: ConversationalAgentRequest
 ): Promise<ConversationalAgentResponse> {
   const { text, groceryList, todoList } = body;

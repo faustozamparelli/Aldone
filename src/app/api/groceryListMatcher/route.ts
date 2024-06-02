@@ -1,11 +1,11 @@
-import { TodoItem } from "@/app/[username]/todo/page";
+import { TodoItem } from "@/app/[username]/page";
 import { NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
 
 const openai = new OpenAI();
 export const runtime = "edge";
 
-export async function updateGroceryListBasedOnProductsSeenOnTheTable(
+async function updateGroceryListBasedOnProductsSeenOnTheTable(
   products: string[],
   groceryList: TodoItem[]
 ): Promise<TodoItem[]> {
@@ -19,7 +19,7 @@ export async function updateGroceryListBasedOnProductsSeenOnTheTable(
       { role: "user", content: products.join(", ") },
       {
         role: "system",
-        content: `The following is a json array of grocery list items. Return me a json array of grocery list indices of items that were seen on the table, if any. The result should be formatted like "{indices: [0, 3]}". If none of the items were seen on the table, return an empty array "{indices: []}".`,
+        content: `The following is a json array of grocery list items. Return me a json array of grocery list items ids of items that were also seen on the table, if any. The result should be formatted like {ids: ["red_apples", "berries"]}. If none of the items were seen on the table, return an empty array "{ids: []}".`,
       },
       {
         role: "user",
@@ -29,25 +29,30 @@ export async function updateGroceryListBasedOnProductsSeenOnTheTable(
     response_format: { type: "json_object" },
   });
 
-  const indicesObject: { indices: number[] } = JSON.parse(
+  const idsObject: { ids: string[] } = JSON.parse(
     result.choices[0].message.content || "{}"
   );
 
-  const indices = indicesObject["indices"];
+  const ids = idsObject["ids"];
 
-  if (indices.length > 0) {
-    return groceryList.map((item, index) => ({
-      ...item,
-      completed: indices.includes(index) || item.completed,
-    }));
+  console.log({ ids });
+
+  const newGroceryList = [...groceryList];
+  for (const id of ids) {
+    const index = newGroceryList.findIndex((item) => item.id === id);
+    newGroceryList[index] = { ...newGroceryList[index], completed: true };
   }
 
-  return groceryList;
+  return newGroceryList;
 }
 
-interface GroceryListMatcherRequest {
+export interface GroceryListMatcherRequest {
   products: string[];
   groceryList: TodoItem[];
+}
+
+export interface GroceryListMatcherResponse {
+  updatedGroceryList: TodoItem[];
 }
 
 export async function POST(req: NextRequest) {
@@ -57,6 +62,11 @@ export async function POST(req: NextRequest) {
 
   const updatedGroceryList: TodoItem[] =
     await updateGroceryListBasedOnProductsSeenOnTheTable(products, groceryList);
+
+  console.log({
+    groceryListMatcherRequest: body,
+    groceryListMatcherResponse: { updatedGroceryList },
+  });
 
   return NextResponse.json({ updatedGroceryList });
 }
