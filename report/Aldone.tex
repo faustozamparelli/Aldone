@@ -7,20 +7,42 @@
 \usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage[labelformat=empty]{caption} 
+\usepackage{amsfonts}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{adjustbox}
+\usepackage{caption}
+\usepackage{float}
 
 
-\definecolor{draculabg}      {RGB} {25,   25,   25}
-\definecolor{draculacl}      {RGB} {68,   71,   90}
-\definecolor{draculafg}      {RGB} {248,  248,  242}
-\definecolor{draculacomment} {RGB} {98,   114,  164}
-\definecolor{draculacyan}    {RGB} {139,  233,  253}
-\definecolor{draculagreen}   {RGB} {80,   250,  123}
-\definecolor{draculaorange}  {RGB} {255,  184,  108}
-\definecolor{draculapink}    {RGB} {255,  121,  198}
-\definecolor{draculapurple}  {RGB} {189,  147,  249}
-\definecolor{draculared}     {RGB} {216,  47,   49}
-\definecolor{draculayellow}  {RGB} {241,  250,  140}
-\definecolor{draculablue}  {RGB} {36,  85,  151}
+% % DRACULA COLORS
+% \definecolor{draculabg}      {RGB} {25,   25,   25}
+% \definecolor{draculacl}      {RGB} {68,   71,   90}
+% \definecolor{draculafg}      {RGB} {248,  248,  242}
+% \definecolor{draculacomment} {RGB} {98,   114,  164}
+% \definecolor{draculacyan}    {RGB} {139,  233,  253}
+% \definecolor{draculagreen}   {RGB} {80,   250,  123}
+% \definecolor{draculaorange}  {RGB} {255,  184,  108}
+% \definecolor{draculapink}    {RGB} {255,  121,  198}
+% \definecolor{draculapurple}  {RGB} {189,  147,  249}
+% \definecolor{draculared}     {RGB} {216,  47,   49}
+% \definecolor{draculayellow}  {RGB} {241,  250,  140}
+% \definecolor{draculablue}  {RGB} {36,  85,  151}
+
+
+% DEFAULTS
+\definecolor{draculabg}      {RGB} {255, 255, 255}
+\definecolor{draculacl}      {RGB} {0,0,0}
+\definecolor{draculafg}      {RGB} {0,0,0}
+\definecolor{draculacomment} {RGB} {0,0,0}
+\definecolor{draculacyan}    {RGB} {0,0,0}
+\definecolor{draculagreen}   {RGB} {0,0,0}
+\definecolor{draculaorange}  {RGB} {0,0,0}
+\definecolor{draculapink}    {RGB} {0,0,0}
+\definecolor{draculapurple}  {RGB} {0,0,0}
+\definecolor{draculared}     {RGB} {0,0,0}
+\definecolor{draculayellow}  {RGB} {0,0,0}
+\definecolor{draculablue}  {RGB} {0,0,0}
 
 \pagecolor{draculabg}
 \color{draculafg}
@@ -45,14 +67,17 @@ pdfpagemode=FullScreen,
 \maketitle
 
 \section*{\color{draculagreen}Introduction}
-Aldone as in "AI-Done" is our own way to streamline task management and to maximize productivity. This product is just a proof of concept but already can do so much to help you in your day to day tasks.
+Aldone as in "AI-Done" is a tool for personal reminders and grocery list management.
+This is a proof of concept of a product that could save you time every day by allowing you
+to smoothly interact with it on the fly.
 
-\subsection*{\color{draculayellow}{Functionality}}
-What can Aldone do for you, you may ask...
+Aldone is a react web app that interacts with a node.js and a python server doing most of the magic.
+After a log-in you will be able to speak to it to add tasks to your grocery list, to-do list,
+or make questions about reminders you saved earlier.
+Furthermore, you could ask to split a task in sub-tasks or approximate how long a task will take.
+Aldone is able to detect fully by himself weather you are asking him to add something to your grocery list or to-do list.
 
-Aldone can be your interactive daily task logger controlled only by your voice. Our vision is an assistant you can talk to and then make questions to, for the sole purpose of helping you achieve tasks faster in a world full of distraction and where time is more and more valuable.
-
-Aldone, is web based for now. After a log-in you will be able to speak to it to add tasks you need to accomplish or make questions about todos you told him earlier, but it doesn't end here: you could ask him for example to split a task in sub-tasks to approximate how long a task will take and  much more... The possibilities are endless. We implemented also a neat feature from a highly requested functionality especially from Italian moms. We added to Aldone the functionality to be able to detect fully by himself weather you are asking him to add something to your own grocery list in order to make it really easy to then retrieve everything you may have added through the week. The coolest thing is that once you will come home from the supermarket with tired legs and arms from carrying bags, you won't have to manually remove everything from this digital grocery list but you can use your phone camera to detect what foods you actually bought and then Aldone will remove them for you. It is very simple and useful in the case you didn't actually buy everything that was on the list let's say for example that a product wasn't available that day, Aldone will then keep it in the list so that you won't forget to buy it the next time. 
+The coolest thing is that once you will come home from the supermarket with tired legs and arms from carrying bags, you won't have to manually remove everything from this digital grocery list but you can use your phone camera to detect what foods you actually bought and then Aldone will remove them for you. Other use cases for this include checking what's already in your kitchen or marking products as bought after delegating your groceries to someone else.
 
 \newpage
 
@@ -63,43 +88,48 @@ Aldone, is web based for now. After a log-in you will be able to speak to it to 
 \caption{\small Visual representation of the agents that make up Aldone}
 \end{figure}
 
-As we can see Aldone was created by splitting its functionality into various agents that cooperate with each others. In order to fully understand how Aldone works under the hood it is best to understand the functionality of these agents. Let's work our way thorough the graph from top to bottom following the arrows:
+As we can see Aldone was created by splitting its behind-the-scenes functionalities into multiple specialized AI agents that cooperate with each others. In order to fully understand how Aldone works under the hood it is best to understand the functionality of each of these agents alone. Let's work our way thorough the graph from top to bottom:
 
 \subsection*{\color{draculayellow}Speech-to-Text Agent}
-As mentioned before Aldone is a web app that uses Next.js, for this reason in order to make speech to text as fast as possible while still being reliable we choose to use the \href{https://developer.chrome.com/blog/voice-driven-web-apps-introduction-to-the-web-speech-api}{browser API} to handle the speech-to-text since nowadays is pretty much supported in every commonly used browsers.
+For the Speech-to-Text task, being a web app, Aldone uses the browser's built-in Web Speech API service for convenience. The implementation can be found by searching for ``webkitSpeechRecognition" in the `src/app/[username]/page.tsx' file.
+
+\newpage
 
 \subsection*{\color{draculayellow}Question Classifier}
-The question classifier in case is a folder where we used pytorch to create a neural network that is able to detect weather each phrase the user says to our Speech-To-Text agent is a query or an instruction. This is crucial in order to be able to keep traversing the agents in our graph. We needed a way in fact to be able to make Aldone recognize weather the user is asking something to him in which case we would pass the query to the General Agent which will be able to respond to the query regarding todos or weather the phrase is an instruction in this case the actions needed should be to add a todo inside the database which will be handled by the Category classifier going forward.
+The task of the Question Classifier is to determine whether the user's input is a question/query or a statement/instruction. Anything that involves looking for information in the web or from the existing data in the database, is a query. Anything that provides new data within the input, is not a query.
 
-In the folder is present:
+\begin{figure}[H]
+\begin{center}
+\begin{tabular}{SS}
+  \toprule
+    \text{Input} & \text{Label} \\
+    \midrule
+    \text{``What's the capital of Italy?"}  & \text{Query} \\
+    \text{``Add milk to my grocery list"}  & \text{Not Query}  \\
+    \text{``Split task X into subtasks"} & \text{Query}  \\
+    \bottomrule
+\end{tabular}
+\end{center}
+\caption{\it For example, the input "What's the capital of Italy?" is a query, while "Add milk to my grocery list" is an instruction. The input "Split task X into subtasks" is also a query because the data is not being provided by the input.} \label{faketable:mul}
+\end{figure}
+
+
+The Question Classifier is implemented using a neural network trained on a dataset of 500 examples.
+The question classifier is a pytorch neural network and its code can be found in the subdirectory ``src/py/question\_classifier''.
+
+In the subdirectory,
 \begin{itemize}
- \item \texttt{nndata.json}: this is the dataset used to train the model it contains 150 prompts inside a json file where each entry is a table with a text and a label (1 if it is a query, 0 if it is a statement)
-  \item \texttt{nntraining.py}:
-  \begin{enumerate}
-    \item \textit{Data Loading}: Loads the data from a JSON file. Each item in the data is a dictionary with a "text" field and a "label" field.
-    \item \textit{Data Splitting}: Splits the data into training, validation, and test sets using stratified sampling.
-    \item \textit{Text Vectorization}: Converts the text into a numerical representation using the `CountVectorizer` from `sklearn`.
-    \item \textit{Data Conversion}: Converts the data and labels into PyTorch tensors, which are used to create a `DataLoader` for each set.
-    \item \textit{Model Definition}: Defines a `TextClassifier` model, which is a simple feed-forward neural network with one hidden layer and a sigmoid activation function on the output layer.
-    \item \textit{Training Loop}: Trains the model for a specified number of epochs. In each epoch, it computes the loss and updates the model's parameters. It also evaluates the model on the validation data and prints the training and validation loss.
-    \item \textit{Model Evaluation}: Evaluates the model on the test data and prints the accuracy.
-    \item \textit{Model Output}: labelmodel.pth (the trained model) and labelvectorizer.joblib (the fitted vectorizer), which are both used in the `nnlabeler.py` script.
-  \end{enumerate}
-  \item \texttt{nnlabeler.py}: responsible for applying the trained model to new text data
-  \begin{enumerate}
-    \item \textit{Model and Vectorizer Loading}: Loads the trained model and the vectorizer from disk.
-    \item \textit{Text Vectorization}: Converts the input text into a numerical representation using the loaded vectorizer.
-    \item \textit{Data Conversion}: Converts the vectorized text into a PyTorch tensor.
-    \item \textit{Model Application}: Passes the tensor through the model to get the predicted probability of the text being a question.
-    \item \textit{Prediction}: Rounds the predicted probability to get the predicted label (1 for question, 0 for statement).
-    \item \textit{Query Function}: Provides a function that returns `True` if the text is predicted to be a question and `False` otherwise.
-    \item \textit{Command-Line Interface}: If the script is run from the command line with a text argument, it prints the predicted label for the text.
-  \end{enumerate}
+ \item \texttt{nndata.json}: is the dataset used to train the model
+  \item \texttt{nntraining.py}: is the training script that generates the model. 80\% of the data is used for training and 20\% for testing. Of the training data, 25\% is used for validation.
+  \item \texttt{nnlabeler.py}: uses the trained model to label new input data.
 \end{itemize}
 
-**add image of the accuracy**
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{question_classifier_accuracy.png}
+\caption{\small We achieved 97\% accuracy on the test set.}
+\end{figure}
 
-\section*{If the phrase is an Instruction}
 \subsection*{\color{draculayellow}Category Classifier}
 
 \subsection*{\color{draculayellow}Todo Extractor}
@@ -111,8 +141,6 @@ In the folder is present:
 We first asked the LLM model to give us the entire updated grocery list object, but empirically it often made errors. What we ended up doing is asking the LLM model for indices of the grocery list that were updated, and then we updated the grocery list object ourselves. This way, we could ensure that the grocery list object was updated correctly.
 
 \subsection*{\color{draculayellow}Grocery List Matcher}
-
-\section*{If the phrase is an Query}
 
 \subsection*{\color{draculayellow}General Agent}
 
