@@ -1,535 +1,1914 @@
 [
-  {
-    "text": "the sun rises in the east",
-    "label": 0
-  },
-  {
-    "text": "is the capital of france paris",
-    "label": 1
-  },
-  {
-    "text": "water boils at 100 degrees celsius",
-    "label": 0
-  },
-  {
-    "text": "add picking up my son to my todos",
-    "label": 0
-  },
-
-  {
-    "text": "mount everest is the tallest mountain on earth",
-    "label": 0
-  },
-  {
-    "text": "what color is the sky",
-    "label": 1
-  },
-  {
-    "text": "the earth revolves around the sun",
-    "label": 0
-  },
-  {
-    "text": "the pacific ocean is the largest ocean on earth",
-    "label": 0
-  },
-  {
-    "text": "elephants are the largest land animals",
-    "label": 0
-  },
-  {
-    "text": "birds can fly",
-    "label": 0
-  },
-  {
-    "text": "where is the eiffel tower located",
-    "label": 1
-  },
-  {
-    "text": "photosynthesis is the process by which plants make their food",
-    "label": 0
-  },
-  {
-    "text": "the nile river is the longest river in the world",
-    "label": 0
-  },
-  {
-    "text": "what is the capital of japan",
-    "label": 1
-  },
-  {
-    "text": "rocks are made up of minerals",
-    "label": 0
-  },
-  {
-    "text": "there are 365 days in a year",
-    "label": 0
-  },
-  {
-    "text": "why is the sky blue",
-    "label": 1
-  },
-  {
-    "text": "the great wall of china is visible from space",
-    "label": 0
-  },
-  {
-    "text": "the human body has 206 bones",
-    "label": 0
-  },
-  {
-    "text": "what is the capital of brazil",
-    "label": 1
-  },
-  {
-    "text": "sound travels faster through solids than through gases",
-    "label": 0
-  },
-  {
-    "text": "i need to finish this report by tomorrow",
-    "label": 0
-  },
-  {
-    "text": "what steps should i take to complete this project",
-    "label": 1
-  },
-  {
-    "text": "remember to send the email to the client",
-    "label": 0
-  },
-  {
-    "text": "what do i need to prepare for the meeting",
-    "label": 1
-  },
-  {
-    "text": "make sure to update the database before the end of the day",
-    "label": 0
-  },
-  {
-    "text": "what tasks are on my to-do list for today",
-    "label": 1
-  },
-  {
-    "text": "double-check the calculations in the spreadsheet",
-    "label": 0
-  },
-  {
-    "text": "what do i need to buy from the grocery store",
-    "label": 1
-  },
-  {
-    "text": "the presentation slides are ready for tomorrow's meeting",
-    "label": 0
-  },
-  {
-    "text": "i have completed the research for the project",
-    "label": 0
-  },
-  {
-    "text": "what do i need to do to improve my productivity",
-    "label": 1
-  },
-  {
-    "text": "the deadline for the assignment is next week",
-    "label": 0
-  },
-  {
-    "text": "what steps should i take to learn a new skill",
-    "label": 1
-  },
-  {
-    "text": "remember to water the plants in the office",
-    "label": 0
-  },
-  {
-    "text": "what do i need to include in the project proposal",
-    "label": 1
-  },
-  {
-    "text": "the code for the new feature is ready for testing",
-    "label": 0
-  },
-  {
-    "text": "i need to schedule a meeting with the team",
-    "label": 0
-  },
-  {
-    "text": "what tasks should i prioritize for today",
-    "label": 1
-  },
-  {
-    "text": "make sure to follow up with the client before the end of the week",
-    "label": 0
-  },
-  {
-    "text": "what do i need to do to meet the project deadline",
-    "label": 1
-  },
-  {
-    "text": "i need to review the budget for next quarter",
-    "label": 0
-  },
-  {
-    "text": "what do i need to do to stay organized",
-    "label": 1
-  },
-  {
-    "text": "make sure to update the project timeline",
-    "label": 0
-  },
-  {
-    "text": "what tasks should i delegate to the team",
-    "label": 1
-  },
-  {
-    "text": "i have completed the first draft of the proposal",
-    "label": 0
-  },
-  {
-    "text": "what do i need to do to improve team communication",
-    "label": 1
-  },
-  {
-    "text": "remember to schedule a training session for the new software",
-    "label": 0
-  },
-  {
-    "text": "what steps should i take to streamline the process",
-    "label": 1
-  },
-  {
-    "text": "the inventory needs to be updated by the end of the day",
-    "label": 0
-  },
-  {
-    "text": "what do i need to do to enhance customer satisfaction",
-    "label": 1
-  },
-  {
-    "text": "i need to finalize the agenda for the team meeting",
-    "label": 0
-  },
-  {
-    "text": "what tasks can i automate to save time",
-    "label": 1
-  },
-  {
-    "text": "make sure to review the contracts before signing",
-    "label": 0
-  },
-  {
-    "text": "what do i need to do to foster a positive work culture",
-    "label": 1
-  },
-  {
-    "text": "i need to prepare the presentation for the client pitch",
-    "label": 0
-  },
-  {
-    "text": "what steps should i take to address employee feedback",
-    "label": 1
-  },
-  {
-    "text": "remember to update the project status report",
-    "label": 0
-  },
-  {
-    "text": "what do i need to do to minimize project risks",
-    "label": 1
-  },
-  {
-    "text": "i need to schedule a performance review for the team members",
-    "label": 0
-  },
-  {
-    "text": "what tasks should i include in the weekly plan",
-    "label": 1
-  },
-  {
-    "text": "i need to finish this report by tomorrow",
-    "label": 0
-  },
-  {
-    "text": "what steps should i take to complete this project",
-    "label": 1
-  },
-  {
-    "text": "remember to send the email to the client",
-    "label": 0
-  },
-  {
-    "text": "what do i need to prepare for the meeting",
-    "label": 1
-  },
-  {
-    "text": "make sure to update the database before the end of the day",
-    "label": 0
-  },
-  {
-    "text": "what tasks are on my to-do list for today",
-    "label": 1
-  },
-  {
-    "text": "double-check the calculations in the spreadsheet",
-    "label": 0
-  },
-  {
-    "text": "what do i need to buy from the grocery store",
-    "label": 1
-  },
-  {
-    "text": "the presentation slides are ready for tomorrow's meeting",
-    "label": 0
-  },
-  {
-    "text": "i have completed the research for the project",
-    "label": 0
-  },
-  {
-    "text": "what do i need to do to improve my productivity",
-    "label": 1
-  },
-  {
-    "text": "split the tiramisu into its ingredients",
-    "label": 1
-  },
-  {
-      "text": "how much time it is going to take me",
-      "label": 1
-  },
-  {
-      "text": "need to buy milk",
-      "label": 0
-  },
-  {
-      "text": "i need to make more money",
-      "label": 0
-  },
-  {
-      "text": "tell me how can i make money",
-      "label": 1
-  },
-  {
-      "text": "tell how to make my todo list shorter",
-      "label": 1
-  },
-  {
-      "text": "remind me to make a cream pie",
-      "label": 0
-  },
-  {
-      "text": "split this task into subtasks",
-      "label": 1
-  },
-  {
-      "text": "please can you divide my grocery list into subcategories",
-      "label": 1
-  },
-  {
-      "text": "remind me to call my coworker",
-      "label": 0
-  },
-  {
-      "text": "can you split the doing the laundry task into 5 tasks",
-      "label": 1
-  },
-  {
-      "text": "split the way of doing it",
-      "label": 1
-  },
-  {
-      "text": "remind me to make some pasta for my nephew",
-      "label": 0
-  },
-  {
-      "text": "tell me the weather",
-      "label": 1
-  },
-  {
-    "text": "the deadline for the assignment is next week",
-    "label": 0
-  },
-  {
-    "text": "what steps should i take to learn a new skill",
-    "label": 1
-  },
-  {
-    "text": "remember to water the plants in the office",
-    "label": 0
-  },
-  {
-    "text": "what do i need to include in the project proposal",
-    "label": 1
-  },
-  {
-    "text": "the code for the new feature is ready for testing",
-    "label": 0
-  },
-  {
-    "text": "i need to schedule a meeting with the team",
-    "label": 0
-  },
-  {
-    "text": "what tasks should i prioritize for today",
-    "label": 1
-  },
-  {
-      "text": "tell me which task it the hardest",
-      "label": 1
-  },
-  {
-    "text": "make sure to follow up with the client before the end of the week",
-    "label": 0
-  },
-  {
-    "text": "what do i need to do to meet the project deadline",
-    "label": 1
-  },
-  {
-    "text": "did i complete all the tasks on my checklist",
-    "label": 1
-  },
-  {
-    "text": "add apples to the grocery list",
-    "label": 0
-  },
-  {
-    "text": "what time is the team meeting scheduled for",
-    "label": 1
-  },
-  {
-    "text": "is it necessary to attend the training session tomorrow",
-    "label": 1
-  },
-  {
-    "text": "where can i find the latest version of the project documentation",
-    "label": 1
-  },
-  {
-    "text": "i need to finish this report by tomorrow",
-    "label": 0
-  },
-  {
-    "text": "what steps should i take to complete this project",
-    "label": 1
-  },
-  {
-    "text": "remember to send the email to the client",
-    "label": 0
-  },
-  {
-    "text": "how do i prepare for the meeting",
-    "label": 1
-  },
-  {
-    "text": "make sure to update the database before the end of the day",
-    "label": 0
-  },
-  {
-    "text": "who is responsible for updating the project timeline",
-    "label": 1
-  },
-  {
-    "text": "double-check the calculations in the spreadsheet",
-    "label": 0
-  },
-  {
-    "text": "when is the deadline for the project",
-    "label": 1
-  },
-  {
-    "text": "the presentation slides are ready for tomorrow's meeting",
-    "label": 0
-  },
-  {
-    "text": "i have completed the research for the project",
-    "label": 0
-  },
-  {
-      "text": "tell me where i parked the car",
-      "label": 1
-  },
-  {
-    "text": "where do i find resources for improving productivity",
-    "label": 1
-  },
-  {
-    "text": "the deadline for the assignment is next week",
-    "label": 0
-  },
-  {
-    "text": "how can i learn a new skill efficiently",
-    "label": 1
-  },
-  {
-      "text": "remind me to call jonny",
-      "label": 0
-  },
-  {
-    "text": "remember to water the plants in the office",
-    "label": 0
-  },
-  {
-    "text": "add tiramisu to the grocery list",
-    "label": 0
-  },
-  {
-    "text": "who should i contact for assistance with the project proposal",
-    "label": 1
-  },
-  {
-    "text": "the code for the new feature is ready for testing",
-    "label": 0
-  },
-  {
-    "text": "i need to schedule a meeting with the team",
-    "label": 0
-  },
-  {
-    "text": "when should i start working on the new project",
-    "label": 1
-  },
-  {
-    "text": "make sure to follow up with the client before the end of the week",
-    "label": 0
-  },
-  {
-    "text": "where can i find relevant information for meeting the project deadline",
-    "label": 1
-  },
-  {
-    "text": "add finish homework",
-    "label": 0
-  },
-  {
-    "text": "can you summarize me my todos",
-    "label": 1
-  },
-  {
-    "text": "i need to do an exam",
-    "label": 0
-  },
-  {
-    "text": "please summarize what i need to do",
-    "label": 1
-  },
-  {
-    "text": "can you list me my shopping list",
-    "label": 1
-  },
-  {
-    "text": "add all my shopping list to the grocery list",
-    "label": 0
-  },
-  {
-    "text": "i need to do homeworks",
-    "label": 0
-  },
-  {
-    "text": "i need to do homework page 220",
-    "label": 0
-  },
-  {
-    "text": "how to do i make the second todo in the list",
-    "label": 1
-  }
+    {
+        "text": "the sun rises in the east",
+        "label": 0
+    },
+    {
+        "text": "is the capital of france paris",
+        "label": 1
+    },
+    {
+        "text": "water boils at 100 degrees celsius",
+        "label": 0
+    },
+    {
+        "text": "add picking up my son to my todos",
+        "label": 0
+    },
+    {
+        "text": "mount everest is the tallest mountain on earth",
+        "label": 0
+    },
+    {
+        "text": "what color is the sky",
+        "label": 1
+    },
+    {
+        "text": "the earth revolves around the sun",
+        "label": 0
+    },
+    {
+        "text": "the pacific ocean is the largest ocean on earth",
+        "label": 0
+    },
+    {
+        "text": "elephants are the largest land animals",
+        "label": 0
+    },
+    {
+        "text": "birds can fly",
+        "label": 0
+    },
+    {
+        "text": "where is the eiffel tower located",
+        "label": 1
+    },
+    {
+        "text": "what do i need to buy from the grocery store",
+        "label": 1
+    },
+    {
+        "text": "the presentation slides are ready for tomorrow's meeting",
+        "label": 0
+    },
+    {
+        "text": "i have completed the research for the project",
+        "label": 0
+    },
+    {
+        "text": "what do i need to do to improve my productivity",
+        "label": 1
+    },
+    {
+        "text": "the deadline for the assignment is next week",
+        "label": 0
+    },
+    {
+        "text": "what steps should i take to learn a new skill",
+        "label": 1
+    },
+    {
+        "text": "remember to water the plants in the office",
+        "label": 0
+    },
+    {
+        "text": "what do i need to include in the project proposal",
+        "label": 1
+    },
+    {
+        "text": "the code for the new feature is ready for testing",
+        "label": 0
+    },
+    {
+        "text": "i need to schedule a meeting with the team",
+        "label": 0
+    },
+    {
+        "text": "what tasks should i prioritize for today",
+        "label": 1
+    },
+    {
+        "text": "make sure to follow up with the client before the end of the week",
+        "label": 0
+    },
+    {
+        "text": "what do i need to do to meet the project deadline",
+        "label": 1
+    },
+    {
+        "text": "i need to review the budget for next quarter",
+        "label": 0
+    },
+    {
+        "text": "what do i need to do to stay organized",
+        "label": 1
+    },
+    {
+        "text": "make sure to update the project timeline",
+        "label": 0
+    },
+    {
+        "text": "what tasks should i delegate to the team",
+        "label": 1
+    },
+    {
+        "text": "i have completed the first draft of the proposal",
+        "label": 0
+    },
+    {
+        "text": "what do i need to do to improve team communication",
+        "label": 1
+    },
+    {
+        "text": "remember to schedule a training session for the new software",
+        "label": 0
+    },
+    {
+        "text": "what steps should i take to streamline the process",
+        "label": 1
+    },
+    {
+        "text": "the inventory needs to be updated by the end of the day",
+        "label": 0
+    },
+    {
+        "text": "what do i need to do to enhance customer satisfaction",
+        "label": 1
+    },
+    {
+        "text": "i need to finalize the agenda for the team meeting",
+        "label": 0
+    },
+    {
+        "text": "what tasks can i automate to save time",
+        "label": 1
+    },
+    {
+        "text": "make sure to review the contracts before signing",
+        "label": 0
+    },
+    {
+        "text": "what do i need to do to foster a positive work culture",
+        "label": 1
+    },
+    {
+        "text": "i need to prepare the presentation for the client pitch",
+        "label": 0
+    },
+    {
+        "text": "what steps should i take to address employee feedback",
+        "label": 1
+    },
+    {
+        "text": "remember to update the project status report",
+        "label": 0
+    },
+    {
+        "text": "what do i need to do to minimize project risks",
+        "label": 1
+    },
+    {
+        "text": "i need to schedule a performance review for the team members",
+        "label": 0
+    },
+    {
+        "text": "what tasks should i include in the weekly plan",
+        "label": 1
+    },
+    {
+        "text": "i need to finish this report by tomorrow",
+        "label": 0
+    },
+    {
+        "text": "what steps should i take to complete this project",
+        "label": 1
+    },
+    {
+        "text": "remember to send the email to the client",
+        "label": 0
+    },
+    {
+        "text": "what do i need to prepare for the meeting",
+        "label": 1
+    },
+    {
+        "text": "make sure to update the database before the end of the day",
+        "label": 0
+    },
+    {
+        "text": "what tasks are on my to-do list for today",
+        "label": 1
+    },
+    {
+        "text": "double-check the calculations in the spreadsheet",
+        "label": 0
+    },
+    {
+        "text": "what do i need to buy from the grocery store",
+        "label": 1
+    },
+    {
+        "text": "the presentation slides are ready for tomorrow's meeting",
+        "label": 0
+    },
+    {
+        "text": "i have completed the research for the project",
+        "label": 0
+    },
+    {
+        "text": "what do i need to do to improve my productivity",
+        "label": 1
+    },
+    {
+        "text": "split the tiramisu into its ingredients",
+        "label": 1
+    },
+    {
+        "text": "how much time it is going to take me",
+        "label": 1
+    },
+    {
+        "text": "need to buy milk",
+        "label": 0
+    },
+    {
+        "text": "i need to make more money",
+        "label": 0
+    },
+    {
+        "text": "tell me how can i make money",
+        "label": 1
+    },
+    {
+        "text": "tell how to make my todo list shorter",
+        "label": 1
+    },
+    {
+        "text": "remind me to make a cream pie",
+        "label": 0
+    },
+    {
+        "text": "split this task into subtasks",
+        "label": 1
+    },
+    {
+        "text": "please can you divide my grocery list into subcategories",
+        "label": 1
+    },
+    {
+        "text": "remind me to call my coworker",
+        "label": 0
+    },
+    {
+        "text": "can you split the doing the laundry task into 5 tasks",
+        "label": 1
+    },
+    {
+        "text": "split the way of doing it",
+        "label": 1
+    },
+    {
+        "text": "remind me to make some pasta for my nephew",
+        "label": 0
+    },
+    {
+        "text": "tell me the weather",
+        "label": 1
+    },
+    {
+        "text": "the deadline for the assignment is next week",
+        "label": 0
+    },
+    {
+        "text": "what steps should i take to learn a new skill",
+        "label": 1
+    },
+    {
+        "text": "remember to water the plants in the office",
+        "label": 0
+    },
+    {
+        "text": "what do i need to include in the project proposal",
+        "label": 1
+    },
+    {
+        "text": "the code for the new feature is ready for testing",
+        "label": 0
+    },
+    {
+        "text": "i need to schedule a meeting with the team",
+        "label": 0
+    },
+    {
+        "text": "what tasks should i prioritize for today",
+        "label": 1
+    },
+    {
+        "text": "tell me which task it the hardest",
+        "label": 1
+    },
+    {
+        "text": "make sure to follow up with the client before the end of the week",
+        "label": 0
+    },
+    {
+        "text": "what do i need to do to meet the project deadline",
+        "label": 1
+    },
+    {
+        "text": "did i complete all the tasks on my checklist",
+        "label": 1
+    },
+    {
+        "text": "add apples to the grocery list",
+        "label": 0
+    },
+    {
+        "text": "what time is the team meeting scheduled for",
+        "label": 1
+    },
+    {
+        "text": "is it necessary to attend the training session tomorrow",
+        "label": 1
+    },
+    {
+        "text": "where can i find the latest version of the project documentation",
+        "label": 1
+    },
+    {
+        "text": "i need to finish this report by tomorrow",
+        "label": 0
+    },
+    {
+        "text": "what steps should i take to complete this project",
+        "label": 1
+    },
+    {
+        "text": "remember to send the email to the client",
+        "label": 0
+    },
+    {
+        "text": "how do i prepare for the meeting",
+        "label": 1
+    },
+    {
+        "text": "make sure to update the database before the end of the day",
+        "label": 0
+    },
+    {
+        "text": "who is responsible for updating the project timeline",
+        "label": 1
+    },
+    {
+        "text": "double-check the calculations in the spreadsheet",
+        "label": 0
+    },
+    {
+        "text": "when is the deadline for the project",
+        "label": 1
+    },
+    {
+        "text": "the presentation slides are ready for tomorrow's meeting",
+        "label": 0
+    },
+    {
+        "text": "i have completed the research for the project",
+        "label": 0
+    },
+    {
+        "text": "tell me where i parked the car",
+        "label": 1
+    },
+    {
+        "text": "where do i find resources for improving productivity",
+        "label": 1
+    },
+    {
+        "text": "the deadline for the assignment is next week",
+        "label": 0
+    },
+    {
+        "text": "how can i learn a new skill efficiently",
+        "label": 1
+    },
+    {
+        "text": "remind me to call jonny",
+        "label": 0
+    },
+    {
+        "text": "remember to water the plants in the office",
+        "label": 0
+    },
+    {
+        "text": "add tiramisu to the grocery list",
+        "label": 0
+    },
+    {
+        "text": "who should i contact for assistance with the project proposal",
+        "label": 1
+    },
+    {
+        "text": "the code for the new feature is ready for testing",
+        "label": 0
+    },
+    {
+        "text": "i need to schedule a meeting with the team",
+        "label": 0
+    },
+    {
+        "text": "when should i start working on the new project",
+        "label": 1
+    },
+    {
+        "text": "make sure to follow up with the client before the end of the week",
+        "label": 0
+    },
+    {
+        "text": "where can i find relevant information for meeting the project deadline",
+        "label": 1
+    },
+    {
+        "text": "add finish homework",
+        "label": 0
+    },
+    {
+        "text": "can you summarize me my todos",
+        "label": 1
+    },
+    {
+        "text": "i need to do an exam",
+        "label": 0
+    },
+    {
+        "text": "please summarize what i need to do",
+        "label": 1
+    },
+    {
+        "text": "can you list me my shopping list",
+        "label": 1
+    },
+    {
+        "text": "add all my shopping list to the grocery list",
+        "label": 0
+    },
+    {
+        "text": "i need to do homeworks",
+        "label": 0
+    },
+    {
+        "text": "i need to do homework page 220",
+        "label": 0
+    },
+    {
+        "text": "how to do i make the second todo in the list",
+        "label": 1
+    },
+    {
+        "text": "the Amazon rainforest is the largest tropical rainforest in the world",
+        "label": 0
+    },
+    {
+        "text": "how many moons does Jupiter have",
+        "label": 1
+    },
+    {
+        "text": "honey never spoils, even after thousands of years",
+        "label": 0
+    },
+    {
+        "text": "what is the process for submitting an expense report",
+        "label": 1
+    },
+    {
+        "text": "send the finalized report to the client by end of day",
+        "label": 0
+    },
+    {
+        "text": "who is responsible for the new marketing campaign",
+        "label": 1
+    },
+    {
+        "text": "please update the client on the project's progress",
+        "label": 0
+    },
+    {
+        "text": "what should I include in the annual performance review",
+        "label": 1
+    },
+    {
+        "text": "finish the quarterly budget review by Monday",
+        "label": 0
+    },
+    {
+        "text": "how do I improve my time management skills",
+        "label": 1
+    },
+    {
+        "text": "mercury is the smallest planet in our solar system",
+        "label": 0
+    },
+    {
+        "text": "what time is the team meeting scheduled for",
+        "label": 1
+    },
+    {
+        "text": "ensure that all team members receive the meeting notes",
+        "label": 0
+    },
+    {
+        "text": "can you summarize my to-dos",
+        "label": 1
+    },
+    {
+        "text": "the largest desert in the world is the Sahara",
+        "label": 0
+    },
+    {
+        "text": "who should I contact for assistance with the project proposal",
+        "label": 1
+    },
+    {
+        "text": "the presentation slides are ready for tomorrow's meeting",
+        "label": 0
+    },
+    {
+        "text": "how can I learn a new skill efficiently",
+        "label": 1
+    },
+    {
+        "text": "remind me to call Jonny",
+        "label": 0
+    },
+    {
+        "text": "where can I find the latest version of the project documentation",
+        "label": 1
+    },
+    {
+        "text": "add tiramisu to the grocery list",
+        "label": 0
+    },
+    {
+        "text": "what tasks should I prioritize this week",
+        "label": 1
+    },
+    {
+        "text": "I need to make more money",
+        "label": 0
+    },
+    {
+        "text": "tell me how can I make money",
+        "label": 1
+    },
+    {
+        "text": "please summarize what I need to do",
+        "label": 1
+    },
+    {
+        "text": "double-check the calculations in the spreadsheet",
+        "label": 0
+    },
+    {
+        "text": "what tasks should I delegate to the team",
+        "label": 1
+    },
+    {
+        "text": "I need to do homeworks",
+        "label": 0
+    },
+    {
+        "text": "remind me to make a cream pie",
+        "label": 0
+    },
+    {
+        "text": "what do I need to buy from the grocery store",
+        "label": 1
+    },
+    {
+        "text": "the code for the new feature is ready for testing",
+        "label": 0
+    },
+    {
+        "text": "what do I need to include in the project proposal",
+        "label": 1
+    },
+    {
+        "text": "add apples to the grocery list",
+        "label": 0
+    },
+    {
+        "text": "when should I start working on the new project",
+        "label": 1
+    },
+    {
+        "text": "can you list me my shopping list",
+        "label": 1
+    },
+    {
+        "text": "I need to schedule a meeting with the team",
+        "label": 0
+    },
+    {
+        "text": "where can I find relevant information for meeting the project deadline",
+        "label": 1
+    },
+    {
+        "text": "I need to do homework page 220",
+        "label": 0
+    },
+    {
+        "text": "what steps should I take to address employee feedback",
+        "label": 1
+    },
+    {
+        "text": "make sure to follow up with the client before the end of the week",
+        "label": 0
+    },
+    {
+        "text": "what tasks can I automate to save time",
+        "label": 1
+    },
+    {
+        "text": "add all my shopping list to the grocery list",
+        "label": 0
+    },
+    {
+        "text": "I need to finalize the agenda for the team meeting",
+        "label": 0
+    },
+    {
+        "text": "how do I prepare for the meeting",
+        "label": 1
+    },
+    {
+        "text": "what do I need to do to minimize project risks",
+        "label": 1
+    },
+    {
+        "text": "remember to schedule a training session for the new software",
+        "label": 0
+    },
+    {
+        "text": "tell me where I parked the car",
+        "label": 1
+    },
+    {
+        "text": "there are 365 days in a year",
+        "label": 0
+    },
+    {
+        "text": "what steps should I take to streamline the process",
+        "label": 1
+    },
+    {
+        "text": "make sure to update the project timeline",
+        "label": 0
+    },
+    {
+        "text": "what tasks should I include in the weekly plan",
+        "label": 1
+    },
+    {
+        "text": "I need to review the budget for next quarter",
+        "label": 0
+    },
+    {
+        "text": "what do I need to do to foster a positive work culture",
+        "label": 1
+    },
+    {
+        "text": "the deadline for the assignment is next week",
+        "label": 0
+    },
+    {
+        "text": "remind me to water the plants in the office",
+        "label": 0
+    },
+    {
+        "text": "what is the capital of Japan",
+        "label": 1
+    },
+    {
+        "text": "I need to prepare the presentation for the client pitch",
+        "label": 0
+    },
+    {
+        "text": "split the way of doing it",
+        "label": 1
+    },
+    {
+        "text": "make sure to review the contracts before signing",
+        "label": 0
+    },
+    {
+        "text": "who is responsible for updating the project timeline",
+        "label": 1
+    },
+    {
+        "text": "I need to schedule a performance review for the team members",
+        "label": 0
+    },
+    {
+        "text": "how to do I make the second todo in the list",
+        "label": 1
+    },
+    {
+        "text": "sound travels faster through solids than through gases",
+        "label": 0
+    },
+    {
+        "text": "what steps should I take to complete this project",
+        "label": 1
+    },
+    {
+        "text": "what do I need to do to enhance customer satisfaction",
+        "label": 1
+    },
+    {
+        "text": "what do I need to do to improve team communication",
+        "label": 1
+    },
+    {
+        "text": "add finish homework",
+        "label": 0
+    },
+    {
+        "text": "I need to finish this report by tomorrow",
+        "label": 0
+    },
+    {
+        "text": "schedule the meeting with the new client",
+        "label": 0
+    },
+    {
+        "text": "what steps should I follow to improve project management",
+        "label": 1
+    },
+    {
+        "text": "prepare the monthly financial report",
+        "label": 0
+    },
+    {
+        "text": "how can I boost team morale",
+        "label": 1
+    },
+    {
+        "text": "review the latest marketing strategies",
+        "label": 0
+    },
+    {
+        "text": "what do I need to do to increase sales",
+        "label": 1
+    },
+    {
+        "text": "ensure the backup system is working",
+        "label": 0
+    },
+    {
+        "text": "i need to prepare the budget for next quarter",
+        "label": 0
+    },
+    {
+        "text": "remember to back up the data",
+        "label": 0
+    },
+    {
+        "text": "finish the proposal for the new project",
+        "label": 0
+    },
+    {
+        "text": "how can I improve my public speaking skills",
+        "label": 1
+    },
+    {
+        "text": "compile the customer feedback for analysis",
+        "label": 0
+    },
+    {
+        "text": "what are the best practices for team collaboration",
+        "label": 1
+    },
+    {
+        "text": "finalize the quarterly budget",
+        "label": 0
+    },
+    {
+        "text": "how can I optimize the workflow",
+        "label": 1
+    },
+    {
+        "text": "update the website content by Friday",
+        "label": 0
+    },
+    {
+        "text": "what are the key metrics for performance evaluation",
+        "label": 1
+    },
+    {
+        "text": "organize the team-building event",
+        "label": 0
+    },
+    {
+        "text": "how can I manage my time more effectively",
+        "label": 1
+    },
+    {
+        "text": "complete the new employee onboarding process",
+        "label": 0
+    },
+    {
+        "text": "what strategies can I use to retain customers",
+        "label": 1
+    },
+    {
+        "text": "make sure to order office supplies",
+        "label": 0
+    },
+    {
+        "text": "how do I create a more engaging presentation",
+        "label": 1
+    },
+    {
+        "text": "prepare the agenda for the next board meeting",
+        "label": 0
+    },
+    {
+        "text": "what tools can help improve project tracking",
+        "label": 1
+    },
+    {
+        "text": "send reminders to all meeting participants",
+        "label": 0
+    },
+    {
+        "text": "finalize the details for the product launch",
+        "label": 0
+    },
+    {
+        "text": "how do I set up automated email responses",
+        "label": 1
+    },
+    {
+        "text": "what do I need to do to ensure data security",
+        "label": 1
+    },
+    {
+        "text": "arrange a meeting with the finance team",
+        "label": 0
+    },
+    {
+        "text": "how do I create a customer survey",
+        "label": 1
+    },
+    {
+        "text": "finish the inventory audit by end of week",
+        "label": 0
+    },
+    {
+        "text": "what steps should I take to reduce operational costs",
+        "label": 1
+    },
+    {
+        "text": "how can I improve team communication",
+        "label": 1
+    },
+    {
+        "text": "confirm the venue for the conference",
+        "label": 0
+    },
+    {
+        "text": "schedule maintenance for office equipment",
+        "label": 0
+    },
+    {
+        "text": "what are the benefits of cloud computing",
+        "label": 1
+    },
+    {
+        "text": "set a reminder to submit the expense report",
+        "label": 0
+    },
+    {
+        "text": "how can I improve my team's performance",
+        "label": 1
+    },
+    {
+        "text": "don't forget to update the timesheet",
+        "label": 0
+    },
+    {
+        "text": "what actions can I take to boost sales",
+        "label": 1
+    },
+    {
+        "text": "what tools can help streamline communication",
+        "label": 1
+    },
+    {
+        "text": "how can I reduce customer wait times",
+        "label": 1
+    },
+    {
+        "text": "what are the best ways to track project progress",
+        "label": 1
+    },
+    {
+        "text": "ensure the team completes the training",
+        "label": 0
+    },
+    {
+        "text": "how do I create a more efficient workflow",
+        "label": 1
+    },
+    {
+        "text": "submit the travel reimbursement form",
+        "label": 0
+    },
+    {
+        "text": "what strategies can help with time management",
+        "label": 1
+    },
+    {
+        "text": "schedule the quarterly review meeting",
+        "label": 0
+    },
+    {
+        "text": "how can I enhance the user experience",
+        "label": 1
+    },
+    {
+        "text": "organize the files by the end of the week",
+        "label": 0
+    },
+    {
+        "text": "what do I need to do to improve engagement",
+        "label": 1
+    },
+    {
+        "text": "finalize the travel itinerary for the conference",
+        "label": 0
+    },
+    {
+        "text": "what methods can I use to analyze data more effectively",
+        "label": 1
+    },
+    {
+        "text": "double-check the inventory levels",
+        "label": 0
+    },
+    {
+        "text": "how can I increase my daily productivity",
+        "label": 1
+    },
+    {
+        "text": "complete the end-of-month financial summary",
+        "label": 0
+    },
+    {
+        "text": "what steps should I take to launch a new product",
+        "label": 1
+    },
+    {
+        "text": "review the legal documents before the deadline",
+        "label": 0
+    },
+    {
+        "text": "send the updated contract to the vendor",
+        "label": 0
+    },
+    {
+        "text": "finalize the details for the team outing",
+        "label": 0
+    },
+    {
+        "text": "how do I manage multiple projects efficiently",
+        "label": 1
+    },
+    {
+        "text": "prepare the team for the upcoming audit",
+        "label": 0
+    },
+    {
+        "text": "prepare the quarterly sales report",
+        "label": 0
+    },
+    {
+        "text": "what approaches can I take to improve client relationships",
+        "label": 1
+    },
+    {
+        "text": "how do I develop a successful marketing strategy",
+        "label": 1
+    },
+    {
+        "text": "what can I do to enhance my leadership skills",
+        "label": 1
+    },
+    {
+        "text": "what techniques can I use to improve my writing",
+        "label": 1
+    },
+    {
+        "text": "ensure the software update is installed",
+        "label": 0
+    },
+    {
+        "text": "how do I improve the onboarding process",
+        "label": 1
+    },
+    {
+        "text": "submit the project proposal by the end of the day",
+        "label": 0
+    },
+    {
+        "text": "what are the benefits of using cloud storage",
+        "label": 1
+    },
+    {
+        "text": "review the team's performance metrics",
+        "label": 0
+    },
+    {
+        "text": "what steps can I take to optimize the workflow",
+        "label": 1
+    },
+    {
+        "text": "ensure all files are encrypted before sharing",
+        "label": 0
+    },
+    {
+        "text": "how do I set up a new email account",
+        "label": 1
+    },
+    {
+        "text": "update the website content regularly",
+        "label": 0
+    },
+    {
+        "text": "what are the key components of a successful marketing plan",
+        "label": 1
+    },
+    {
+        "text": "arrange for the equipment maintenance",
+        "label": 0
+    },
+    {
+        "text": "how do I analyze market trends effectively",
+        "label": 1
+    },
+    {
+        "text": "what are the latest industry trends",
+        "label": 1
+    },
+    {
+        "text": "finalize the itinerary for the business trip",
+        "label": 0
+    },
+    {
+        "text": "how can I improve the user interface design",
+        "label": 1
+    },
+    {
+        "text": "compile the end-of-year financial statements",
+        "label": 0
+    },
+    {
+        "text": "what strategies can I use to enhance brand visibility",
+        "label": 1
+    },
+    {
+        "text": "ensure the meeting room is booked in advance",
+        "label": 0
+    },
+    {
+        "text": "how do I increase employee engagement",
+        "label": 1
+    },
+    {
+        "text": "confirm the details for the product launch event",
+        "label": 0
+    },
+    {
+        "text": "what are the key factors in customer retention",
+        "label": 1
+    },
+    {
+        "text": "schedule the next team-building activity",
+        "label": 0
+    },
+    {
+        "text": "how can I improve my coding skills",
+        "label": 1
+    },
+    {
+        "text": "organize the quarterly performance review",
+        "label": 0
+    },
+    {
+        "text": "ensure all deliverables are completed on time",
+        "label": 0
+    },
+    {
+        "text": "verify the inventory before placing new orders",
+        "label": 0
+    },
+    {
+        "text": "what are the steps to create a marketing campaign",
+        "label": 1
+    },
+    {
+        "text": "check the server logs for any errors",
+        "label": 0
+    },
+    {
+        "text": "how do I set up a secure password",
+        "label": 1
+    },
+    {
+        "text": "review the project scope with the team",
+        "label": 0
+    },
+    {
+        "text": "what are the key metrics to track for success",
+        "label": 1
+    },
+    {
+        "text": "prepare the documentation for the new software release",
+        "label": 0
+    },
+    {
+        "text": "how can I reduce operational costs",
+        "label": 1
+    },
+    {
+        "text": "verify the data integrity before analysis",
+        "label": 0
+    },
+    {
+        "text": "what do I need to do to get a promotion",
+        "label": 1
+    },
+    {
+        "text": "update the CRM system with new client information",
+        "label": 0
+    },
+    {
+        "text": "how do I conduct a performance review effectively",
+        "label": 1
+    },
+    {
+        "text": "finalize the agenda for the strategic planning meeting",
+        "label": 0
+    },
+    {
+        "text": "what are the best ways to reduce employee turnover",
+        "label": 1
+    },
+    {
+        "text": "how can I improve my negotiation skills",
+        "label": 1
+    },
+    {
+        "text": "prepare the project charter for approval",
+        "label": 0
+    },
+    {
+        "text": "what steps should I take to improve cybersecurity",
+        "label": 1
+    },
+    {
+        "text": "confirm the logistics for the upcoming workshop",
+        "label": 0
+    },
+    {
+        "text": "how do I create a more engaging presentation",
+        "label": 1
+    },
+    {
+        "text": "schedule the training session for new employees",
+        "label": 0
+    },
+    {
+        "text": "what strategies can I use to improve customer loyalty",
+        "label": 1
+    },
+    {
+        "text": "what steps should I take to improve team productivity",
+        "label": 1
+    },
+    {
+        "text": "how do I create a comprehensive project plan",
+        "label": 1
+    },
+    {
+        "text": "complete the risk assessment for the project",
+        "label": 0
+    },
+    {
+        "text": "how do I set realistic project deadlines",
+        "label": 1
+    },
+    {
+        "text": "what are the best tools for remote collaboration",
+        "label": 1
+    },
+    {
+        "text": "prepare the employee satisfaction survey",
+        "label": 0
+    },
+    {
+        "text": "how can I improve the quality of customer service",
+        "label": 1
+    },
+    {
+        "text": "ensure the compliance checklist is up to date",
+        "label": 0
+    },
+    {
+        "text": "what are the most effective marketing channels",
+        "label": 1
+    },
+    {
+        "text": "schedule the quarterly business review",
+        "label": 0
+    },
+    {
+        "text": "how do I create an effective training program",
+        "label": 1
+    },
+    {
+        "text": "finalize the year-end financial report",
+        "label": 0
+    },
+    {
+        "text": "prepare the agenda for the board meeting",
+        "label": 0
+    },
+    {
+        "text": "confirm the meeting schedule with all participants",
+        "label": 0
+    },
+    {
+        "text": "what are the best practices for project management",
+        "label": 1
+    },
+    {
+        "text": "review the contract terms with the legal team",
+        "label": 0
+    },
+    {
+        "text": "how can I improve my problem-solving skills",
+        "label": 1
+    },
+    {
+        "text": "what are the best practices for effective leadership",
+        "label": 1
+    },
+    {
+        "text": "finalize the budget allocation for the next quarter",
+        "label": 0
+    },
+    {
+        "text": "how can I improve my time management skills",
+        "label": 1
+    },
+    {
+        "text": "schedule the team-building workshop for next month",
+        "label": 0
+    },
+    {
+        "text": "what steps should I take to enhance team collaboration",
+        "label": 1
+    },
+    {
+        "text": "how do I delegate tasks effectively",
+        "label": 1
+    },
+    {
+        "text": "ensure all invoices are processed before month-end",
+        "label": 0
+    },
+    {
+        "text": "review the marketing campaign performance metrics",
+        "label": 0
+    },
+    {
+        "text": "what are the key factors in successful project execution",
+        "label": 1
+    },
+    {
+        "text": "complete the inventory audit by Friday",
+        "label": 0
+    },
+    {
+        "text": "how can I improve the company's online presence",
+        "label": 1
+    },
+    {
+        "text": "what steps should I take to improve employee engagement",
+        "label": 1
+    },
+    {
+        "text": "how do I create an effective employee training program",
+        "label": 1
+    },
+    {
+        "text": "prepare the agenda for the monthly team meeting",
+        "label": 0
+    },
+    {
+        "text": "what steps should I take to improve customer satisfaction",
+        "label": 1
+    },
+    {
+        "text": "review the performance goals with each team member",
+        "label": 0
+    },
+    {
+        "text": "how do I create an effective marketing strategy",
+        "label": 1
+    },
+    {
+        "text": "ensure all equipment is properly maintained",
+        "label": 0
+    },
+    {
+        "text": "what are the best ways to motivate employees",
+        "label": 1
+    },
+    {
+        "text": "schedule the product demonstration for next week",
+        "label": 0
+    },
+    {
+        "text": "how can I improve my project management skills",
+        "label": 1
+    },
+    {
+        "text": "confirm the delivery schedule with the logistics team",
+        "label": 0
+    },
+    {
+        "text": "what steps should I take to reduce operational costs",
+        "label": 1
+    },
+    {
+        "text": "review the customer feedback survey results",
+        "label": 0
+    },
+    {
+        "text": "how do I handle conflicts within the team",
+        "label": 1
+    },
+    {
+        "text": "finalize the sales forecast for the upcoming quarter",
+        "label": 0
+    },
+    {
+        "text": "what are the key elements of effective communication",
+        "label": 1
+    },
+    {
+        "text": "update the training materials for new employees",
+        "label": 0
+    },
+    {
+        "text": "how can I improve the company's brand image",
+        "label": 1
+    },
+    {
+        "text": "ensure all safety protocols are followed in the workplace",
+        "label": 0
+    },
+    {
+        "text": "review the performance metrics for the sales team",
+        "label": 0
+    },
+    {
+        "text": "finalize the agenda for the upcoming board meeting",
+        "label": 0
+    },
+    {
+        "text": "what are the essential qualities of a good leader",
+        "label": 1
+    },
+    {
+        "text": "schedule a team-building activity for next Friday",
+        "label": 0
+    },
+    {
+        "text": "how can I improve my presentation skills",
+        "label": 1
+    },
+    {
+        "text": "review the quarterly financial statements",
+        "label": 0
+    },
+    {
+        "text": "what steps should I take to increase employee morale",
+        "label": 1
+    },
+    {
+        "text": "update the employee handbook with new policies",
+        "label": 0
+    },
+    {
+        "text": "how do I develop a successful marketing campaign",
+        "label": 1
+    },
+    {
+        "text": "finalize the budget for the annual company retreat",
+        "label": 0
+    },
+    {
+        "text": "what are the best strategies for talent acquisition",
+        "label": 1
+    },
+    {
+        "text": "organize a brainstorming session for new project ideas",
+        "label": 0
+    },
+    {
+        "text": "how can I improve my negotiation skills",
+        "label": 1
+    },
+    {
+        "text": "review the performance evaluations for all employees",
+        "label": 0
+    },
+    {
+        "text": "what steps should I take to improve workplace diversity",
+        "label": 1
+    },
+    {
+        "text": "schedule a training workshop on conflict resolution",
+        "label": 0
+    },
+    {
+        "text": "how do I develop a strategic business plan",
+        "label": 1
+    },
+    {
+        "text": "review the production schedule for next month",
+        "label": 0
+    },
+    {
+        "text": "what are the key components of effective team communication",
+        "label": 1
+    },
+    {
+        "text": "update the company's social media profiles",
+        "label": 0
+    },
+    {
+        "text": "how can I enhance customer service experience",
+        "label": 1
+    },
+    {
+        "text": "schedule a team-building retreat for the department",
+        "label": 0
+    },
+    {
+        "text": "what steps should I take to improve project efficiency",
+        "label": 1
+    },
+    {
+        "text": "organize a focus group to gather customer feedback",
+        "label": 0
+    },
+    {
+        "text": "how do I develop a successful product launch strategy",
+        "label": 1
+    },
+    {
+        "text": "review the employee performance improvement plans",
+        "label": 0
+    },
+    {
+        "text": "what are the best practices for employee recognition",
+        "label": 1
+    },
+    {
+        "text": "schedule a team-building activity for the sales team",
+        "label": 0
+    },
+    {
+        "text": "how can I improve my decision-making skills",
+        "label": 1
+    },
+    {
+        "text": "review the customer satisfaction survey results",
+        "label": 0
+    },
+    {
+        "text": "what steps should I take to promote teamwork",
+        "label": 1
+    },
+    {
+        "text": "organize a training session on time management",
+        "label": 0
+    },
+    {
+        "text": "how do I develop effective marketing strategies",
+        "label": 1
+    },
+    {
+        "text": "schedule a meeting to discuss project timelines",
+        "label": 0
+    },
+    {
+        "text": "organize a workshop on stress management techniques",
+        "label": 0
+    },
+    {
+        "text": "what steps should I take to improve customer retention",
+        "label": 1
+    },
+    {
+        "text": "how can I enhance employee engagement in the workplace",
+        "label": 1
+    },
+    {
+        "text": "review the inventory levels for upcoming shipments",
+        "label": 0
+    },
+    {
+        "text": "what are the key factors in developing a successful business strategy",
+        "label": 1
+    },
+    {
+        "text": "schedule a training session on new software updates",
+        "label": 0
+    },
+    {
+        "text": "how do I prioritize tasks effectively to meet deadlines",
+        "label": 1
+    },
+    {
+        "text": "organize a team-building exercise at the local park",
+        "label": 0
+    },
+    {
+        "text": "what steps should I take to improve communication with clients",
+        "label": 1
+    },
+    {
+        "text": "review the budget allocations for the upcoming fiscal year",
+        "label": 0
+    },
+    {
+        "text": "schedule a performance review meeting with each team member",
+        "label": 0
+    },
+    {
+        "text": "how can I develop a more efficient workflow",
+        "label": 1
+    },
+    {
+        "text": "what are the best strategies for conflict resolution in the workplace",
+        "label": 1
+    },
+    {
+        "text": "organize a company-wide training session on cybersecurity",
+        "label": 0
+    },
+    {
+        "text": "how do I foster innovation within my team",
+        "label": 1
+    },
+    {
+        "text": "review the marketing campaign performance metrics",
+        "label": 0
+    },
+    {
+        "text": "what steps should I take to improve employee satisfaction",
+        "label": 1
+    },
+    {
+        "text": "schedule a brainstorming session for new product ideas",
+        "label": 0
+    },
+    {
+        "text": "review the customer feedback survey responses",
+        "label": 0
+    },
+    {
+        "text": "how can I create a more inclusive work environment",
+        "label": 1
+    },
+    {
+        "text": "what are the key elements of effective team leadership",
+        "label": 1
+    },
+    {
+        "text": "organize a training workshop on effective email communication",
+        "label": 0
+    },
+    {
+        "text": "how do I develop a strategic marketing plan",
+        "label": 1
+    },
+    {
+        "text": "review the progress of ongoing projects",
+        "label": 0
+    },
+    {
+        "text": "what steps should I take to improve team collaboration",
+        "label": 1
+    },
+    {
+        "text": "schedule a team-building retreat for the department",
+        "label": 0
+    },
+    {
+        "text": "how can I enhance customer service experience",
+        "label": 1
+    },
+    {
+        "text": "review the quarterly budget allocations",
+        "label": 0
+    },
+    {
+        "text": "what are the best practices for employee recognition",
+        "label": 1
+    },
+    {
+        "text": "what steps should I take to delegate tasks effectively",
+        "label": 1
+    },
+    {
+        "text": "schedule a team-building activity for the sales team",
+        "label": 0
+    },
+    {
+        "text": "organize a seminar on time management techniques",
+        "label": 0
+    },
+    {
+        "text": "schedule a webinar on customer relationship management",
+        "label": 0
+    },
+    {
+        "text": "how can I improve my presentation skills",
+        "label": 1
+    },
+    {
+        "text": "organize a team-building outing to the local amusement park",
+        "label": 0
+    },
+    {
+        "text": "what are the key factors in building a successful brand",
+        "label": 1
+    },
+    {
+        "text": "schedule a training session for new sales techniques",
+        "label": 0
+    },
+    {
+        "text": "how do I effectively manage multiple projects simultaneously",
+        "label": 1
+    },
+    {
+        "text": "what steps should I take to improve employee morale",
+        "label": 1
+    },
+    {
+        "text": "organize a workshop on conflict resolution strategies",
+        "label": 0
+    },
+    {
+        "text": "schedule a brainstorming session for marketing campaign ideas",
+        "label": 0
+    },
+    {
+        "text": "how can I develop effective networking skills",
+        "label": 1
+    },
+    {
+        "text": "organize a company-wide event to celebrate achievements",
+        "label": 0
+    },
+    {
+        "text": "what are the best strategies for retaining top talent",
+        "label": 1
+    },
+    {
+        "text": "schedule a review meeting for project milestones",
+        "label": 0
+    },
+    {
+        "text": "organize a training session on effective communication skills",
+        "label": 0
+    },
+    {
+        "text": "how do I build a culture of innovation within my team",
+        "label": 1
+    },
+    {
+        "text": "what steps should I take to improve decision-making processes",
+        "label": 1
+    },
+    {
+        "text": "schedule a team-building exercise for remote teams",
+        "label": 0
+    },
+    {
+        "text": "organize a workshop on creative problem-solving techniques",
+        "label": 0
+    },
+    {
+        "text": "how can I enhance customer engagement on social media",
+        "label": 1
+    },
+    {
+        "text": "what are the key elements of effective project planning",
+        "label": 1
+    },
+    {
+        "text": "schedule a training session on cybersecurity awareness",
+        "label": 0
+    },
+    {
+        "text": "organize a seminar on financial literacy for employees",
+        "label": 0
+    },
+    {
+        "text": "how do I develop a customer-centric approach in business",
+        "label": 1
+    },
+    {
+        "text": "what steps should I take to improve team productivity",
+        "label": 1
+    },
+    {
+        "text": "update the project",
+        "label": 0
+    },
+    {
+        "text": "why do i need to do to minimize project risks",
+        "label": 1
+    },
+    {
+        "text": "i need to schedule a performance review for the team members",
+        "label": 0
+    },
+    {
+        "text": "where is the tasks in the weekly plan",
+        "label": 1
+    },
+    {
+        "text": "i need to finish this",
+        "label": 0
+    },
+    {
+        "text": "what is the capital of Japan",
+        "label": 1
+    },
+    {
+        "text": "remember me to send the dogs to the client",
+        "label": 0
+    },
+    {
+        "text": "what is the best way to track project progress",
+        "label": 1
+    },
+    {
+        "text": "make sure to update the project timeline",
+        "label": 0
+    },
+    {
+        "text": "what tasks should I include in the weekly plan",
+        "label": 1
+    },
+    {
+        "text": "double-check the inventory levels",
+        "label": 0
+    },
+    {
+        "text": "which is the best way to track project progress",
+        "label": 1
+    },
+    {
+        "text": "make sure to update the project timeline",
+        "label": 0
+    },
+    {
+        "text": "i have to review the budget for next quarter",
+        "label": 0
+    },
+    {
+        "text": "why do i need to do to improve my productivity",
+        "label": 1
+    },
+    {
+        "text": "split the pasta into its ingredients",
+        "label": 1
+    },
+    {
+        "text": "how much money will i neeed",
+        "label": 1
+    },
+    {
+        "text": "need to make a cake",
+        "label": 0
+    },
+    {
+        "text": "i need to craft a plan for the project",
+        "label": 0
+    },
+    {
+        "text": "tell me how to make it in life",
+        "label": 1
+    },
+    {
+        "text": "tell me why i need to do this",
+        "label": 1
+    },
+    {
+        "text": "remind me to do my ai lab project by the 4th of june",
+        "label": 0
+    },
+    {
+        "text": "split this project into subtasks",
+        "label": 1
+    },
+    {
+        "text": "please can you divide my project into 5 tasks",
+        "label": 1
+    },
+    {
+        "text": "remind me to do my project by the end of the week",
+        "label": 0
+    },
+    {
+        "text": "can you tell me where I parked the car",
+        "label": 1
+    },
+    {
+        "text": "photosynthesis is the key to life",
+        "label": 0
+    },
+    {
+        "text": "the world is beautiful",
+        "label": 0
+    },
+    {
+        "text": "what is third of 9",
+        "label": 1
+    },
+    {
+        "text": "balls are round",
+        "label": 0
+    },
+    {
+        "text": "there are sheeps in the field",
+        "label": 0
+    },
+    {
+        "text": "why is the storm so strong",
+        "label": 1
+    },
+    {
+        "text": "the great wall in the park is very tall",
+        "label": 0
+    },
+    {
+        "text": "the lifespan of a butterfly is very short",
+        "label": 0
+    },
+    {
+        "text": "when is doom's day",
+        "label": 1
+    },
+    {
+        "text": "i am bored",
+        "label": 0
+    },
+    {
+        "text": "i need to finish this report by tomorrow",
+        "label": 0
+    },
+    {
+        "text": "which steps can i take to improve my productivity",
+        "label": 1
+    },
+    {
+        "text": "remember me to make a smoothie",
+        "label": 0
+    },
+    {
+        "text": "who is the president of the united states",
+        "label": 1
+    },
+    {
+        "text": "make sure to update the database",
+        "label": 0
+    },
+    {
+        "text": "what tasks are on my to-do list",
+        "label": 1
+    },
+    {
+        "text": "i need a hug",
+        "label": 0
+    }
 ]
