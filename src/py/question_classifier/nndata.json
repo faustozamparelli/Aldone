@@ -1,5 +1,13 @@
 [
     {
+        "text": "can you add as a todo call my boss",
+        "label": 0
+    },
+    {
+        "text": "can you add apples to the grocery list",
+        "label": 0
+    },
+    {
         "text": "the sun rises in the east",
         "label": 0
     },
@@ -236,6 +244,10 @@
         "label": 0
     },
     {
+        "text": "can you add carrots to the grocery list",
+        "label": 0
+    },
+    {
         "text": "tell me how can i make money",
         "label": 1
     },
@@ -312,6 +324,62 @@
         "label": 0
     },
     {
+        "text": "can you add tomotoes to the grocery list",
+        "label": 0
+    },
+    {
+        "text": "can you add as a todo buy milk",
+        "label": 0
+    },
+    {
+        "text": "can you add bananas to the grocery list",
+        "label": 0
+    },
+    {
+        "text": "can you add as a todo clean the garage",
+        "label": 0
+    },
+    {
+        "text": "can you add oranges to the grocery list",
+        "label": 0
+    },
+    {
+        "text": "can you add as a todo schedule dentist appointment",
+        "label": 0
+    },
+    {
+        "text": "can you add strawberries to the grocery list",
+        "label": 0
+    },
+    {
+        "text": "can you add as a todo water the plants",
+        "label": 0
+    },
+    {
+        "text": "can you add potatoes to the grocery list",
+        "label": 0
+    },
+    {
+        "text": "can you add as a todo send thank you notes",
+        "label": 0
+    },
+    {
+        "text": "can you add onions to the grocery list",
+        "label": 0
+    },
+    {
+        "text": "can you add as a todo book flight tickets",
+        "label": 0
+    },
+    {
+        "text": "can you add lettuce to the grocery list",
+        "label": 0
+    },
+    {
+        "text": "can you add as a todo buy birthday gift",
+        "label": 0
+    },
+    {
         "text": "what do i need to do to meet the project deadline",
         "label": 1
     },
@@ -378,6 +446,10 @@
     {
         "text": "tell me where i parked the car",
         "label": 1
+    },
+    {
+        "text": "can you add as a todo finish homeworks",
+        "label": 0
     },
     {
         "text": "where do i find resources for improving productivity",
@@ -1909,6 +1981,14 @@
     },
     {
         "text": "i need a hug",
+        "label": 0
+    },
+    {
+        "text": "can you add as a todo fix the leaky faucet",
+        "label": 0
+    },
+    {
+        "text": "can you add cucumbers to the grocery list",
         "label": 0
     }
 ]
