@@ -114,8 +114,7 @@ The task of the Question Classifier is to determine whether the user's input is 
 \end{figure}
 
 
-The Question Classifier is implemented using a neural network trained on a dataset of 500 examples.
-The question classifier is a pytorch neural network and its code can be found in the subdirectory ``src/py/question\_classifier''.
+The Question Classifier is implemented using a neural network trained on a dataset of 500 examples. The dataset was manually generated and enhanced using generative AI data synthesizing tools. The question classifier is a pytorch neural network and its code can be found in the subdirectory ``src/py/question\_classifier''.
 
 In the subdirectory,
 \begin{itemize}
@@ -127,10 +126,25 @@ In the subdirectory,
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{question_classifier_accuracy.png}
-\caption{\small We achieved 97\% accuracy on the test set. Of course it's still a small dataset and more data would make it more solid.}
+\caption{\small The model achieved 98\% accuracy on the test set. Of course it's still a small dataset and more data would make it more solid.}
 \end{figure}
 
 \subsection*{\color{draculayellow}Category Classifier}
+
+The task of the category classifier is to classify wheter the input to-do belongs to the reminders list or the grocery list. To achieve this, an intent classification dataset from Hugging Face was used. The data looked like this:
+
+\begin{figure}[H]
+\begin{center}
+\begin{tabular}{SS}
+  \toprule
+    \text{Input} & \text{Label} \\
+    \midrule
+    \text{``tell me how to set up a direct deposit"}  & \text{direct\_deposit} \\
+    \text{``switch to whisper mode"}  & \text{whisper\_mode}  \\
+    \bottomrule
+\end{tabular}
+\end{center}
+\end{figure}
 
 \subsection*{\color{draculayellow}Todo Extractor}
 
