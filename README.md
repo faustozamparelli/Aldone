@@ -4,6 +4,8 @@
 
 This is a [Next.js](https://nextjs.org/) project
 
+Before running the code, create the `.env` file and set the `OPENAI_API_KEY` variable with your OpenAI key.
+
 To run the development server:
 
 ```bash
