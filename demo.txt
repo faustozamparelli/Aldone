@@ -1,11 +1,32 @@
 - show the project:
 
-Start with an empty screen/user
-Add todos  with voice and text
-mark as done 
-ask to divide into substasks
-ask how much a task will take
-Add grocery list items with voice and text
-vision to mark as done (keep some in)
-split tiramisu into its ingredients
-ask to rank tasks from the most difficult to the least
+1. Start with an empty screen/user
+
+2. Add todos  with voice and text
+    - hi, can you remind me to pick up the kids from school 
+    - i need to call my boss
+    - add making coffee to the list
+    - i need to buy a bicycle soon to move through the city
+    - can you please remind me that i need to clean the car 
+
+3. mark as done 
+    - i have picked up my kids now
+    - mark as done calling the boss
+
+4. ask to divide into substasks
+    - please can you give me the steps to make some coffe
+    - split clean the car into its subtasks
+
+5. ask how much a task will take
+
+6. Add grocery list items with voice and text
+    - add macedonia to the shopping list
+    - i need to buy some pizza
+    - update the shopping list with tiramisu
+    - make sure i get the milk
+
+7. vision to mark as done (keep some in)
+
+8. split tiramisu into its ingredients
+
+9. ask to rank tasks from the most difficult to the least
