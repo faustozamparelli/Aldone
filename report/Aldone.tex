@@ -179,7 +179,7 @@ In the subdirectory,
 
 \subsection*{\color{draculayellow}Todo Extractor}
 
-The task of the Todo Extractor is to extract the task from the user's input. For example, if the user says "Add milk to my grocery list", the task is "Add milk". The Todo Extractor is implemented using OpenAI's pre-trained GPT 3.5 model. It was asked to output nice json objects that are much easier to work with programmatically. The prompt and the code can be found in the subdirectory ``src/app/api/todoExtractor/''.
+The task of the Todo Extractor is to extract the todo data from the user's input. For example, if the user says "Add milk to my grocery list", the data is "Add milk". Also, if the user asks to complete a certain task, the Todo Extractor will identify it and mark it as completed. The Todo Extractor is implemented using OpenAI's pre-trained GPT 3.5 model. It was asked to output nice json objects that are much easier to work with programmatically. The prompt and the code can be found in the subdirectory ``src/app/api/todoExtractor/''.
 
 
 \subsection*{\color{draculayellow}Vision Food Detector}
@@ -196,7 +196,7 @@ Asking the LLM model for ids of the grocery list that were updated, and then upd
 
 \subsection*{\color{draculayellow}Query Agent}
 
-The task of the Query Agent is to elaborate queries. Once again, queries are inputs that don't carry new data within them. For example, ``Split task X into subtasks'', ``What is the capital of Italy?.'', or ``Mark task Y as completed''
+The task of the Query Agent is to elaborate queries. Once again, queries are inputs that don't carry new data within them. For example, ``Split task X into subtasks'', or ``What is the capital of Italy?.''.
 
 the Query Agent takes as input
 \begin{itemize}
@@ -207,16 +207,11 @@ the Query Agent takes as input
 and gives as output
 \begin{itemize}
   \item a conversational `narration' string to be given as audio feedback to the user,
-  \item if asked to split an existing task into subtasks,
+  \item and, if asked to split an existing task into subtasks,
   \begin{itemize}
     \item the category of the splitting task (to-do list or grocery list),
     \item the id of the splitting task,
     \item and the generated subtasks.
-  \end{itemize}
-  \item and, if asked to mark a task as completed,
-  \begin{itemize}
-    \item the category of the completed task (to-do list or grocery list),
-    \item the id of the completed task.
   \end{itemize}
 \end{itemize}
 
