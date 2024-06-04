@@ -372,32 +372,36 @@ export default function Page({ params }: { params: { username: string } }) {
                   )}
                 </div>
               </div>
-              <div className="p-4 m-auto flex justify-center items-center">
-                <textarea
-                  value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                  className="border-2 border-gray-400 p-1 rounded-lg focus:outline-none m-2 w-60 min-w-96 text-black"
-                />
+              {!cameraEnabled && (
+                <div className="p-4 m-auto flex justify-center items-center">
+                  <textarea
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    className="border-2 border-gray-400 p-1 rounded-lg focus:outline-none m-2 w-60 min-w-96 text-black"
+                  />
 
-                <button
-                  onClick={() => {
-                    processVoiceInputText(input);
-                    setInput("");
-                  }}
-                  className="bg-blue-400 hover:bg-blue-500 p-1 rounded-lg text-white focus:outline-none mx-2 my-auto"
-                >
-                  submit
-                </button>
+                  {!listening && (
+                    <button
+                      onClick={() => {
+                        processVoiceInputText(input);
+                        setInput("");
+                      }}
+                      className="bg-blue-400 hover:bg-blue-500 p-1 rounded-lg text-white focus:outline-none mx-2 my-auto"
+                    >
+                      submit
+                    </button>
+                  )}
 
-                <button
-                  className={`${
-                    listening ? "bg-red-400" : "bg-blue-400 hover:bg-blue-500"
-                  } rounded-full w-16 h-16 focus:outline-none flex justify-center items-center m-4`}
-                  onClick={toggleListening}
-                >
-                  <TalkShape />
-                </button>
-              </div>
+                  <button
+                    className={`${
+                      listening ? "bg-red-400" : "bg-blue-400 hover:bg-blue-500"
+                    } rounded-full w-16 h-16 focus:outline-none flex justify-center items-center m-4`}
+                    onClick={toggleListening}
+                  >
+                    <TalkShape />
+                  </button>
+                </div>
+              )}
             </div>
           </>
         ) : (
