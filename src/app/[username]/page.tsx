@@ -136,7 +136,9 @@ export default function Page({ params }: { params: { username: string } }) {
           const { category }: TodoClassifierResponse = res.data;
 
           const listCategory =
-            category === "shopping_list" || category === "shopping_list_update"
+            category === "shopping_list" ||
+            category === "shopping_list_update" ||
+            category === "ingredients_list"
               ? "grocery"
               : "todo";
 
