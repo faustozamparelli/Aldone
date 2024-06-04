@@ -393,9 +393,6 @@ export default function Page({ params }: { params: { username: string } }) {
                       >
                         <p>📸</p>
                       </button>
-                      <p className="text-center">
-                        {seenFoods.length > 0 && JSON.stringify(seenFoods)}
-                      </p>
                     </div>
                   )}
                 </div>
