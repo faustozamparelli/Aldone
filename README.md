@@ -1,4 +1,4 @@
-# AI Diary
+# Aldone
 
 > _*Aldone*_
 
@@ -13,8 +13,6 @@ Furthermore, you could ask to split a task in sub-tasks or approximate how long 
 Aldone is able to detect fully by himself weather you are asking him to add something to your grocery list or to-do list.
 
 The coolest thing is that once you will come home from the supermarket with tired legs and arms from carrying bags, you won't have to manually remove everything from this digital grocery list but you can use your phone camera to detect what foods you actually bought and then Aldone will remove them for you. Other use cases for this include checking what's already in your kitchen or marking products as bought after delegating your groceries to someone else.
-
-This is a [Next.js](https://nextjs.org/) project
 
 Before running the code, create the `.env` file and set the `OPENAI_API_KEY` variable with your OpenAI key.
 
@@ -34,7 +32,4 @@ To run the python server:
 source .venv/bin/activate
 python src/py/server.py
 ```
-
 Open [http://localhost:3001](http://localhost:3001) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
