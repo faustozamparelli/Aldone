@@ -10,7 +10,7 @@
     - can you please remind me that i need to clean the car 
 
 3. mark as done 
-    - i have picked up my kids now
+    - i have picked up my kids now, mark it as done
     - mark as done calling the boss
 
 4. ask to divide into substasks
