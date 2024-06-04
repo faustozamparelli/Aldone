@@ -114,11 +114,12 @@ The task of the Question Classifier is to determine whether the user's input is 
     \midrule
     \text{``What's the capital of Italy?"}  & \text{Query} \\
     \text{``Add milk to my grocery list"}  & \text{Not Query}  \\
+    \text{``Cross the milk out the grocery list"}  & \text{Not Query}  \\
     \text{``Split task X into subtasks"} & \text{Query}  \\
     \bottomrule
 \end{tabular}
 \end{center}
-\caption{\it For example, the input "What's the capital of Italy?" is a query, while "Add milk to my grocery list" is an instruction. The input "Split task X into subtasks" is also a query because the data is not being provided by the input.} \label{faketable:mul}
+\caption{\it For example, the input "What's the capital of Italy?" is a query, while "Add milk to my grocery list" is an instruction. The input "Split task X into subtasks" is also a query because the data is not being provided by the input. The input "Cross the milk out the grocery list" is not a query because it carries the new information of the status of the milk.} \label{faketable:mul}
 \end{figure}
 
 
