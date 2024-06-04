@@ -189,7 +189,7 @@ Asking the LLM model for ids of the grocery list that were updated, and then upd
 
 \subsection*{\color{draculayellow}Query Agent}
 
-The task of the Query Agent is to elaborate queries. Once again, queries are inputs that don't carry new data within them. For example, ``Split task X into subtasks'' or ``What is the capital of Italy?.''
+The task of the Query Agent is to elaborate queries. Once again, queries are inputs that don't carry new data within them. For example, ``Split task X into subtasks'', ``What is the capital of Italy?.'', or ``Mark task Y as completed''
 
 the Query Agent takes as input
 \begin{itemize}
@@ -200,11 +200,16 @@ the Query Agent takes as input
 and gives as output
 \begin{itemize}
   \item a conversational `narration' string to be given as audio feedback to the user,
-  \item and, if asked to split an existing task into subtasks,
+  \item if asked to split an existing task into subtasks,
   \begin{itemize}
-    \item the list of the splitting task (to-do list or grocery list),
+    \item the category of the splitting task (to-do list or grocery list),
     \item the id of the splitting task,
     \item and the generated subtasks.
+  \end{itemize}
+  \item and, if asked to mark a task as completed,
+  \begin{itemize}
+    \item the category of the completed task (to-do list or grocery list),
+    \item the id of the completed task.
   \end{itemize}
 \end{itemize}
 
