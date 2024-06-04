@@ -178,13 +178,50 @@ exacly as {text: string; id: string}.
 For example, {text: 'Buy milk', id: 'milk_buy'}.`
 \end{verbatim}
 
-This allowed to have nice json objects as output that are much easier to work with programmatically. The code can be found in the subdirectory ``src/app/api/todoExtractor''.
+This allowed to have nice json objects as output that are much easier to work with programmatically.
+
+The code can be found in the subdirectory ``src/app/api/todoExtractor''.
+
 
 \subsection*{\color{draculayellow}Vision Food Detector}
 
-We first asked the LLM model to give us the entire updated grocery list object, but empirically it often made errors. What we ended up doing is asking the LLM model for indices of the grocery list that were updated, and then we updated the grocery list object ourselves. This way, we could ensure that the grocery list object was updated correctly.
+The task of the Vision Food Detector is to take a video stream and detect food items in it. The Vision Food Detector is implemented using a pre-trained YOLO model via Ultralytics and filtering the detected items to a set of labels containing only foods. The code can be found in the subdirectory ``src/py/grocery\_recognition''.
+
+IMAGE HERE
 
 \subsection*{\color{draculayellow}Grocery List Matcher}
+
+The task of the Grocery List Matcher is to take the items detected by the Vision Food Detector and cross them out from the grocery list. Like the Todo Extractor, the Grocery List Matcher is implemented using OpenAI's pre-trained GPT 3.5 model.
+
+The prompt used was
+\begin{verbatim}
+`The following are the products that were
+seen on the table: <products array>
+
+The following is a json array of grocery list items
+structured like [{text: string, completed: bool, id: string}].
+Return me a json array of grocery list items ids of items that
+were also seen on the table, if any.
+
+Even if the ids don't match exactly, you can still match
+them if they are similar. For example, if the table has "apple"
+and the grocery list has "red_apple", you can still match them.
+Be smart and human about it. Make sure to return the id
+as seen in the "id" field of the grocery list item,
+not the products seen on the table.
+
+The result should be formatted
+like {ids: ["red_apples", "berries"]}.
+If none of the items were seen on the table,
+return an empty array "{ids: []}".       
+
+<grocery list object>
+`
+\end{verbatim}
+
+The code can be found in the subdirectory ``src/app/api/groceryListMatcher''.
+
+Initially the LLM model was asked to output the entire updated grocery list object, but empirically it made errors very often. Asking the LLM model for ids of the grocery list that were updated, and then updating the grocery list object programmatically, ended up working much better.
 
 \subsection*{\color{draculayellow}General Agent}
 
