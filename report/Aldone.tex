@@ -141,14 +141,44 @@ The task of the category classifier is to classify wheter the input to-do belong
     \midrule
     \text{``tell me how to set up a direct deposit"}  & \text{direct\_deposit} \\
     \text{``switch to whisper mode"}  & \text{whisper\_mode}  \\
+    \text{``i'm out of lysol could you order me some"}  & \text{order}  \\
+    \text{``set my alarm for 5pm"}  & \text{alarm}  \\
+    \text{``can you list my shopping list for me"}  & \text{shopping\_list}  \\
+    \text{``update my shopping list, delete canned olives"}  & \text{shopping\_list\_update}  \\
+    \text{``can you list my shopping list for me"}  & \text{shopping\_list}  \\
+    \text{``remove laundry from my todo list"}  & \text{todo\_list\_update}  \\
+    \text{``i want to hear everything on my todo list"}  & \text{todo\_list}  \\
     \bottomrule
 \end{tabular}
 \end{center}
 \end{figure}
 
+The cagory classifier is trained on the whole dataset but only the labels that are relevant are used: shopping\_list and shopping\_list\_update direct the flow to the grocery list, while todo\_list and todo\_list\_update direct the flow to the to-do list. The category classifier is a scikit-learn Naive Bayes classifier and its code can be found in the subdirectory ``src/py/todo\_classifier''.
+
+
+In the subdirectory,
+\begin{itemize}
+  \item \texttt{train\_classifier.py}: is the training script that fetches the data from hugging face and then trains and exports the model as a raw python object with pickle. The dataseta was already partitioned by train/test/validation sets by hugging face.
+  \item \texttt{use\_classifier.py}: uses the saved model python object to label new input data.
+\end{itemize}
+
 \subsection*{\color{draculayellow}Todo Extractor}
 
-[Confusion Matrix here]
+The task of the Todo Extractor is to extract the task from the user's input. For example, if the user says "Add milk to my grocery list", the task is "Add milk". The Todo Extractor is implemented using OpenAI's pre-trained GPT 3.5 model.
+
+The prompt used was
+\begin{verbatim}
+`The following is a voice command recorded form
+a voice assistant, extract the todo item from it to
+insert it in a todo list.  For example, if the voice command
+is 'Add 'Buy milk' to my shopping list', the extracted todo item
+is 'Buy milk'.  You should also generate a "nice_readable_id"
+and finally return a json object structured
+exacly as {text: string; id: string}.
+For example, {text: 'Buy milk', id: 'milk_buy'}.`
+\end{verbatim}
+
+This allowed to have nice json objects as output that are much easier to work with programmatically. The code can be found in the subdirectory ``src/app/api/todoExtractor''.
 
 \subsection*{\color{draculayellow}Vision Food Detector}
 
