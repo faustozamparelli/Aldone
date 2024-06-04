@@ -13,6 +13,7 @@
 3. mark as done 
     - i have picked up my kids 
     - mark as done calling the boss
+    - mark as done my second task
 
 4. ask to divide into substasks
     - please can you give me the steps to make some coffe
