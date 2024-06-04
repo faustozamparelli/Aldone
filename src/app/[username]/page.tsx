@@ -13,7 +13,10 @@ import {
   TodoClassifierRequest,
   TodoClassifierResponse,
 } from "@/app/api/todoClassifier/route";
-import { TodoExtractorRequest } from "@/app/api/todoExtractor/route";
+import {
+  TodoExtractorRequest,
+  TodoExtractorResponse,
+} from "@/app/api/todoExtractor/route";
 import {
   GroceryListMatcherRequest,
   GroceryListMatcherResponse,
@@ -91,11 +94,8 @@ export default function Page({ params }: { params: { username: string } }) {
         axios
           .post("/api/conversationalAgent", conversationalAgentRequest)
           .then((res) => {
-            const {
-              narration,
-              explodingTodo,
-              completingTodo,
-            }: ConversationalAgentResponse = res.data;
+            const { narration, explodingTodo }: ConversationalAgentResponse =
+              res.data;
             say(narration);
 
             if (explodingTodo) {
@@ -113,10 +113,30 @@ export default function Page({ params }: { params: { username: string } }) {
                 });
               });
             }
+          });
+      } else {
+        const todoClassifierRequest: TodoClassifierRequest = {
+          input: voiceInput,
+        };
 
-            if (completingTodo) {
-              const { category, id } = completingTodo;
+        const todoExtractorRequest: TodoExtractorRequest = {
+          text: voiceInput,
+          todoList: todos,
+          groceryList: groceries,
+        };
 
+        axios.post("/api/todoExtractor", todoExtractorRequest).then((res) => {
+          const { addingTodo, completingTodo }: TodoExtractorResponse =
+            res.data;
+
+          if (completingTodo) {
+            const { category, id } = completingTodo;
+            if (
+              (category === "todo" || category === "grocery") &&
+              id !== "undefined" &&
+              id !== "null" &&
+              id !== ""
+            ) {
               const setBucket =
                 category === "grocery" ? setGroceries : setTodos;
 
@@ -129,33 +149,39 @@ export default function Page({ params }: { params: { username: string } }) {
                 });
               });
             }
-          });
-      } else {
-        const todoClassifierRequest: TodoClassifierRequest = {
-          input: voiceInput,
-        };
+          }
 
-        axios.post("/api/todoClassifier", todoClassifierRequest).then((res) => {
-          const { category }: TodoClassifierResponse = res.data;
+          if (addingTodo) {
+            axios
+              .post("/api/todoClassifier", todoClassifierRequest)
+              .then((res) => {
+                const { category }: TodoClassifierResponse = res.data;
 
-          const listCategory =
-            category === "shopping_list" ||
-            category === "shopping_list_update" ||
-            category === "ingredients_list"
-              ? "grocery"
-              : "todo";
+                const listCategory =
+                  category === "shopping_list" ||
+                  category === "shopping_list_update" ||
+                  category === "ingredients_list"
+                    ? "grocery"
+                    : "todo";
 
-          const setBucket =
-            listCategory === "grocery" ? setGroceries : setTodos;
-
-          const todoExtractorRequest: TodoExtractorRequest = {
-            text: voiceInput,
-          };
-
-          axios.post("/api/todoExtractor", todoExtractorRequest).then((res) => {
-            const { text, id } = res.data;
-            setBucket((prev) => [...prev, { text, completed: false, id }]);
-          });
+                const setBucket =
+                  listCategory === "grocery" ? setGroceries : setTodos;
+                const { text, id } = addingTodo;
+                if (
+                  id !== "undefined" &&
+                  id !== "null" &&
+                  id !== "" &&
+                  text !== "" &&
+                  text !== "undefined" &&
+                  text !== "null"
+                ) {
+                  setBucket((prev) => [
+                    ...prev,
+                    { text, completed: false, id },
+                  ]);
+                }
+              });
+          }
         });
       }
     });
