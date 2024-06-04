@@ -212,6 +212,10 @@
         "label": 0
     },
     {
+        "text": "mark as done drinknig water",
+        "label": 0
+    },
+    {
         "text": "what do i need to buy from the grocery store",
         "label": 1
     },
@@ -240,6 +244,22 @@
         "label": 0
     },
     {
+        "text": "mark as done going surfing",
+        "label": 0
+    },
+    {
+        "text": "i have completed all the dotos i had to do today",
+        "label": 0
+    },
+    {
+        "text": "can you mark as completed making the bed",
+        "label": 0
+    },
+    {
+        "text": "i have finised the videocall with my boss",
+        "label": 0
+    },
+    {
         "text": "i need to make more money",
         "label": 0
     },
@@ -253,6 +273,10 @@
     },
     {
         "text": "tell how to make my todo list shorter",
+        "label": 1
+    },
+    {
+        "text": "mark as completed buying a macbook",
         "label": 1
     },
     {
@@ -332,6 +356,22 @@
         "label": 0
     },
     {
+        "text": "mark as done my second task",
+        "label": 0
+    },
+    {
+        "text": "i have completed doing my homeworks",
+        "label": 0
+    },
+    {
+        "text": "can you mark as completed doing the laundry",
+        "label": 0
+    },
+    {
+        "text": "i have done the marathon",
+        "label": 0
+    },
+    {
         "text": "can you add bananas to the grocery list",
         "label": 0
     },
@@ -369,6 +409,10 @@
     },
     {
         "text": "can you add as a todo book flight tickets",
+        "label": 0
+    },
+    {
+        "text": "i have picked the kids up",
         "label": 0
     },
     {
@@ -437,6 +481,10 @@
     },
     {
         "text": "the presentation slides are ready for tomorrow's meeting",
+        "label": 0
+    },
+    {
+        "text": "can you mark as done picking up the kids",
         "label": 0
     },
     {
