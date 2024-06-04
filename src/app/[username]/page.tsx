@@ -395,7 +395,7 @@ export default function Page({ params }: { params: { username: string } }) {
   );
 }
 
-const TalkShape = () => {
+export const TalkShape = () => {
   return (
     <svg
       viewBox="0 0 256 256"
