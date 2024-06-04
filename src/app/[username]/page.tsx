@@ -88,8 +88,11 @@ export default function Page({ params }: { params: { username: string } }) {
         axios
           .post("/api/conversationalAgent", conversationalAgentRequest)
           .then((res) => {
-            const { narration, explodingTodo }: ConversationalAgentResponse =
-              res.data;
+            const {
+              narration,
+              explodingTodo,
+              completingTodo,
+            }: ConversationalAgentResponse = res.data;
             say(narration);
 
             if (explodingTodo) {
@@ -99,9 +102,28 @@ export default function Page({ params }: { params: { username: string } }) {
                 category === "grocery" ? setGroceries : setTodos;
 
               setBucket((prev) => {
-                const index = prev.findIndex((item) => item.id === id);
-                prev[index].subtasks = subtasks;
-                return prev;
+                return prev.map((item) => {
+                  if (item.id === id) {
+                    item.subtasks = subtasks;
+                  }
+                  return item;
+                });
+              });
+            }
+
+            if (completingTodo) {
+              const { category, id } = completingTodo;
+
+              const setBucket =
+                category === "grocery" ? setGroceries : setTodos;
+
+              setBucket((prev) => {
+                return prev.map((item) => {
+                  if (item.id === id) {
+                    item.completed = true;
+                  }
+                  return item;
+                });
               });
             }
           });

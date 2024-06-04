@@ -11,6 +11,8 @@ export interface TodoClassifierResponse {
 export async function POST(req: NextRequest) {
   const { input }: TodoClassifierRequest = await req.json();
 
+  console.log({ todoClassifierRequest: { input } });
+
   const category = (
     await (
       await fetch("http://localhost:3001/todo_classifier", {
@@ -25,9 +27,6 @@ export async function POST(req: NextRequest) {
     category,
   };
 
-  console.log({
-    todoClassifierRequest: { input },
-    todoClassifierResponse: result,
-  });
+  console.log({ todoClassifierResponse: result });
   return NextResponse.json(result);
 }
