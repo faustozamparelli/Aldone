@@ -50,4 +50,4 @@ if __name__ == "__main__":
 
     text = sys.argv[1]
     prediction, confidence = classify_text(text)
-    print(f"Label: {prediction}")  # , Confidence: {confidence}"
+    print(f"Label: {'query' if prediction else 'not query'}, Confidence: {confidence}")
