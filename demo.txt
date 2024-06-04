@@ -1,3 +1,6 @@
+prereqs:
+[ ] check continuity camera channel
+
 - show the project:
 
 1. Start with an empty screen/user
