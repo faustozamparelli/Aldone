@@ -1,6 +1,18 @@
 # AI Diary
 
-> _*DiAIry*_
+> _*Aldone*_
+
+Aldone as in "AI-Done" is a tool for personal reminders and grocery list management.
+This is a proof of concept of a product that could save you time every day by allowing you
+to smoothly interact with it on the fly.
+
+Aldone is a react web app that interacts with a node.js and a python server doing most of the magic.
+After a log-in you will be able to speak to it to add tasks to your grocery list, to-do list,
+or make questions about reminders you saved earlier.
+Furthermore, you could ask to split a task in sub-tasks or approximate how long a task will take.
+Aldone is able to detect fully by himself weather you are asking him to add something to your grocery list or to-do list.
+
+The coolest thing is that once you will come home from the supermarket with tired legs and arms from carrying bags, you won't have to manually remove everything from this digital grocery list but you can use your phone camera to detect what foods you actually bought and then Aldone will remove them for you. Other use cases for this include checking what's already in your kitchen or marking products as bought after delegating your groceries to someone else.
 
 This is a [Next.js](https://nextjs.org/) project
 
