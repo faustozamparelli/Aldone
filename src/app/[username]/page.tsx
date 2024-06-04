@@ -160,6 +160,7 @@ export default function Page({ params }: { params: { username: string } }) {
                 const listCategory =
                   category === "shopping_list" ||
                   category === "shopping_list_update" ||
+                  category === "order" ||
                   category === "ingredients_list"
                     ? "grocery"
                     : "todo";

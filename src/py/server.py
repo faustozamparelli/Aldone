@@ -36,7 +36,7 @@ def webcam_display():
 
         model = YOLO("yolov8n.pt")
 
-        camera = cv2.VideoCapture(0)
+        camera = cv2.VideoCapture(1)
         camera.set(3, 640)
         camera.set(4, 480)
 
