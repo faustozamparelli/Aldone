@@ -164,23 +164,7 @@ In the subdirectory,
 
 \subsection*{\color{draculayellow}Todo Extractor}
 
-The task of the Todo Extractor is to extract the task from the user's input. For example, if the user says "Add milk to my grocery list", the task is "Add milk". The Todo Extractor is implemented using OpenAI's pre-trained GPT 3.5 model.
-
-The prompt used was
-\begin{verbatim}
-`The following is a voice command recorded form
-a voice assistant, extract the todo item from it to
-insert it in a todo list.  For example, if the voice command
-is 'Add 'Buy milk' to my shopping list', the extracted todo item
-is 'Buy milk'.  You should also generate a "nice_readable_id"
-and finally return a json object structured
-exacly as {text: string; id: string}.
-For example, {text: 'Buy milk', id: 'milk_buy'}.`
-\end{verbatim}
-
-This allowed to have nice json objects as output that are much easier to work with programmatically.
-
-The code can be found in the subdirectory ``src/app/api/todoExtractor''.
+The task of the Todo Extractor is to extract the task from the user's input. For example, if the user says "Add milk to my grocery list", the task is "Add milk". The Todo Extractor is implemented using OpenAI's pre-trained GPT 3.5 model. It was asked to output nice json objects that are much easier to work with programmatically. The prompt and the code can be found in the subdirectory ``src/app/api/todoExtractor''.
 
 
 \subsection*{\color{draculayellow}Vision Food Detector}
@@ -191,41 +175,15 @@ The task of the Vision Food Detector is to take a video stream and detect food i
 
 The task of the Grocery List Matcher is to take the items detected by the Vision Food Detector and cross them out from the grocery list. Like the Todo Extractor, the Grocery List Matcher is implemented using OpenAI's pre-trained GPT 3.5 model.
 
-The prompt used was
-\begin{verbatim}
-`The following are the products that were
-seen on the table: <products array>
-
-The following is a json array of grocery list items
-structured like [{text: string, completed: bool, id: string}].
-Return me a json array of grocery list items ids of items that
-were also seen on the table, if any.
-
-Even if the ids don't match exactly, you can still match
-them if they are similar. For example, if the table has "apple"
-and the grocery list has "red_apple", you can still match them.
-Be smart and human about it. Make sure to return the id
-as seen in the "id" field of the grocery list item,
-not the products seen on the table.
-
-The result should be formatted
-like {ids: ["red_apples", "berries"]}.
-If none of the items were seen on the table,
-return an empty array "{ids: []}".       
-
-<grocery list object>`
-\end{verbatim}
 
 Initially the LLM model was asked to output the entire updated grocery list object, but empirically it made errors very often.
-Asking the LLM model for ids of the grocery list that were updated, and then updating the grocery list object programmatically, ended up working much better.
+Asking the LLM model for ids of the grocery list that were updated, and then updating the grocery list object programmatically, ended up working much better. The prompt and the code can be found in the subdirectory ``src/app/api/groceryListMatcher''.
 
-The code can be found in the subdirectory ``src/app/api/groceryListMatcher''.
+\subsection*{\color{draculayellow}Query Agent}
 
-\subsection*{\color{draculayellow}General Agent}
+The task of the Query Agent is to elaborate queries. Once again, queries are inputs that don't carry new data within them. For example, ``Split task X into subtasks'' or ``What is the capital of Italy?.''
 
-The task of the General Agent is to elaborate queries. Once again, queries are inputs that don't carry new data within them. For example, ``Split task X into subtasks'' or ``What is the capital of Italy?.''
-
-the General Agent takes as input
+the Query Agent takes as input
 \begin{itemize}
   \item the voice input given by the user,
   \item the user's to-do list,
@@ -246,6 +204,8 @@ This agent as well gives instructions about what to change inside the lists rath
 
 
 \subsection*{\color{draculayellow}Text-to-Speech Agent}
+
+To pronounce any generated narration string, the OpenAI pre-trained TTS model is used. Implementation at ``src/app/api/tts''.
 
 \section*{\color{draculagreen}Results}
 
