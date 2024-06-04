@@ -201,6 +201,7 @@ export default function Page({ params }: { params: { username: string } }) {
 
       if (last.isFinal) {
         setInput((v) => v + " " + lastTranscript);
+        // TODO: fix static setInput
       }
     };
   };
