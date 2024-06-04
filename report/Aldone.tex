@@ -187,8 +187,6 @@ The code can be found in the subdirectory ``src/app/api/todoExtractor''.
 
 The task of the Vision Food Detector is to take a video stream and detect food items in it. The Vision Food Detector is implemented using a pre-trained YOLO model via Ultralytics and filtering the detected items to a set of labels containing only foods. The code can be found in the subdirectory ``src/py/grocery\_recognition''.
 
-IMAGE HERE
-
 \subsection*{\color{draculayellow}Grocery List Matcher}
 
 The task of the Grocery List Matcher is to take the items detected by the Vision Food Detector and cross them out from the grocery list. Like the Todo Extractor, the Grocery List Matcher is implemented using OpenAI's pre-trained GPT 3.5 model.
@@ -215,15 +213,37 @@ like {ids: ["red_apples", "berries"]}.
 If none of the items were seen on the table,
 return an empty array "{ids: []}".       
 
-<grocery list object>
-`
+<grocery list object>`
 \end{verbatim}
+
+Initially the LLM model was asked to output the entire updated grocery list object, but empirically it made errors very often.
+Asking the LLM model for ids of the grocery list that were updated, and then updating the grocery list object programmatically, ended up working much better.
 
 The code can be found in the subdirectory ``src/app/api/groceryListMatcher''.
 
-Initially the LLM model was asked to output the entire updated grocery list object, but empirically it made errors very often. Asking the LLM model for ids of the grocery list that were updated, and then updating the grocery list object programmatically, ended up working much better.
-
 \subsection*{\color{draculayellow}General Agent}
+
+The task of the General Agent is to elaborate queries. Once again, queries are inputs that don't carry new data within them. For example, ``Split task X into subtasks'' or ``What is the capital of Italy?.''
+
+the General Agent takes as input
+\begin{itemize}
+  \item the voice input given by the user,
+  \item the user's to-do list,
+  \item and the user's grocery list
+\end{itemize}
+and gives as output
+\begin{itemize}
+  \item a conversational `narration' string to be given as audio feedback to the user,
+  \item and, if asked to split an existing task into subtasks,
+  \begin{itemize}
+    \item the list of the splitting task (to-do list or grocery list),
+    \item the id of the splitting task,
+    \item and the generated subtasks.
+  \end{itemize}
+\end{itemize}
+
+This agent as well gives instructions about what to change inside the lists rather than doing the change itself. The prompt and the code can be found in the subdirectory ``src/app/api/conversationalAgent''.
+
 
 \subsection*{\color{draculayellow}Text-to-Speech Agent}
 
