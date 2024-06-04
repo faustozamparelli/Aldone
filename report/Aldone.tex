@@ -161,6 +161,13 @@ The task of the category classifier is to classify wheter the input to-do belong
 \end{center}
 \end{figure}
 
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{todo_classifier_accuracy.png}
+\caption{\small The model achieved 83\% accuracy on the test set.}
+\end{figure}
+
 The cagory classifier is trained on the whole dataset but only the labels that are relevant are used: ingredients\_list, shopping\_list and shopping\_list\_update direct the flow to the grocery list, while todo\_list and todo\_list\_update direct the flow to the to-do list. The category classifier is a scikit-learn Naive Bayes classifier and its code can be found in the subdirectory ``src/py/todo\_classifier''.
 
 
