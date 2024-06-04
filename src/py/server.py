@@ -22,7 +22,7 @@ def question_classifier():
 
 
 @app.route("/todo_classifier", methods=["POST"])
-def classify_todo():
+def classify_todo_route():
     j = request.json
     text = j["text"]
     category = classify_todo(text)
