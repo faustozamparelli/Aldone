@@ -25,8 +25,6 @@ declare global {
   }
 }
 
-const DEBUGGING = true;
-
 export interface TodoItem {
   text: string;
   completed: boolean;
@@ -37,11 +35,12 @@ export interface TodoItem {
 export default function Page({ params }: { params: { username: string } }) {
   const username = params.username.replace(/%20/g, " ");
 
-  const [enabled, setEnabled] = useState(false);
   const [audioRef, setAudioRef] = useState<HTMLAudioElement | null>(null);
   const recognitionRef = useRef<any>(null);
 
   const [cameraEnabled, setCameraEnabled] = useState(false);
+
+  const [firstClickDone, setFirstClickDone] = useState(false);
 
   const [todos, setTodos] = useState<TodoItem[]>([
     { text: "AI Lab Project", completed: true, id: "ai_lab_project" },
@@ -72,6 +71,10 @@ export default function Page({ params }: { params: { username: string } }) {
   ]);
 
   const processVoiceInputText = (voiceInput: string) => {
+    if (voiceInput === "") {
+      return;
+    }
+
     const reqBody: QuestionClassifierRequest = { input: voiceInput };
 
     axios.post("/api/questionClassifier", reqBody).then((res) => {
@@ -158,31 +161,52 @@ export default function Page({ params }: { params: { username: string } }) {
     });
   };
 
-  const startRecording = () => {
+  const [input, setInput] = useState("");
+  const [listening, setListening] = useState(false);
+
+  const startListening = () => {
+    setInput("");
     recognitionRef.current = new window.webkitSpeechRecognition();
-    recognitionRef.current.continuous = true;
-    recognitionRef.current.interimResults = true;
+    recognitionRef.current.start();
 
     recognitionRef.current.onresult = (event: any) => {
       const last = event.results[event.results.length - 1];
+      const lastTranscript = event.results[0][0].transcript;
+
       if (last.isFinal) {
-        const voiceInput = last[0].transcript;
-        processVoiceInputText(voiceInput);
+        setInput((v) => v + " " + lastTranscript);
       }
     };
-
-    recognitionRef.current.start();
   };
 
-  const stopRecording = () => {
+  const stopListening = () => {
     if (recognitionRef.current) {
       recognitionRef.current.stop();
     }
   };
 
+  const handleFirstClick = () => {
+    if (!firstClickDone) {
+      setFirstClickDone(true);
+      say("Welcome back, " + username);
+    }
+  };
+
+  const toggleListening = () => {
+    if (listening) {
+      stopListening();
+      setListening(false);
+      processVoiceInputText(input);
+      setInput("");
+    } else {
+      startListening();
+      setListening(true);
+    }
+  };
+
   useEffect(() => {
     return () => {
-      stopRecording();
+      stopListening();
     };
   }, []);
 
@@ -241,17 +265,7 @@ export default function Page({ params }: { params: { username: string } }) {
     });
   };
 
-  const handleMicrophoneClick = () => {
-    setEnabled(true);
-    startRecording();
-    setTimeout(() => {
-      say(`Welcome back, ${username}.`);
-    }, 2000);
-  };
-
   const [gradient, setGradient] = useState(["#B6CECE", "#0099FF"]);
-
-  const [chatTextInput, setChatTextInput] = useState("");
 
   return (
     <>
@@ -261,134 +275,139 @@ export default function Page({ params }: { params: { username: string } }) {
           background: `linear-gradient(to top, ${gradient[0]}, ${gradient[1]})`,
         }}
       >
-        <p className="text-white font-light text-xl animate-fadeInUp text-right w-full p-3">
-          {!enabled && <span className="text-lime-200">{username}</span>}
-        </p>
-        <div className="text-white text-transparent">
-          <button
-            className={`animate-fadeInUp  mt-10 m-auto flex items-center justify-center ${
-              enabled ? "" : "bg-blue-400 hover:bg-blue-500"
-            } rounded-full w-20 h-20 focus:outline-none`}
-          >
-            {!enabled && (
-              <div onClick={handleMicrophoneClick}>
-                <TalkShape />
-              </div>
-            )}
-          </button>
-          {(enabled || DEBUGGING) && (
-            <div className="flex">
-              <div>
-                <div className="border-orange-400 p-4 rounded-xl border-4 min-h-[30vh] min-w-[30vw] text-left bg-amber-600">
-                  <h3 className="font-bold text-xl">To-do:</h3>
-                  {todos.map((todo) => (
-                    <div key={todo.id}>
-                      <p>
-                        [{todo.completed ? "x" : " "}]
-                        <span className={todo.completed ? "line-through" : ""}>
-                          {todo.text}
-                        </span>
-                      </p>
-                      {todo.subtasks &&
-                        todo.subtasks.map((subtask) => (
-                          <p key={subtask.id} className="ml-4">
-                            {"[" + (subtask.completed ? "x" : " ") + "] "}
-                            <span
-                              className={
-                                subtask.completed ? "line-through" : ""
-                              }
-                            >
-                              {subtask.text}
-                            </span>
-                          </p>
-                        ))}
+        {firstClickDone ? (
+          <>
+            <p className="text-white font-light text-xl animate-fadeInUp text-right w-full p-3">
+              <span className="text-lime-200">{username}</span>
+            </p>
+            <div className="text-white">
+              <div className="flex">
+                <div>
+                  <div className="border-orange-400 p-4 rounded-xl border-4 min-h-[30vh] min-w-[30vw] text-left bg-amber-600">
+                    <h3 className="font-bold text-xl">To-do:</h3>
+                    {todos.map((todo) => (
+                      <div key={todo.id}>
+                        <p>
+                          [{todo.completed ? "x" : " "}]
+                          <span
+                            className={todo.completed ? "line-through" : ""}
+                          >
+                            {todo.text}
+                          </span>
+                        </p>
+                        {todo.subtasks &&
+                          todo.subtasks.map((subtask) => (
+                            <p key={subtask.id} className="ml-4">
+                              {"[" + (subtask.completed ? "x" : " ") + "] "}
+                              <span
+                                className={
+                                  subtask.completed ? "line-through" : ""
+                                }
+                              >
+                                {subtask.text}
+                              </span>
+                            </p>
+                          ))}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="flex flex-col items-center">
+                  <div className="border-green-400 ml-4 p-4 rounded-xl border-4 min-h-[30vh] min-w-[30vw] text-left bg-teal-600">
+                    <h3 className="font-bold text-xl">Shopping List:</h3>
+                    {groceries.map((item) => (
+                      <div key={item.id}>
+                        <p>
+                          [{item.completed ? "x" : " "}]
+                          <span
+                            className={item.completed ? "line-through" : ""}
+                          >
+                            {item.text}
+                          </span>
+                        </p>
+                        {item.subtasks &&
+                          item.subtasks.map((subitem) => (
+                            <p key={subitem.id} className="ml-4">
+                              {"[" + (subitem.completed ? "x" : " ") + "] "}
+                              <span
+                                className={
+                                  subitem.completed ? "line-through" : ""
+                                }
+                              >
+                                {subitem.text}
+                              </span>
+                            </p>
+                          ))}
+                      </div>
+                    ))}
+                  </div>
+
+                  {cameraEnabled ? (
+                    <div className="max-w-[30vw] flex-col flex items-center">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={"http://localhost:3001/webcam"}
+                        alt="webcam"
+                        className="rounded-lg shadow-lg mt-8 mx-8"
+                      />
+                      <button
+                        className="w-12 h-12 rounded-full bg-lime-400 bg-opacity-50 hover:bg-lime-500 focus:outline-none flex items-center justify-center m-8 p-8 border-4 border-lime-400 shadow-lg"
+                        onClick={handleStopCameraClick}
+                      >
+                        <p>⏹</p>
+                      </button>
                     </div>
-                  ))}
+                  ) : (
+                    <div>
+                      <button
+                        className="w-12 h-12 rounded-full bg-lime-400 bg-opacity-50 hover:bg-lime-500 focus:outline-none flex items-center justify-center m-8 p-8 border-4 border-lime-400 shadow-lg"
+                        onClick={handleCameraClick}
+                      >
+                        <p>📸</p>
+                      </button>
+                      <p className="text-center">
+                        {seenFoods.length > 0 && JSON.stringify(seenFoods)}
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
-              <div className="flex flex-col items-center">
-                <div className="border-green-400 ml-4 p-4 rounded-xl border-4 min-h-[30vh] min-w-[30vw] text-left bg-teal-600">
-                  <h3 className="font-bold text-xl">Shopping List:</h3>
-                  {groceries.map((item) => (
-                    <div key={item.id}>
-                      <p>
-                        [{item.completed ? "x" : " "}]
-                        <span className={item.completed ? "line-through" : ""}>
-                          {item.text}
-                        </span>
-                      </p>
-                      {item.subtasks &&
-                        item.subtasks.map((subitem) => (
-                          <p key={subitem.id} className="ml-4">
-                            {"[" + (subitem.completed ? "x" : " ") + "] "}
-                            <span
-                              className={
-                                subitem.completed ? "line-through" : ""
-                              }
-                            >
-                              {subitem.text}
-                            </span>
-                          </p>
-                        ))}
-                    </div>
-                  ))}
-                </div>
+              <div className="p-4 m-auto flex justify-center items-center">
+                <textarea
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  className="border-2 border-gray-400 p-1 rounded-lg focus:outline-none m-2 w-60 min-w-96 text-black"
+                />
 
-                {cameraEnabled ? (
-                  <div className="max-w-[30vw] flex-col flex items-center">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={"http://localhost:3001/webcam"}
-                      alt="webcam"
-                      className="rounded-lg shadow-lg mt-8 mx-8"
-                    />
-                    <button
-                      className="w-12 h-12 rounded-full bg-lime-400 bg-opacity-50 hover:bg-lime-500 focus:outline-none flex items-center justify-center m-8 p-8 border-4 border-lime-400 shadow-lg"
-                      onClick={handleStopCameraClick}
-                    >
-                      <p>⏹</p>
-                    </button>
-                  </div>
-                ) : (
-                  <div>
-                    <button
-                      className="w-12 h-12 rounded-full bg-lime-400 bg-opacity-50 hover:bg-lime-500 focus:outline-none flex items-center justify-center m-8 p-8 border-4 border-lime-400 shadow-lg"
-                      onClick={handleCameraClick}
-                    >
-                      <p>📸</p>
-                    </button>
-                    <p className="text-center">
-                      {DEBUGGING &&
-                        seenFoods.length > 0 &&
-                        JSON.stringify(seenFoods)}
-                    </p>
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
-
-          {DEBUGGING && (
-            <div className="p-4 m-auto flex justify-center items-center">
-              <textarea
-                value={chatTextInput}
-                onChange={(e) => setChatTextInput(e.target.value)}
-                className="border-2 border-gray-400 p-1 rounded-lg focus:outline-none m-2 w-60 min-w-96 text-black"
-              />
-              <div>
                 <button
                   onClick={() => {
-                    processVoiceInputText(chatTextInput);
-                    setChatTextInput("");
+                    processVoiceInputText(input);
+                    setInput("");
                   }}
-                  className="bg-blue-400 hover:bg-blue-500 p-1 rounded-lg text-white focus:outline-none m-2"
+                  className="bg-blue-400 hover:bg-blue-500 p-1 rounded-lg text-white focus:outline-none mx-2 my-auto"
                 >
                   submit
                 </button>
+
+                <button
+                  className={`${
+                    listening ? "bg-red-400" : "bg-blue-400 hover:bg-blue-500"
+                  } rounded-full w-16 h-16 focus:outline-none flex justify-center items-center m-4`}
+                  onClick={toggleListening}
+                >
+                  <TalkShape />
+                </button>
               </div>
             </div>
-          )}
-        </div>
+          </>
+        ) : (
+          <button
+            onClick={handleFirstClick}
+            className="m-auto text-slate-200 italic hover:not-italic"
+          >
+            begin
+          </button>
+        )}
         <footer className="min-h-[10vh]"></footer>
       </div>
     </>
@@ -400,7 +419,7 @@ export const TalkShape = () => {
     <svg
       viewBox="0 0 256 256"
       xmlns="http://www.w3.org/2000/svg"
-      className="w-12 h-12 text-white"
+      className="w-10 h-10 text-white"
     >
       <path
         fill="currentColor"
