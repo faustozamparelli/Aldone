@@ -14,6 +14,8 @@
 \usepackage{caption}
 \usepackage{float}
 
+% Don't comment this (is used for the hrefs)
+\definecolor{draculapurple}  {RGB} {189,  147,  249}
 
 % % DRACULA COLORS
 % \definecolor{draculabg}      {RGB} {25,   25,   25}
@@ -24,7 +26,6 @@
 % \definecolor{draculagreen}   {RGB} {80,   250,  123}
 % \definecolor{draculaorange}  {RGB} {255,  184,  108}
 % \definecolor{draculapink}    {RGB} {255,  121,  198}
-% \definecolor{draculapurple}  {RGB} {189,  147,  249}
 % \definecolor{draculared}     {RGB} {216,  47,   49}
 % \definecolor{draculayellow}  {RGB} {241,  250,  140}
 % \definecolor{draculablue}  {RGB} {36,  85,  151}
@@ -39,7 +40,6 @@
 \definecolor{draculagreen}   {RGB} {0,0,0}
 \definecolor{draculaorange}  {RGB} {0,0,0}
 \definecolor{draculapink}    {RGB} {0,0,0}
-\definecolor{draculapurple}  {RGB} {0,0,0}
 \definecolor{draculared}     {RGB} {0,0,0}
 \definecolor{draculayellow}  {RGB} {0,0,0}
 \definecolor{draculablue}  {RGB} {0,0,0}
@@ -79,6 +79,14 @@ Aldone is able to detect fully by himself weather you are asking him to add some
 
 The coolest thing is that once you will come home from the supermarket with tired legs and arms from carrying bags, you won't have to manually remove everything from this digital grocery list but you can use your phone camera to detect what foods you actually bought and then Aldone will remove them for you. Other use cases for this include checking what's already in your kitchen or marking products as bought after delegating your groceries to someone else.
 
+\subsection*{Sources of Inspiration}
+
+\begin{enumerate}
+  \item The prof's demos and examples from the Google Classroom.
+  \item \href{https://humane.com/media/cosmos-an-operating-system-for-the-ai-era}{\texttt{Cosmos}}: the ``operating system'' used by the Humane Pin, which is a new AI-first device designed to be used only with your voice and vision.
+  \item \href{https://aixplain.com/}{aiXplain}: which is a fresh startup allowing to create complex AI pipelines by connecting independent AI agents with each other through a graphical drag and drop interface.
+\end{enumerate}
+
 \newpage
 
 \section*{\color{draculagreen}Method} 
@@ -114,7 +122,7 @@ The task of the Question Classifier is to determine whether the user's input is 
 \end{figure}
 
 
-The Question Classifier is implemented using a neural network trained on a dataset of 500 examples. The dataset was manually generated and enhanced using generative AI data synthesizing tools. The question classifier is a pytorch neural network and its code can be found in the subdirectory ``src/py/question\_classifier''.
+The Question Classifier is implemented using a neural network trained on a dataset of 500 examples. The dataset was manually generated and enhanced using generative AI data synthesizing tools. The question classifier is a pytorch neural network and its code can be found in the subdirectory ``src/py/question\_classifier/''.
 
 In the subdirectory,
 \begin{itemize}
@@ -126,7 +134,7 @@ In the subdirectory,
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{question_classifier_accuracy.png}
-\caption{\small The model achieved 98\% accuracy on the test set. Of course it's still a small dataset and more data would make it more solid.}
+\caption{\small The model achieved 98\% accuracy on the test set.}
 \end{figure}
 
 \subsection*{\color{draculayellow}Category Classifier}
@@ -164,12 +172,12 @@ In the subdirectory,
 
 \subsection*{\color{draculayellow}Todo Extractor}
 
-The task of the Todo Extractor is to extract the task from the user's input. For example, if the user says "Add milk to my grocery list", the task is "Add milk". The Todo Extractor is implemented using OpenAI's pre-trained GPT 3.5 model. It was asked to output nice json objects that are much easier to work with programmatically. The prompt and the code can be found in the subdirectory ``src/app/api/todoExtractor''.
+The task of the Todo Extractor is to extract the task from the user's input. For example, if the user says "Add milk to my grocery list", the task is "Add milk". The Todo Extractor is implemented using OpenAI's pre-trained GPT 3.5 model. It was asked to output nice json objects that are much easier to work with programmatically. The prompt and the code can be found in the subdirectory ``src/app/api/todoExtractor/''.
 
 
 \subsection*{\color{draculayellow}Vision Food Detector}
 
-The task of the Vision Food Detector is to take a video stream and detect food items in it. The Vision Food Detector is implemented using a pre-trained YOLO model via Ultralytics and filtering the detected items to a set of labels containing only foods. The code can be found in the subdirectory ``src/py/grocery\_recognition''.
+The task of the Vision Food Detector is to take a video stream and detect food items in it. The Vision Food Detector is implemented using a pre-trained YOLO model via Ultralytics and filtering the detected items to a set of labels containing only foods. The code can be found in the subdirectory ``src/py/grocery\_recognition/''.
 
 \subsection*{\color{draculayellow}Grocery List Matcher}
 
@@ -177,7 +185,7 @@ The task of the Grocery List Matcher is to take the items detected by the Vision
 
 
 Initially the LLM model was asked to output the entire updated grocery list object, but empirically it made errors very often.
-Asking the LLM model for ids of the grocery list that were updated, and then updating the grocery list object programmatically, ended up working much better. The prompt and the code can be found in the subdirectory ``src/app/api/groceryListMatcher''.
+Asking the LLM model for ids of the grocery list that were updated, and then updating the grocery list object programmatically, ended up working much better. The prompt and the code can be found in the subdirectory ``src/app/api/groceryListMatcher/''.
 
 \subsection*{\color{draculayellow}Query Agent}
 
@@ -200,20 +208,32 @@ and gives as output
   \end{itemize}
 \end{itemize}
 
-This agent as well gives instructions about what to change inside the lists rather than doing the change itself. The prompt and the code can be found in the subdirectory ``src/app/api/conversationalAgent''.
+This agent as well gives instructions about what to change inside the lists rather than doing the change itself. The prompt and the code can be found in the subdirectory ``src/app/api/conversationalAgent/''.
 
 
 \subsection*{\color{draculayellow}Text-to-Speech Agent}
 
 To pronounce any generated narration string, the OpenAI pre-trained TTS model is used. Implementation at ``src/app/api/tts''.
 
-\section*{\color{draculagreen}Results}
-
 \subsection*{\color{draculagreen}Glue Orchestration}
 
-\section*{\color{draculagreen}Source of inspiration}
+To make the whole app come together, the python tasks were made available to the network through a Python Flask server (code at ``src/py/server.py''). A Node.js backend (code at ``src/app/api/'') makes requests to the Python server to use all the AI implementations, and finally the React font-end (``src/app/[username]/page.tsx'') communicates with the Node.js backend to make everything available to the user through a user-friendly web user interface.
 
-[1] \href{https://humane.com/media/cosmos-an-operating-system-for-the-ai-era}{Cosmos: An Operating System for the AI Era} \newline
-[2] aiXplain
+
+\section*{\color{draculagreen}Results}
+
+The final result is a fully functioning proof of concept, but definitely not a product ready to be distributed to users. It works most of the time but it's not as reliable as should be.
+
+Relying on the browser's API, Speech Recognition breaks in browsers that don't provide a working implementation. Doing this work in the backend would make the service more reliable and the app more versatile.
+
+Even with 98\% accuracy, the Question Classifier was still trained on a small dataset and a larger, more diversified dataset would make it more solid.
+
+The category classifier was trained on separating ``todo list" items from ``shopping list'' items, and shopping items are not always foods for the ``grocery list''. Training on a tailored dataset would make it more accurate.
+
+All the GPT task are pretty good but rely on OpenAI's external model, which can increase delay in the waiting of the API call responses to get back to the machine from their servers, and, not being free, can become expensive over time.
+
+The Vision Food Detector could be trained on custom images to recognize even more foods.
+
+
 
 \end{document}
