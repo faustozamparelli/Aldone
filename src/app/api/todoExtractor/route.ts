@@ -33,9 +33,19 @@ export interface TodoExtractorResponse {
   id: string;
 }
 
+function capitalizeFirstLetter(s: string) {
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
 export async function POST(req: NextRequest) {
   const { text }: TodoExtractorRequest = await req.json();
-  const result: TodoExtractorResponse = await extractTodoFrom(text);
+  const todoExtractorResponse: TodoExtractorResponse = await extractTodoFrom(
+    text
+  );
+  const result: TodoExtractorResponse = {
+    text: capitalizeFirstLetter(todoExtractorResponse.text),
+    id: todoExtractorResponse.id,
+  };
   console.log({
     todoExtractorRequest: { text },
     todoExtractorResponse: result,

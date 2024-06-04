@@ -25,7 +25,7 @@ declare global {
   }
 }
 
-const DEBUGGING = false;
+const DEBUGGING = true;
 
 export interface TodoItem {
   text: string;
