@@ -1,7 +1,4 @@
 # Aldone
-
-> _*Aldone*_
-
 Aldone as in "AI-Done" is a tool for personal reminders and grocery list management.
 This is a proof of concept of a product that could save you time every day by allowing you
 to smoothly interact with it on the fly.
