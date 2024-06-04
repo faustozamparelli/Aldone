@@ -1,0 +1,11 @@
+- show the project:
+
+Start with an empty screen/user
+Add todos  with voice and text
+mark as done 
+ask to divide into substasks
+ask how much a task will take
+Add grocery list items with voice and text
+vision to mark as done (keep some in)
+split tiramisu into its ingredients
+ask to rank tasks from the most difficult to the least
