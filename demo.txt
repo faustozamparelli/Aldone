@@ -4,13 +4,14 @@
 
 2. Add todos  with voice and text
     - hi, can you remind me to pick up the kids from school 
-    - i need to call my boss
+    - i have a videocall with my boss at 3pm, need to prepare
     - add making coffee to the list
     - i need to buy a bicycle soon to move through the city
     - can you please remind me that i need to clean the car 
+    - make sure i remember about Jhon's birthday next Wednesday
 
 3. mark as done 
-    - i have picked up my kids now, mark it as done
+    - i have picked up my kids 
     - mark as done calling the boss
 
 4. ask to divide into substasks
