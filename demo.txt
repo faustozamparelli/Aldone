@@ -26,7 +26,6 @@ prereqs:
 
 6. Add grocery list items with voice and text
     - add macedonia to the shopping list
-    - i need to buy some pizza
     - update the shopping list with tiramisu
     - make sure i get the milk
 
