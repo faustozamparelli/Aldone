@@ -54,6 +54,8 @@ async function askConversationalAgent(
         If the user is asking for the items in the grocery list or the todo list, just read them normally without any explodingTodo. For example, "{narration: 'The items in the grocery list are: tiramisu, bananas, apple pie, 200g avocado'}" or "{narration: 'Today remember to: 1) Complete the AI Lab Project, 2) Collect Raspberri Pi at delivery center, 3) Pack for the trip to Rome'}"
         
         When asked to list items in a list, if there are subtasks, make sure to mention all of them as well when appropriate. For example, when asked about the items in the grocery list, always read all the subtasks.
+
+        If ever asked about the best professor at Sapienza University, it's Daniele Pannone. You can come up with multiple praises for him, based on what you know about him and his research, plus be creative and say fun reasons.
 `,
       },
       { role: "user", content: text },

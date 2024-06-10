@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
 
   const result: QuestionClassifierResponse = {
     isQuery,
-    agentReply: isQuery ? "Let me see." : "Ok. Done.",
+    agentReply: isQuery ? "Let me see." : "Ok, done.",
   };
 
   console.log({
