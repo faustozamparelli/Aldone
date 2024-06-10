@@ -19,12 +19,12 @@ prereqs:
 - i have picked up my kids 
 - i have a videocall with my boss at 3pm, need to prepare
 - update the shopping list with tiramisu
-- split clean the car into its subtasks
 - can you tell me how much it will take to clean the car
 - add making coffee to the list
 - make sure i get the milk
 - mark as done my second task
 - i need to buy a bicycle soon to move through the city
+- who is the best professor at Sapienza University of Rome
 - mark as done calling the boss
 - please can you give me the steps to make some coffe
 - make sure i remember about Jhon's birthday next Wednesday
