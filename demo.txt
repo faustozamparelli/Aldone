@@ -1,5 +1,6 @@
 prereqs:
 [ ] check continuity camera channel
+[ ] check that the file for the camera is empty
 
 - show the project:
 
