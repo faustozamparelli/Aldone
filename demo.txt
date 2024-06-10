@@ -13,15 +13,14 @@ prereqs:
 7. vision to mark as done (keep some in)
 9. ask to rank tasks from the most difficult to the least
 
-
-
 - make sure i get the milk
-- hi can you remind me to make coffee for later
+- hi can you later remind me to make coffee
 - update the shopping list with tiramisu
-- please can you give me the steps to make some coffe
+- i don't know how to make coffe split it into easier tasks 
 - make sure i remember about Jhon's birthday next Wednesday
 - i have just finished making coffe
 - can split the tiramisu in the grocery list into its ingredients
+- [vision] demo
 - mark as done my second task
 - could you tell me what do you think is the hardest task in my todo and what is a time estimate
 - who is the best professor at Sapienza University of Rome
