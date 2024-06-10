@@ -356,10 +356,16 @@ export default function Page({ params }: { params: { username: string } }) {
                         {item.subtasks &&
                           item.subtasks.map((subitem) => (
                             <p key={subitem.id} className="ml-4">
-                              {"[" + (subitem.completed ? "x" : " ") + "] "}
+                              {"[" +
+                                (subitem.completed || item.completed
+                                  ? "x"
+                                  : " ") +
+                                "] "}
                               <span
                                 className={
-                                  subitem.completed ? "line-through" : ""
+                                  subitem.completed || item.completed
+                                    ? "line-through"
+                                    : ""
                                 }
                               >
                                 {subitem.text}
