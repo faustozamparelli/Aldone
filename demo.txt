@@ -13,19 +13,24 @@ prereqs:
 7. vision to mark as done (keep some in)
 9. ask to rank tasks from the most difficult to the least
 
-- hi, can you remind me to pick up the kids from school 
-- add fruit salad to the shopping list
-- can you please remind me that i need to clean the car 
-- i have picked up my kids 
-- i have a videocall with my boss at 3pm, need to prepare
-- update the shopping list with tiramisu
-- can you tell me how much it will take to clean the car
-- add making coffee to the list
+
+
 - make sure i get the milk
-- mark as done my second task
-- can split the tiramisu in the grocery list into its ingredients
-- i need to buy a bicycle soon to move through the city
-- who is the best professor at Sapienza University of Rome
-- mark as done calling the boss
+- hi can you remind me to make coffee for later
+- update the shopping list with tiramisu
 - please can you give me the steps to make some coffe
 - make sure i remember about Jhon's birthday next Wednesday
+- i have just finished making coffe
+- can split the tiramisu in the grocery list into its ingredients
+- mark as done my second task
+- could you tell me what do you think is the hardest task in my todo and what is a time estimate
+- who is the best professor at Sapienza University of Rome
+
+
+
+########################################################################################
+- can you please remind me that i need to clean the car 
+- i have a videocall with my boss at 3pm, need to prepare
+- can you tell me how much it will take to clean the car
+- i need to buy a bicycle soon to move through the city
+- mark as done calling the boss
