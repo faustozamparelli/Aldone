@@ -13,38 +13,22 @@ prereqs:
 7. vision to mark as done (keep some in)
 9. ask to rank tasks from the most difficult to the least
 
-F
-make sure i get the milk
-D
-could you tell me what do you think is the hardest task in my todo and what is a time estimate
-F
-hi can you later remind me to make coffee
-D
-update the shopping list with tiramisu
-F
-i don't know how to make coffe split it into easier tasks 
-D
-make sure i remember about Jhon's birthday next Wednesday
-F
-i have just finished making coffe
-D
-can split the tiramisu in the grocery list into its ingredients
-D
-[vision] demo
-F
-mark as done my second task
-F
-what's the capital of Spain
-D
-how to make overnight oats
-F
-how do french people say hello
-D
-what's the hottest field of study these years
-F
-when was tiramisu invented
-D
-who is the best professor at Sapienza University of Rome
+F hi make sure i get the milk
+D could you tell me what do you think is the hardest task in my todo and what is a time estimate
+F hi can you later remind me to make coffee
+D update the shopping list with tiramisu
+F i don't know how to make coffe split it into easier tasks 
+D make sure i remember about Jhon's birthday next Wednesday
+F i have just finished making coffe
+D can split the tiramisu in the grocery list into its ingredients
+D [vision] demo
+F mark as done my second task
+F what's the capital of Spain
+D how to make overnight oats
+F how do french people say hello
+D what's the hottest field of study these years
+F when was tiramisu invented
+D who is the best professor at Sapienza University of Rome
 
 
 
