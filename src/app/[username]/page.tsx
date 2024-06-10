@@ -66,11 +66,16 @@ export default function Page({ params }: { params: { username: string } }) {
     },
   ]);
   const [groceries, setGroceries] = useState<TodoItem[]>([
-    { text: "Tiramisu", completed: false, id: "tiramisu" },
+    // { text: "Tiramisu", completed: false, id: "tiramisu" },
     { text: "Yogurt Bowl", completed: false, id: "yogurt_bowl" },
     { text: "Bananas", completed: false, id: "bananas" },
     { text: "200g Avocado", completed: true, id: "avocad0" },
     { text: "Apples", completed: false, id: "appl3s" },
+    { text: "Pizza", completed: false, id: "p1zz4" },
+    { text: "Broccoli", completed: false, id: "brocc0l1" },
+    { text: "Sandwich", completed: false, id: "sandw1tch" },
+    { text: "Oranges", completed: false, id: "sandw1tch" },
+    { text: "Carrots", completed: false, id: "sandw1tch" },
   ]);
 
   const processVoiceInputText = (voiceInput: string) => {
