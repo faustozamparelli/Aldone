@@ -331,10 +331,16 @@ export default function Page({ params }: { params: { username: string } }) {
                         {todo.subtasks &&
                           todo.subtasks.map((subtask) => (
                             <p key={subtask.id} className="ml-4">
-                              {"[" + (subtask.completed ? "x" : " ") + "] "}
+                              {"[" +
+                                (subtask.completed || todo.completed
+                                  ? "x"
+                                  : " ") +
+                                "] "}
                               <span
                                 className={
-                                  subtask.completed ? "line-through" : ""
+                                  subtask.completed || todo.completed
+                                    ? "line-through"
+                                    : ""
                                 }
                               >
                                 {subtask.text}
