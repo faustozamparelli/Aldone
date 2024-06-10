@@ -34,16 +34,10 @@ D
 F
 mark as done my second task
 F
-what's the capital of Spain
-D
-how to make overnight oats
-F
 how do french people say hello
 D
-what's the hottest field of study right now
-F
 when was tiramisu invented
-D
+F
 who is the best professor at Sapienza University of Rome
 
 
