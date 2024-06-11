@@ -35,7 +35,7 @@ Open [http://localhost:3001](http://localhost:3001) with your browser to see the
 
 
 
-
+---
 ### To learn more please feel free to read the report here: 
 ### https://github.com/faustozamparelli/Aldone/blob/main/report/Aldone.pdf 
 ### or the presentation here: 
