@@ -1,0 +1,18 @@
+To test Aldone functionality try these questions
+- hi make sure i get the milk
+- could you tell me what do you think is the hardest task in my todo and what is a time estimate
+- hi can you later remind me to make coffee
+- update the shopping list with tiramisu
+- i don't know how to make coffe split it into easier tasks 
+- make sure i remember about Jhon's birthday next Wednesday
+- i have just finished making coffe
+- can you split the tiramisu in the grocery list into its ingredients
+- mark as done my second task
+- how do french people say hello
+- when was tiramisu invented
+- who is the best professor at Sapienza University of Rome
+- can you please remind me that i need to clean the car 
+- i have a videocall with my boss at 3pm, need to prepare
+- can you tell me how much it will take to clean the car
+- i need to buy a bicycle soon to move through the city
+- mark as done calling the boss
