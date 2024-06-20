@@ -17,7 +17,7 @@ The coolest thing is that once you will come home from the supermarket with tire
 
 ## This is a visual representation of all the agents that made up Aldone <img width="1230" alt="diagram" src="https://github.com/faustozamparelli/Aldone/assets/105665123/1219864e-c94d-49d5-b138-0cb50d636a06">
 
-Before running the code, create the `.env` file and set the `OPENAI_API_KEY` variable with your OpenAI key.
+Before running the code, set the `OPENAI_API_KEY` variable with your OpenAI key and install in your venv the requirements.txt  
 
 To run the development server:
 ```bash
