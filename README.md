@@ -1,10 +1,13 @@
+
+https://github.com/faustozamparelli/Aldone/assets/105665123/705d246c-1cd3-4b94-a268-f685c9fdc609
 # Aldone
 
 Aldone as in "AI-Done" is a tool for personal reminders and grocery list management.
 This is a proof of concept of a product that could save you time every day by allowing you
-to smoothly interact with it on the fly.
+to smoothly interact with it on the fly.  
 
-![screenshot](screenshot.png)
+## A short demo
+Uploading 2024-06-20 14-27-19.mp4… 
 
 Aldone is a react web app that interacts with a node.js and a python server doing most of the magic.
 After a log-in you will be able to speak to it to add tasks to your grocery list, to-do list,
